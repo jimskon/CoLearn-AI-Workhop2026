@@ -5,6 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Part 3 — Activity Design &amp; Implementation · coLearn-AI Workshop</title>
 <link rel="stylesheet" href="style.css">
+<style>
+.ml-table { width:100%; border-collapse:collapse; font-size:0.88rem; margin:0.75rem 0 1.25rem; }
+.ml-table th { background:#5b4fcf; color:#fff; text-align:left; padding:0.5rem 0.8rem; font-weight:600; font-size:0.82rem; letter-spacing:0.04em; }
+.ml-table td { padding:0.45rem 0.8rem; border-bottom:1px solid #e8e4f8; vertical-align:top; }
+.ml-table tr:nth-child(even) td { background:#f7f5ff; }
+.ml-table code { font-family:'Courier New',monospace; font-size:0.82rem; color:#5b4fcf; }
+.ml-category { font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#888; padding:0.3rem 0.8rem; background:#f0f0f8; }
+.activity-source { background:#1e1e2e; color:#cdd6f4; font-family:'Courier New',monospace; font-size:0.8rem; line-height:1.65; padding:1.25rem 1.5rem; border-radius:10px; border:1px solid #313244; overflow-x:auto; }
+.ml-kw { color:#cba6f7; }
+.ml-arg { color:#a6e3a1; }
+.ml-cmt { color:#6c7086; font-style:italic; }
+.ml-str { color:#f38ba8; }
+.ml-sec { color:#89dceb; }
+.qtype-authoring { border:2px solid #e0daf8; border-radius:10px; margin:1rem 0 1.5rem; overflow:hidden; }
+.qtype-authoring-header { display:flex; gap:0; background:#f0eeff; border-bottom:2px solid #e0daf8; flex-wrap:wrap; }
+.qtype-authoring-header button { padding:0.55rem 1rem; border:none; background:transparent; font-size:0.82rem; font-weight:600; cursor:pointer; color:#666; border-right:1px solid #e0daf8; transition:background 0.15s; }
+.qtype-authoring-header button.active { background:#5b4fcf; color:#fff; }
+.qtype-authoring-body { padding:1.25rem 1.5rem; display:none; }
+.qtype-authoring-body.active { display:block; }
+.demo-pair { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:0.75rem 0; }
+@media (max-width:680px) { .demo-pair { grid-template-columns:1fr; } }
+.demo-left { background:#f0e8f8; border:1px solid #c8b0e8; border-radius:8px; padding:1rem; }
+.demo-right { background:#fff4e0; border:1px solid #e0c070; border-radius:8px; padding:1rem; }
+.demo-label { font-size:0.72rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:0.5rem; }
+.demo-label.fp { color:#5b4fcf; }
+.demo-label.sr { color:#b87800; }
+</style>
 </head>
 <body>
 
@@ -24,8 +51,8 @@
   <div class="part-num">Part 3 of 5</div>
   <h1>Activity Design &amp; Implementation</h1>
   <div class="part-meta">
-    <span>⏱ 60 minutes</span>
-    <span>1:10 – 2:10</span>
+    <span>&#9201; 60 minutes</span>
+    <span>1:10 &ndash; 2:10</span>
     <span>You are now the author</span>
   </div>
 </div>
@@ -34,16 +61,15 @@
 
   <div class="callout callout-purple" style="margin-top:0.5rem">
     <strong>Your role just changed.</strong>
-    You are no longer a student. You are now designing an activity for <em>your</em> students. By the end of this hour you will have 2–3 authored questions with working feedback prompts and sample responses, tested live in the platform.
+    You are no longer a student. You are now designing an activity for <em>your</em> students. By the end of this hour you will understand the coLearn-AI markup language, have seen the complete source of the Workshop Sampler you worked through, and have authored 2&ndash;3 questions of your own &mdash; tested live in the platform.
   </div>
 
-  <!-- THE FOUR LAYERS -->
   <div class="section-header" style="margin-top:1.5rem">
     <span class="badge">Architecture</span>
   </div>
   <h2>Four Layers of AI Guidance</h2>
 
-  <p>Every AI response a student sees is shaped by four layers of guidance stacked on top of each other. Layers 0–2 are context. <strong>Layer 3 is what you craft</strong> — it is what actually shapes the scaffolding for each individual question.</p>
+  <p>Every AI response a student sees is shaped by four layers stacked on top of each other. Layers 0&ndash;2 are context. <strong>Layer 3 is what you craft</strong> &mdash; it shapes the scaffolding for each individual question.</p>
 
   <ul class="layers">
     <li class="layer-0-bg">
@@ -71,88 +97,255 @@
       <div class="layer-num l3">3</div>
       <div class="layer-body">
         <strong>Question-Level Guidance (your main job)</strong>
-        <p>Set per question. Two pieces: a <em>feedback prompt</em> (invisible to students) that tells the AI exactly what to accept or push back on, and a <em>sample response</em> (not shown to students) that calibrates what correct looks like. Together they drive all three possible AI responses for this question.</p>
+        <p>Set per question: a <em>feedback prompt</em> (invisible to students) and a <em>sample response</em> (also hidden). Together they drive Accept, Nudge, and Flag for every submission to this question.</p>
       </div>
     </li>
   </ul>
 
   <div class="callout callout-teal">
-    <strong>Key insight</strong>
-    You don't write the AI's replies. You write the criteria the AI uses to decide how to reply. One precise feedback prompt plus one or two sample responses is enough to control Accept, Nudge, and Flag behavior for a question.
+    <strong>Key insight:</strong> You don&rsquo;t write the AI&rsquo;s replies. You write the criteria the AI uses to decide how to reply. One precise feedback prompt plus one or two sample responses is enough to control all three AI responses for a question.
   </div>
 
   <hr class="section-divider">
 
-  <!-- WHAT TO WRITE -->
+  <div class="section-header">
+    <span class="badge">Markup Language</span>
+  </div>
+  <h2>The coLearn-AI Markup Language</h2>
+
+  <p>Activities are defined in a LaTeX-inspired markup language. Each activity is a plain-text file parsed by the platform to build the student interface, configure the AI layers, and set up the epistemic trace.</p>
+
+  <h3 style="margin-top:1.25rem">Activity-Level Commands</h3>
+  <table class="ml-table">
+    <thead><tr><th style="width:30%">Command</th><th>Purpose &amp; Notes</th></tr></thead>
+    <tbody>
+      <tr><td><code>\title{...}</code></td><td>Activity title shown to students and in reports.</td></tr>
+      <tr><td><code>\name{...}</code></td><td>Short internal name used in logs and exports.</td></tr>
+      <tr><td><code>\activitycontext{...}</code></td><td>Layer 2: paragraph describing topic scope and teaching goals. Sent to AI with every evaluation request.</td></tr>
+      <tr><td><code>\aicodeguidance{...}</code></td><td>Layer 2 supplement: specific rules for code evaluation (e.g., &ldquo;require meaningful variable names&rdquo;).</td></tr>
+      <tr><td><code>\studentlevel{...}</code></td><td>Brief description of the student audience (e.g., &ldquo;CS1 Python, week 6&rdquo;). Calibrates AI language level.</td></tr>
+      <tr><td><code>\retries{n}</code></td><td>How many times a group may attempt a flagged question before the platform moves them on. Typical: 2&ndash;3.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Section &amp; Content Commands</h3>
+  <table class="ml-table">
+    <thead><tr><th style="width:30%">Command</th><th>Purpose &amp; Notes</th></tr></thead>
+    <tbody>
+      <tr><td><code>\section{Title}{min}</code></td><td>Starts a named section with a suggested time in minutes.</td></tr>
+      <tr><td><code>\text{...}</code></td><td>Plain paragraph text shown to students.</td></tr>
+      <tr><td><code>\textbf{...}</code></td><td>Bold inline text.</td></tr>
+      <tr><td><code>\begin{itemize}</code> &hellip; <code>\end{itemize}</code></td><td>Bulleted list. Each item prefixed with <code>\item</code>.</td></tr>
+      <tr><td><code>\image{url}{alt}{width}</code></td><td>Embeds an image. Width in pixels. Alt text is required.</td></tr>
+      <tr><td><code>\link{url}{text}</code></td><td>Clickable hyperlink.</td></tr>
+      <tr><td><code>\questiongroup{Title}</code> &hellip; <code>\endquestiongroup</code></td><td>Groups related questions under a shared heading. Optional.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Question Commands</h3>
+  <p>Every question begins with <code>\question{...}</code> and ends with <code>\endquestion</code>. Inside, exactly one response-mode command specifies the question type.</p>
+
+  <table class="ml-table">
+    <thead><tr><th style="width:30%">Command</th><th>Purpose &amp; Notes</th></tr></thead>
+    <tbody>
+      <tr class="ml-category"><td colspan="2">Question wrapper</td></tr>
+      <tr><td><code>\question{text}</code></td><td>Opens a question. The argument is the full question text shown to students.</td></tr>
+      <tr><td><code>\responsemode{answer}</code></td><td>Marks this as an answer question. Required for AI evaluation.</td></tr>
+      <tr><td><code>\sampleresponses{...}</code></td><td>One or more correct answers, hidden from students. Calibrates AI recognition of equivalent correct responses.</td></tr>
+      <tr><td><code>\feedbackprompt{...}</code></td><td>Layer 3 instruction to the AI: one clear criterion for Accept vs. Nudge vs. Flag. Invisible to students.</td></tr>
+      <tr><td><code>\endquestion</code></td><td>Closes the question block.</td></tr>
+      <tr class="ml-category"><td colspan="2">Response type &mdash; choose exactly one per question</td></tr>
+      <tr><td><code>\textresponse{n}</code></td><td>Multi-line plain text box. <em>n</em> = number of visible rows.</td></tr>
+      <tr><td><code>\python</code> &hellip; <code>\endpython</code></td><td>Python code editor. Content between tags is the starter code.</td></tr>
+      <tr><td><code>\pythonturtle{WxH}</code> &hellip; <code>\endpythonturtle</code></td><td>Python Turtle editor with embedded canvas. <em>WxH</em> = canvas size (e.g., <code>400x300</code>).</td></tr>
+      <tr><td><code>\cpp</code> &hellip; <code>\endcpp</code></td><td>C++ code editor with syntax highlighting and compilation.</td></tr>
+      <tr><td><code>\table{Title}</code> &hellip; <code>\endtable</code></td><td>Trace table. See sub-commands below.</td></tr>
+      <tr><td><code>\multiplechoice{}</code> &hellip; <code>\endmultiplechoice</code></td><td>Multiple choice. Options: <code>\choice{...}</code> and <code>\correctchoice{...}</code>.</td></tr>
+      <tr class="ml-category"><td colspan="2">Table sub-commands</td></tr>
+      <tr><td><code>\row Col1 &amp; Col2 &amp; &hellip;</code></td><td>Defines a table row. First <code>\row</code> is the header.</td></tr>
+      <tr><td><code>\tresponse</code></td><td>Marks a cell as student-fillable (text input). Use inside a <code>\row</code>.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-gold">
+    <strong>Tip &mdash; Starter code:</strong> Content between <code>\python</code>/<code>\endpython</code>, <code>\pythonturtle</code>/<code>\endpythonturtle</code>, and <code>\cpp</code>/<code>\endcpp</code> becomes the pre-filled starter code in the editor. Leave blank for an empty editor; provide a skeleton to scaffold the task.
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="section-header">
+    <span class="badge">Complete Example</span>
+  </div>
+  <h2>Workshop Sampler &mdash; Complete Activity Source</h2>
+
+  <p>This is the full markup source of the &ldquo;For Loops &mdash; Workshop Sampler&rdquo; activity you worked through in Part 2. Read it alongside the command reference above to see every concept in context.</p>
+
+  <div class="activity-source">
+<span class="ml-cmt">%% Activity header</span>
+<span class="ml-kw">\title</span>{<span class="ml-arg">For Loops &mdash; Workshop Sampler</span>}
+<span class="ml-kw">\name</span>{<span class="ml-arg">workshop_sampler_2026</span>}
+<span class="ml-kw">\studentlevel</span>{<span class="ml-arg">CS1 Python (or C++), week 5&ndash;7; comfortable with variables and conditionals; just introduced to for loops.</span>}
+<span class="ml-kw">\activitycontext</span>{<span class="ml-arg">Explores counter-controlled iteration using Python for loops with range(), Turtle, C++ for loops, and trace tables. Groups work in POGIL roles. Goal: conceptual understanding of loop mechanics.</span>}
+<span class="ml-kw">\aicodeguidance</span>{<span class="ml-arg">Require actual loop constructs. Reject hard-coded lists or repeated statements. Accept any valid variable names and equivalent range() arguments.</span>}
+<span class="ml-kw">\retries</span>{<span class="ml-arg">3</span>}
+
+<span class="ml-cmt">%% Section 1: Concept check</span>
+<span class="ml-kw">\section</span>{<span class="ml-sec">Explaining the Loop</span>}{<span class="ml-arg">10</span>}
+<span class="ml-kw">\text</span>{<span class="ml-arg">A \textbf{counter-controlled loop} repeats a fixed number of times. In Python, for loops with range() are the standard tool.</span>}
+
+<span class="ml-kw">\question</span>{<span class="ml-arg">In your own words, explain what a counter-controlled loop does and how Python's for loop with range() implements it. Give a concrete example with specific numbers.</span>}
+  <span class="ml-kw">\responsemode</span>{<span class="ml-arg">answer</span>}
+  <span class="ml-kw">\textresponse</span>{<span class="ml-arg">5</span>}
+  <span class="ml-kw">\sampleresponses</span>{<span class="ml-arg">A counter-controlled loop runs a set number of times. Python's for loop with range(start, stop, step) handles the counting automatically. For example, range(1, 6) produces 1, 2, 3, 4, 5 &mdash; the stop value is excluded. The loop variable takes each value in turn without needing a separate counter variable.</span>}
+  <span class="ml-kw">\feedbackprompt</span>{<span class="ml-str">Accept if the response explains: (1) a fixed number of repetitions and (2) how range() generates the sequence. Nudge if they omit that stop is excluded or give no example. Flag if too vague.</span>}
+<span class="ml-kw">\endquestion</span>
+
+<span class="ml-cmt">%% Section 2: Python range</span>
+<span class="ml-kw">\section</span>{<span class="ml-sec">Python &mdash; Rewriting a Loop</span>}{<span class="ml-arg">12</span>}
+<span class="ml-kw">\text</span>{<span class="ml-arg">Below is a loop written with a literal list. Rewrite it using range() to produce identical output.</span>}
+
+<span class="ml-kw">\question</span>{<span class="ml-arg">Rewrite the loop below using range() so it prints the same values (5, 10, 15, 20, 25, 30).</span>}
+  <span class="ml-kw">\responsemode</span>{<span class="ml-arg">answer</span>}
+  <span class="ml-kw">\python</span>
+<span class="ml-arg">for value in [5, 10, 15, 20, 25, 30]:
+    print(value, end=" ")
+
+# Rewrite using range() below:</span>
+  <span class="ml-kw">\endpython</span>
+  <span class="ml-kw">\sampleresponses</span>{<span class="ml-arg">for value in range(5, 31, 5):
+    print(value, end=" ")</span>}
+  <span class="ml-kw">\feedbackprompt</span>{<span class="ml-str">Require range() generating 5,10,15,20,25,30. Stop must be &ge;31. Step must be 5. Nudge if stop is 30 (misses 30).</span>}
+<span class="ml-kw">\endquestion</span>
+
+<span class="ml-cmt">%% Section 3: Turtle</span>
+<span class="ml-kw">\section</span>{<span class="ml-sec">Python Turtle &mdash; Filled Square</span>}{<span class="ml-arg">12</span>}
+
+<span class="ml-kw">\question</span>{<span class="ml-arg">Use a for loop to draw a filled square with side length 100. Fill it with any color you choose.</span>}
+  <span class="ml-kw">\responsemode</span>{<span class="ml-arg">answer</span>}
+  <span class="ml-kw">\pythonturtle</span>{<span class="ml-arg">400x300</span>}
+<span class="ml-arg">import turtle
+t = turtle.Turtle()
+t.speed(3)
+# Your code here:</span>
+  <span class="ml-kw">\endpythonturtle</span>
+  <span class="ml-kw">\sampleresponses</span>{<span class="ml-arg">t.fillcolor("blue")
+t.begin_fill()
+for _ in range(4):
+    t.forward(100)
+    t.left(90)
+t.end_fill()</span>}
+  <span class="ml-kw">\feedbackprompt</span>{<span class="ml-str">Require: (1) for loop runs 4 times, (2) forward(100) and left(90) inside loop, (3) begin_fill() before and end_fill() after. Accept any fill color. Nudge if fill calls missing or misplaced.</span>}
+<span class="ml-kw">\endquestion</span>
+
+<span class="ml-cmt">%% Section 4: C++</span>
+<span class="ml-kw">\section</span>{<span class="ml-sec">C++ &mdash; Odd Numbers</span>}{<span class="ml-arg">12</span>}
+
+<span class="ml-kw">\question</span>{<span class="ml-arg">Write a C++ for loop that prints the odd numbers from 1 through 19, each on its own line, using cout.</span>}
+  <span class="ml-kw">\responsemode</span>{<span class="ml-arg">answer</span>}
+  <span class="ml-kw">\cpp</span>
+<span class="ml-arg">#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    // Write your for loop here:
+    return 0;
+}</span>
+  <span class="ml-kw">\endcpp</span>
+  <span class="ml-kw">\sampleresponses</span>{<span class="ml-arg">for (int i = 1; i &lt;= 19; i += 2) {
+    cout &lt;&lt; i &lt;&lt; endl;
+}</span>}
+  <span class="ml-kw">\feedbackprompt</span>{<span class="ml-str">Require a for loop starting at 1, incrementing by 2, stopping &le;19, printing each value with cout. Accept endl or "\n". Nudge if incrementing by 1 (includes evens) or bounds miss 19.</span>}
+<span class="ml-kw">\endquestion</span>
+
+<span class="ml-cmt">%% Section 5: Trace Table</span>
+<span class="ml-kw">\section</span>{<span class="ml-sec">Trace Table &mdash; Accumulator</span>}{<span class="ml-arg">10</span>}
+<span class="ml-kw">\text</span>{<span class="ml-arg">Trace through the execution step by step. Fill in the value of each variable after each iteration.</span>}
+
+<span class="ml-kw">\question</span>{<span class="ml-arg">Complete the trace table for:
+total = 0
+for number in range(1, 5):
+    total = total + number</span>}
+  <span class="ml-kw">\responsemode</span>{<span class="ml-arg">answer</span>}
+  <span class="ml-kw">\table</span>{<span class="ml-arg">Execution Trace</span>}
+    <span class="ml-kw">\row</span> <span class="ml-arg">Iteration &amp; number &amp; total (before) &amp; total (after)</span>
+    <span class="ml-kw">\row</span> <span class="ml-arg">1 &amp; \tresponse &amp; \tresponse &amp; \tresponse</span>
+    <span class="ml-kw">\row</span> <span class="ml-arg">2 &amp; \tresponse &amp; \tresponse &amp; \tresponse</span>
+    <span class="ml-kw">\row</span> <span class="ml-arg">3 &amp; \tresponse &amp; \tresponse &amp; \tresponse</span>
+    <span class="ml-kw">\row</span> <span class="ml-arg">4 &amp; \tresponse &amp; \tresponse &amp; \tresponse</span>
+  <span class="ml-kw">\endtable</span>
+  <span class="ml-kw">\sampleresponses</span>{<span class="ml-arg">Iteration 1: number=1, total before=0, total after=1
+Iteration 2: number=2, total before=1, total after=3
+Iteration 3: number=3, total before=3, total after=6
+Iteration 4: number=4, total before=6, total after=10</span>}
+  <span class="ml-kw">\feedbackprompt</span>{<span class="ml-str">Accept if number takes values 1,2,3,4 and total accumulates correctly as 0&rarr;1&rarr;3&rarr;6&rarr;10. Nudge if off-by-one in range (e.g., including 5 or starting at 0).</span>}
+<span class="ml-kw">\endquestion</span>
+
+<span class="ml-cmt">%% Section 6: Reflection</span>
+<span class="ml-kw">\section</span>{<span class="ml-sec">Reflection</span>}{<span class="ml-arg">4</span>}
+
+<span class="ml-kw">\question</span>{<span class="ml-arg">Which question type gave your group the most productive discussion? Why?</span>}
+  <span class="ml-kw">\responsemode</span>{<span class="ml-arg">answer</span>}
+  <span class="ml-kw">\multiplechoice</span>{}
+    <span class="ml-kw">\choice</span>{<span class="ml-arg">Text explanation &mdash; forced us to articulate the concept</span>}
+    <span class="ml-kw">\choice</span>{<span class="ml-arg">Python code &mdash; debugging range() arguments caused real discussion</span>}
+    <span class="ml-kw">\choice</span>{<span class="ml-arg">Turtle &mdash; visible output made errors immediately obvious</span>}
+    <span class="ml-kw">\choice</span>{<span class="ml-arg">C++ &mdash; syntax differences from Python sparked comparison</span>}
+    <span class="ml-kw">\choice</span>{<span class="ml-arg">Trace table &mdash; stepping through by hand revealed what we didn't know</span>}
+  <span class="ml-kw">\endmultiplechoice</span>
+  <span class="ml-kw">\feedbackprompt</span>{<span class="ml-str">Accept any choice; ask the group to give one specific reason from their discussion that supports their choice.</span>}
+<span class="ml-kw">\endquestion</span>
+  </div>
+
+  <hr class="section-divider">
+
   <div class="section-header">
     <span class="badge">Layer 3 Deep Dive</span>
   </div>
   <h2>Writing Feedback Prompts &amp; Sample Responses</h2>
 
   <h3>The Feedback Prompt</h3>
-  <p>The feedback prompt is invisible to students. It tells the AI the one criterion that determines whether a submission is accepted or pushed back on. <strong>One criterion only.</strong> Compound criteria lead to confusing nudges.</p>
+  <p>The feedback prompt is the single most important authoring decision you make. It tells the AI the one criterion that determines Accept vs. Nudge vs. Flag. <strong>One criterion only</strong> &mdash; compound prompts lead to incoherent nudges.</p>
 
   <div class="callout callout-gold">
-    <strong>The feedback prompt answers this question:</strong> "What specifically must be true for this group's response to be accepted — and what is the one thing to ask about if it's not?"
+    <strong>The feedback prompt answers:</strong> &ldquo;What must be true for this response to be accepted &mdash; and what one question should the AI ask if it is not?&rdquo;
   </div>
 
-  <h3>The Sample Response</h3>
-  <p>The sample response is not shown to students. It calibrates the AI's sense of what a correct answer looks like, so it can recognize equivalents — different variable names, different but valid range arguments, alternate valid code structures.</p>
+  <h3>Three Worked Examples</h3>
 
-  <hr class="section-divider">
-
-  <!-- WORKED EXAMPLES -->
-  <div class="section-header">
-    <span class="badge">Worked Examples</span>
-  </div>
-  <h2>Layer 3 in Practice</h2>
-
-  <!-- EXAMPLE 1: Python range -->
   <div class="card" style="margin-bottom:1.5rem">
-    <h4 style="color:var(--kenyon); font-size:1.1rem">Python CS1 — For Loops with <code>range()</code></h4>
+    <h4 style="color:var(--kenyon); font-size:1.1rem">Python CS1 &mdash; For Loops with <code>range()</code></h4>
     <div style="background:#FFF8DC; border:1px solid #E0D080; border-radius:6px; padding:0.85rem 1rem; margin:0.75rem 0; font-size:0.92rem">
       <strong>Question:</strong> Rewrite the loop below using <code>range()</code> so it prints the same values.
       <div class="code-block" style="margin-top:0.5rem">for value in [3, 6, 9, 12, 15, 18]:
     print(value, end=" ")</div>
     </div>
-
-    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem; margin-top:0.75rem">
-      <div style="background:#F0E8F8; border:1px solid #C0A0E0; border-radius:8px; padding:1rem">
-        <div style="font-size:0.78rem; font-weight:700; color:var(--kenyon); margin-bottom:0.5rem; text-transform:uppercase; letter-spacing:0.06em">Feedback Prompt (invisible to students)</div>
-        <p style="font-size:0.88rem; font-style:italic; margin:0">"Require a for loop with <code>range()</code> that generates 3, 6, 9, 12, 15, and 18. Ignore minor spacing differences."</p>
-        <div style="margin-top:0.75rem; font-size:0.8rem">
-          <div style="color:var(--green); margin-bottom:0.25rem">✅ <code>range(3, 19, 3)</code> → accept</div>
-          <div style="color:var(--kenyon); margin-bottom:0.25rem">💬 <code>range(3, 18, 3)</code> → nudge: "Does this include 18?"</div>
-          <div style="color:var(--amber)">⚠️ <code>[3,6,9…]</code> → flag: "use range() instead"</div>
+    <div class="demo-pair">
+      <div class="demo-left">
+        <div class="demo-label fp">Feedback Prompt (invisible to students)</div>
+        <p style="font-size:0.88rem; font-style:italic; margin:0">&ldquo;Require a for loop with range() that generates 3, 6, 9, 12, 15, and 18. Stop must be &ge; 19. Ignore minor spacing differences.&rdquo;</p>
+        <div style="margin-top:0.75rem; font-size:0.82rem">
+          <div style="color:var(--green); margin-bottom:0.25rem">&#10003; <code>range(3, 19, 3)</code> &rarr; accept</div>
+          <div style="color:var(--kenyon); margin-bottom:0.25rem">&#128172; <code>range(3, 18, 3)</code> &rarr; nudge</div>
+          <div style="color:var(--amber)">&#9888; literal list unchanged &rarr; flag</div>
         </div>
       </div>
-      <div style="background:#FFF4E0; border:1px solid #E0C070; border-radius:8px; padding:1rem">
-        <div style="font-size:0.78rem; font-weight:700; color:var(--amber); margin-bottom:0.5rem; text-transform:uppercase; letter-spacing:0.06em">Sample Response (not shown to students)</div>
-        <div class="code-block" style="font-size:0.8rem; margin-top:0">for value in range(3, 19, 3):
+      <div class="demo-right">
+        <div class="demo-label sr">Sample Response (not shown to students)</div>
+        <div class="code-block" style="font-size:0.82rem; margin-top:0">for value in range(3, 19, 3):
     print(value, end=" ")</div>
-        <p style="font-size:0.82rem; margin:0; color:var(--muted)">The AI uses this to recognise equivalent correct answers — different variable names, whitespace, alternate valid range arguments.</p>
       </div>
     </div>
   </div>
 
-  <!-- EXAMPLE 2: Turtle -->
   <div class="card" style="margin-bottom:1.5rem">
-    <h4 style="color:var(--kenyon); font-size:1.1rem">Python CS1 — Turtle Graphics &amp; Loops</h4>
-    <div style="background:#FFF8DC; border:1px solid #E0D080; border-radius:6px; padding:0.85rem 1rem; margin:0.75rem 0; font-size:0.92rem">
-      <strong>Question:</strong> Use a <code>for</code> loop to draw a regular hexagon (6 sides of length 80). Fill it with blue.
-      <div class="code-block" style="margin-top:0.5rem">import turtle
-t = turtle.Turtle()
-# your code here</div>
-    </div>
-
-    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem; margin-top:0.75rem">
-      <div style="background:#F0E8F8; border:1px solid #C0A0E0; border-radius:8px; padding:1rem">
-        <div style="font-size:0.78rem; font-weight:700; color:var(--kenyon); margin-bottom:0.5rem; text-transform:uppercase; letter-spacing:0.06em">Feedback Prompt</div>
-        <p style="font-size:0.88rem; font-style:italic; margin:0">"Require a for loop that runs exactly 6 times, calls <code>t.forward(80)</code> and <code>t.left(60)</code> (or <code>t.right(300)</code>) inside, and uses <code>t.fillcolor</code>/<code>t.begin_fill</code>/<code>t.end_fill</code> for blue. Accept any variable name for the turtle."</p>
+    <h4 style="color:var(--kenyon); font-size:1.1rem">Python Turtle &mdash; Hexagon</h4>
+    <div class="demo-pair">
+      <div class="demo-left">
+        <div class="demo-label fp">Feedback Prompt</div>
+        <p style="font-size:0.88rem; font-style:italic; margin:0">&ldquo;Require a for loop that runs exactly 6 times, calls forward(80) and left(60) inside, and uses begin_fill/end_fill for blue. Accept any turtle variable name.&rdquo;</p>
       </div>
-      <div style="background:#FFF4E0; border:1px solid #E0C070; border-radius:8px; padding:1rem">
-        <div style="font-size:0.78rem; font-weight:700; color:var(--amber); margin-bottom:0.5rem; text-transform:uppercase; letter-spacing:0.06em">Sample Response</div>
-        <div class="code-block" style="font-size:0.78rem; margin-top:0">t.fillcolor("blue")
+      <div class="demo-right">
+        <div class="demo-label sr">Sample Response</div>
+        <div class="code-block" style="font-size:0.8rem; margin-top:0">t.fillcolor("blue")
 t.begin_fill()
 for _ in range(6):
     t.forward(80)
@@ -162,21 +355,16 @@ t.end_fill()</div>
     </div>
   </div>
 
-  <!-- EXAMPLE 3: C++ -->
   <div class="card" style="margin-bottom:1.5rem">
-    <h4 style="color:var(--kenyon); font-size:1.1rem">C++ CS1 — For Loops &amp; Accumulation</h4>
-    <div style="background:#FFF8DC; border:1px solid #E0D080; border-radius:6px; padding:0.85rem 1rem; margin:0.75rem 0; font-size:0.92rem">
-      <strong>Question:</strong> Write a C++ <code>for</code> loop that reads 10 integers from the user and prints their average. What type should the running total be?
-    </div>
-
-    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem; margin-top:0.75rem">
-      <div style="background:#F0E8F8; border:1px solid #C0A0E0; border-radius:8px; padding:1rem">
-        <div style="font-size:0.78rem; font-weight:700; color:var(--kenyon); margin-bottom:0.5rem; text-transform:uppercase; letter-spacing:0.06em">Feedback Prompt</div>
-        <p style="font-size:0.88rem; font-style:italic; margin:0">"Require a for loop that iterates exactly 10 times, reads an integer inside the loop, accumulates a running sum, and divides by 10 to produce the average. Accept <code>double</code> or <code>float</code> for the total; push back on integer division that truncates the result."</p>
+    <h4 style="color:var(--kenyon); font-size:1.1rem">C++ &mdash; Average of 10 integers</h4>
+    <div class="demo-pair">
+      <div class="demo-left">
+        <div class="demo-label fp">Feedback Prompt</div>
+        <p style="font-size:0.88rem; font-style:italic; margin:0">&ldquo;Require a for loop that iterates exactly 10 times, reads an integer inside the loop, accumulates a running sum, and divides by 10.0 or casts. Accept double or float for the total; push back on integer division.&rdquo;</p>
       </div>
-      <div style="background:#FFF4E0; border:1px solid #E0C070; border-radius:8px; padding:1rem">
-        <div style="font-size:0.78rem; font-weight:700; color:var(--amber); margin-bottom:0.5rem; text-transform:uppercase; letter-spacing:0.06em">Sample Response</div>
-        <div class="code-block" style="font-size:0.78rem; margin-top:0">double total = 0;
+      <div class="demo-right">
+        <div class="demo-label sr">Sample Response</div>
+        <div class="code-block" style="font-size:0.8rem; margin-top:0">double total = 0;
 int val;
 for (int i = 0; i &lt; 10; i++) {
     cin &gt;&gt; val;
@@ -189,58 +377,126 @@ cout &lt;&lt; total / 10 &lt;&lt; endl;</div>
 
   <hr class="section-divider">
 
-  <!-- AUTHORING RULES -->
   <div class="section-header">
-    <span class="badge">Authoring Principles</span>
+    <span class="badge">Authoring by Type</span>
   </div>
-  <h2>Rules for Writing Good Layer 3 Guidance</h2>
+  <h2>Authoring Tips by Question Type</h2>
 
-  <div class="card-grid">
-    <div class="card accent-purple">
-      <h4>One criterion per feedback prompt</h4>
-      <p>Pick the single most important thing that distinguishes a correct response from an incorrect one. If you find yourself writing "and" in the feedback prompt, split it into two questions.</p>
+  <div class="qtype-authoring">
+    <div class="qtype-authoring-header" id="qtype-tabs">
+      <button class="active" onclick="showQType('text',this)">A Text</button>
+      <button onclick="showQType('python',this)">B Python</button>
+      <button onclick="showQType('turtle',this)">C Turtle</button>
+      <button onclick="showQType('cpp',this)">D C++</button>
+      <button onclick="showQType('table',this)">E Table</button>
     </div>
-    <div class="card accent-teal">
-      <h4>The nudge question, not the answer</h4>
-      <p>Phrase the feedback prompt so the AI will <em>ask</em> about the missing piece rather than state it. "Does range(3, 18, 3) include 18?" — not "The stop value is excluded."</p>
+
+    <div class="qtype-authoring-body active" id="qtype-text">
+      <h4 style="color:#5b4fcf; margin-top:0">A &mdash; Text Response (<code>\textresponse{n}</code>)</h4>
+      <p>Best for concept explanations, predictions, and reasoning. The AI reads the text and evaluates it against your feedback prompt.</p>
+      <ul>
+        <li><strong>Write as &ldquo;explain&rdquo; or &ldquo;predict&rdquo;</strong> &mdash; not &ldquo;list&rdquo; or &ldquo;define.&rdquo; Open-ended questions generate discussion.</li>
+        <li><strong>Set n based on expected length</strong> &mdash; 3&ndash;4 rows for a sentence or two; 6&ndash;8 for a full explanation.</li>
+        <li><strong>Feedback prompt: one concept</strong> &mdash; &ldquo;Accept if the response mentions that range() excludes the stop value.&rdquo; Not a rubric.</li>
+        <li><strong>Sample response: student-level language</strong> &mdash; not a textbook definition.</li>
+      </ul>
     </div>
-    <div class="card accent-gold">
-      <h4>Sample responses show equivalence</h4>
-      <p>Provide the most natural correct answer. The AI uses it to recognize equivalents — different but valid code. You can include 2–3 variants if the question has multiple correct forms.</p>
+
+    <div class="qtype-authoring-body" id="qtype-python">
+      <h4 style="color:#5b4fcf; margin-top:0">B &mdash; Python Code Editor (<code>\python &hellip; \endpython</code>)</h4>
+      <p>Students write or edit Python code in a syntax-highlighted editor. The AI evaluates code structure and logic against your feedback prompt.</p>
+      <ul>
+        <li><strong>Provide a skeleton, not a blank page</strong> &mdash; give imports, a starter comment, any boilerplate. The task should be 3&ndash;8 lines, not 30.</li>
+        <li><strong>Feedback prompt: target structure, not style</strong> &mdash; &ldquo;Require a for loop using range(), not a while loop.&rdquo;</li>
+        <li><strong>Two valid structures?</strong> Provide both as separate sample responses (blank line between).</li>
+        <li><strong>Be explicit about equivalents you accept</strong> &mdash; &ldquo;Accept range(5, 31, 5) or range(5, 30+1, 5).&rdquo;</li>
+      </ul>
     </div>
-    <div class="card accent-green">
-      <h4>Write the trace you want to see</h4>
-      <p>Work backwards: what reasoning path do you want the epistemic trace to reveal? Design the question and guidance to make that reasoning visible.</p>
+
+    <div class="qtype-authoring-body" id="qtype-turtle">
+      <h4 style="color:#5b4fcf; margin-top:0">C &mdash; Python Turtle (<code>\pythonturtle{WxH} &hellip; \endpythonturtle</code>)</h4>
+      <p>Students write code that draws on an embedded Turtle canvas. Output is immediately visible &mdash; great for loop-structure tasks.</p>
+      <ul>
+        <li><strong>Choose canvas size</strong> &mdash; 400x300 for most shapes; 500x400 for larger shapes. Width &times; Height.</li>
+        <li><strong>Pre-fill the skeleton</strong> &mdash; <code>import turtle</code>, <code>t = turtle.Turtle()</code>, <code>t.speed(3)</code>.</li>
+        <li><strong>Feedback prompt: describe shape and structure</strong> &mdash; &ldquo;Require a for loop that runs 4 times, forward(100), left(90).&rdquo; The AI reads code; it does not run it.</li>
+        <li><strong>Fill tasks: specify fill call order</strong> &mdash; many students put begin_fill() after the loop. Decide whether to accept and say so.</li>
+      </ul>
+    </div>
+
+    <div class="qtype-authoring-body" id="qtype-cpp">
+      <h4 style="color:#5b4fcf; margin-top:0">D &mdash; C++ Editor (<code>\cpp &hellip; \endcpp</code>)</h4>
+      <p>Full C++ editor with syntax highlighting and compilation. AI evaluates structure, not just whether it compiles.</p>
+      <ul>
+        <li><strong>Pre-fill #include and main()</strong> &mdash; students focus on the loop, not boilerplate.</li>
+        <li><strong>Name exact C++ constructs</strong> &mdash; &ldquo;Require a for loop (not while), cout, endl or &rsquo;\n&rsquo;.&rdquo; C++ has more variation than Python; be precise.</li>
+        <li><strong>Handle operator ambiguity</strong> &mdash; if both i++ and i+=1 are acceptable, say so in the prompt or provide both in sample responses.</li>
+        <li><strong>Escape angle brackets</strong> &mdash; use <code>&amp;lt;</code> and <code>&amp;gt;</code> in markup; the authoring tool handles this automatically.</li>
+      </ul>
+    </div>
+
+    <div class="qtype-authoring-body" id="qtype-table">
+      <h4 style="color:#5b4fcf; margin-top:0">E &mdash; Trace Table (<code>\table{Title} &hellip; \endtable</code>)</h4>
+      <p>Students fill in a structured table (typically an execution trace). Excellent for exposing off-by-one errors and loop invariant reasoning.</p>
+      <ul>
+        <li><strong>First row is the header</strong> &mdash; variable names as column headers. Keep them short.</li>
+        <li><strong>Use \tresponse only for student-filled cells</strong> &mdash; fixed values (iteration numbers) are plain text.</li>
+        <li><strong>Feedback prompt: specify all expected cell values</strong> &mdash; &ldquo;Accept if number takes 1,2,3,4 and total accumulates as 1,3,6,10.&rdquo;</li>
+        <li><strong>Sample response: readable row-by-row list</strong> &mdash; &ldquo;Iteration 1: i=0, total=0 &rarr; total=5.&rdquo; Clearest form for the AI to match.</li>
+      </ul>
     </div>
   </div>
 
   <hr class="section-divider">
 
-  <!-- YOUR TURN: AUTHORING EXERCISE -->
+  <div class="section-header">
+    <span class="badge">Authoring Principles</span>
+  </div>
+  <h2>Rules for Good Layer 3 Guidance</h2>
+
+  <div class="card-grid">
+    <div class="card accent-purple">
+      <h4>One criterion per feedback prompt</h4>
+      <p>Pick the single most important thing that distinguishes correct from incorrect. If you write &ldquo;and&rdquo; in the feedback prompt, split it into two questions.</p>
+    </div>
+    <div class="card accent-teal">
+      <h4>Ask, don&rsquo;t tell</h4>
+      <p>Phrase the prompt so the AI <em>asks</em> about the missing piece rather than stating it. &ldquo;Does range(3, 18, 3) include 18?&rdquo; &mdash; not &ldquo;The stop value is excluded.&rdquo;</p>
+    </div>
+    <div class="card accent-gold">
+      <h4>Sample responses show equivalence</h4>
+      <p>Provide your most natural correct answer. Add a second sample if the question has two genuinely different valid forms.</p>
+    </div>
+    <div class="card accent-green">
+      <h4>Design for the trace you want</h4>
+      <p>Work backwards: what reasoning should the epistemic trace reveal? Design the question and guidance so that path is visible in the submissions.</p>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
   <div class="section-header">
     <span class="badge">Your Turn</span>
     <span class="time">40 min</span>
   </div>
   <h2>Author Your Own Activity</h2>
 
-  <p>Working in the same groups as Part 2, design a short activity (2–3 questions) for a topic you teach. Use the authoring tool in coLearn-AI to enter your questions, feedback prompts, and sample responses — then test them.</p>
+  <p>Working in the same groups as Part 2, design a short activity (2&ndash;3 questions) for a topic you teach. Plan on paper first &mdash; then enter it into the coLearn-AI authoring tool and test it live.</p>
 
-  <h3>Step 1 — Choose a Topic (5 min)</h3>
-  <p>Pick something from one of your own courses. Good candidates for a first activity:</p>
-
+  <h3>Step 1 &mdash; Choose a Topic (5 min)</h3>
   <div class="card-grid">
     <div class="card accent-teal">
-      <h4>Python CS1 Ideas</h4>
+      <h4>Python CS1</h4>
       <ul>
         <li>While loops &amp; sentinel values</li>
         <li>List indexing and slicing</li>
-        <li>Function definition and return values</li>
-        <li>String methods and iteration</li>
+        <li>Function definition and return</li>
+        <li>String iteration and methods</li>
         <li>Nested loops (multiplication table)</li>
       </ul>
     </div>
     <div class="card accent-purple">
-      <h4>Python Turtle Ideas</h4>
+      <h4>Python Turtle</h4>
       <ul>
         <li>Drawing polygons with loops</li>
         <li>Spirals using step changes</li>
@@ -249,86 +505,91 @@ cout &lt;&lt; total / 10 &lt;&lt; endl;</div>
       </ul>
     </div>
     <div class="card accent-gold">
-      <h4>C++ CS1 Ideas</h4>
+      <h4>C++ CS1</h4>
       <ul>
-        <li>for / while loop basics</li>
+        <li>For / while loop basics</li>
         <li>Array declaration and traversal</li>
         <li>Function with pass-by-reference</li>
         <li>Struct definition and member access</li>
       </ul>
     </div>
     <div class="card accent-green">
-      <h4>Data Structures Ideas</h4>
+      <h4>Data Structures</h4>
       <ul>
-        <li>Linked list traversal (Python or C++)</li>
-        <li>Stack push/pop trace</li>
-        <li>Binary search — loop invariant</li>
+        <li>Linked list traversal trace</li>
+        <li>Stack push/pop trace table</li>
+        <li>Binary search &mdash; loop invariant</li>
         <li>Recursive base and recursive case</li>
       </ul>
     </div>
   </div>
 
-  <h3>Step 2 — Write 2–3 Questions (10 min)</h3>
-  <p>For each question, fill in the template below before entering anything into the platform. This forces you to think through the pedagogy first.</p>
+  <h3>Step 2 &mdash; Plan on Paper First (10 min)</h3>
+  <p>For each question, fill in this template <em>before</em> opening the authoring tool. This forces pedagogical thinking before technical entry.</p>
 
   <div class="template-box">
     <strong>Question <span class="placeholder">N</span></strong><br><br>
+    <strong>Question type:</strong> <span class="placeholder">text / python / turtle / c++ / table / multiple choice</span><br><br>
     <strong>Question text (shown to students):</strong><br>
-    <span class="placeholder">What does this code do? / Write code that... / Predict the output...</span><br><br>
-    <strong>Code or context (if any):</strong><br>
-    <span class="placeholder">paste code here</span><br><br>
-    <strong>Feedback Prompt (one criterion, invisible to students):</strong><br>
-    <span class="placeholder">Require... Accept... Push back on... Ask about...</span><br><br>
-    <strong>Sample Response (correct answer, not shown to students):</strong><br>
+    <span class="placeholder">What does this code do? / Write code that... / Complete the trace table for...</span><br><br>
+    <strong>Starter code or table structure (if applicable):</strong><br>
+    <span class="placeholder">paste skeleton code or column headers here</span><br><br>
+    <strong>Feedback Prompt (one criterion &mdash; invisible to students):</strong><br>
+    <span class="placeholder">Require... Accept... Push back on... Nudge if... Flag if...</span><br><br>
+    <strong>Sample Response (correct answer &mdash; not shown to students):</strong><br>
     <span class="placeholder">paste your correct answer here</span><br><br>
-    <strong>What reasoning should the trace reveal?</strong><br>
-    <span class="placeholder">e.g. "whether the group predicted the off-by-one before running the code"</span>
+    <strong>What reasoning should the epistemic trace reveal?</strong><br>
+    <span class="placeholder">e.g., &ldquo;whether the group predicted the off-by-one before running the code&rdquo;</span>
   </div>
 
-  <h3>Step 3 — Enter into the Authoring Tool (15 min)</h3>
+  <h3>Step 3 &mdash; Enter into the Authoring Tool (15 min)</h3>
   <ol class="steps">
-    <li>Log in to <a href="https://colearn-ai.com" target="_blank">colearn-ai.com</a> and navigate to the Authoring section (facilitator will demonstrate).</li>
-    <li>Create a new activity. Set a title and select "Python" or "C++" as the language.</li>
-    <li>Enter your Activity Guidance (Layer 2): 2–3 sentences describing the teaching style and what the AI should emphasize for this activity.</li>
-    <li>Add each question in order. For each: enter the question text, the feedback prompt, and the sample response.</li>
-    <li>Preview the activity to see the student view.</li>
+    <li>Log in to <a href="https://colearn-ai.com" target="_blank">colearn-ai.com</a> and navigate to <strong>Instructor &rarr; New Activity</strong>.</li>
+    <li>Set the title, student level, and activity context (Layer 2). 2&ndash;3 sentences on teaching goals and what the AI should emphasize.</li>
+    <li>Add each question. Choose the question type, paste your question text, and enter starter code if using a code editor.</li>
+    <li>Enter the feedback prompt (Layer 3 &mdash; students never see this).</li>
+    <li>Enter the sample response (also hidden from students).</li>
+    <li>Preview the activity to see the student view before testing.</li>
   </ol>
 
-  <h3>Step 4 — Test It (10 min)</h3>
-  <p>One group member takes the student role and submits test responses — including some that should be nudged and some that should be flagged. Check that the AI responds as you intended. Adjust the feedback prompt if the AI is too permissive or too strict.</p>
+  <h3>Step 4 &mdash; Test Live (10 min)</h3>
+  <p>One group member takes the student role and submits: (1) a clearly correct response &rarr; should get Accept; (2) a plausible but slightly wrong response &rarr; should get Nudge; (3) a response that misses the point entirely &rarr; should get Flag. Adjust and retest until the AI responds as intended.</p>
 
   <div class="callout callout-gold">
     <strong>Common authoring pitfalls</strong>
     <ul style="margin-top:0.5rem">
-      <li>Feedback prompt is too vague → AI accepts nearly anything. Fix: add one specific criterion.</li>
-      <li>Feedback prompt lists multiple requirements → AI gives confusing nudges. Fix: one criterion only.</li>
-      <li>Sample response is the only valid answer → AI rejects equivalent correct code. Fix: add a second sample response that uses a different variable name or structure.</li>
-      <li>The question has no resolvable uncertainty → no productive struggle. Fix: ask for a prediction first, then the answer.</li>
+      <li><strong>Feedback prompt too vague</strong> &rarr; AI accepts nearly anything. Fix: add one specific criterion.</li>
+      <li><strong>Compound feedback prompt</strong> &rarr; AI gives incoherent nudges. Fix: one criterion only.</li>
+      <li><strong>Only one sample response</strong> &rarr; AI rejects equivalent correct code. Fix: add a second sample.</li>
+      <li><strong>No resolvable uncertainty</strong> &rarr; no productive struggle. Fix: ask for a prediction first.</li>
+      <li><strong>Question too open-ended</strong> &rarr; AI can&rsquo;t evaluate. Fix: narrow scope to one concrete concept.</li>
     </ul>
   </div>
 
   <hr class="section-divider">
 
-  <!-- SHARE OUT -->
   <div class="section-header">
     <span class="badge">Share Out</span>
     <span class="time">~5 min</span>
   </div>
   <h2>Share One Question with the Room</h2>
-
-  <p>Each group picks their best or most interesting question and shares:</p>
-  <ul>
-    <li>The question text</li>
-    <li>The feedback prompt they wrote</li>
-    <li>How the AI actually responded during testing — expected or surprising?</li>
-  </ul>
+  <p>Each group picks their best or most surprising question and shares the question text, the feedback prompt, and how the AI actually responded &mdash; expected or surprising?</p>
 
   <div class="page-nav">
-    <a href="part2.html">← Part 2: Hands-on Activity</a>
-    <a href="part4.html">Part 4: Deployment →</a>
+    <a href="part2.html">&larr; Part 2: Hands-on Activity</a>
+    <a href="part4.html">Part 4: Deployment &rarr;</a>
   </div>
 
 </div>
+
+<script>
+function showQType(id, btn) {
+  document.querySelectorAll('.qtype-authoring-body').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('#qtype-tabs button').forEach(el => el.classList.remove('active'));
+  document.getElementById('qtype-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
 
 </body>
 </html>

@@ -5,6 +5,117 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Part 2 — Hands-on Activity · coLearn-AI Workshop</title>
 <link rel="stylesheet" href="style.css">
+<style>
+/* ── UI MOCKUP STYLES ── */
+.ui-window {
+  background: #F0EEF8;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 1rem 0 1.5rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+}
+.ui-titlebar {
+  background: var(--kenyon);
+  color: white;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.ui-titlebar .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.4); display: inline-block; }
+.ui-body { padding: 1.25rem 1.5rem; }
+.ui-question-label {
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--kenyon); margin-bottom: 0.6rem;
+}
+.ui-question-text {
+  font-size: 0.95rem; margin-bottom: 0.75rem; line-height: 1.6;
+}
+.ui-code-display {
+  background: #1E1E2E; color: #CDD6F4; border-radius: 6px;
+  padding: 0.85rem 1rem; font-family: monospace; font-size: 0.82rem;
+  line-height: 1.6; margin-bottom: 0.75rem;
+}
+.ui-response-box {
+  background: white; border: 2px solid #C0A0E0; border-radius: 6px;
+  padding: 0.75rem 1rem; min-height: 60px; font-size: 0.88rem;
+  color: #666; font-style: italic; margin-bottom: 0.75rem;
+}
+.ui-table-input {
+  width: 100%; border-collapse: collapse; margin-bottom: 0.75rem; font-size: 0.85rem;
+}
+.ui-table-input th {
+  background: var(--kenyon); color: white; padding: 0.4rem 0.7rem; text-align: left; font-size: 0.78rem;
+}
+.ui-table-input td {
+  border: 1px solid #D0C8E8; padding: 0.4rem 0.7rem; background: white;
+}
+.ui-table-input td.fillable {
+  background: #FFFBE6; border: 2px solid #C5A028; min-width: 80px;
+}
+.ui-submit-btn {
+  background: var(--kenyon); color: white; border: none; border-radius: 6px;
+  padding: 0.5rem 1.2rem; font-size: 0.88rem; font-weight: 600; cursor: default;
+  display: inline-block;
+}
+.ui-ai-response {
+  border-radius: 8px; padding: 1rem 1.1rem; margin-top: 0.75rem; font-size: 0.88rem;
+}
+.ui-ai-accept { background: #E8F5EE; border: 2px solid var(--green); }
+.ui-ai-nudge  { background: #EDE5F8; border: 2px solid var(--kenyon); }
+.ui-ai-flag   { background: #FFF0D4; border: 2px solid var(--amber); }
+.ui-ai-label  { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase; margin-bottom: 0.3rem; }
+.ai-accept-label { color: var(--green); }
+.ai-nudge-label  { color: var(--kenyon); }
+.ai-flag-label   { color: var(--amber); }
+
+/* ── QTYPE BADGE ── */
+.qtype-badge {
+  display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.07em;
+  text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 12px;
+  margin-bottom: 0.4rem;
+}
+.qt-text    { background: #E4F3F3; color: var(--teal); border: 1px solid #90D0D0; }
+.qt-python  { background: #FFF8DC; color: #7A6000; border: 1px solid #C5A028; }
+.qt-turtle  { background: #E8F5EE; color: var(--green); border: 1px solid #80C898; }
+.qt-cpp     { background: #FDE8E8; color: #A02020; border: 1px solid #D08080; }
+.qt-table   { background: #EDE5F8; color: var(--kenyon); border: 1px solid #C0A0E0; }
+.qt-mc      { background: #F0F4FF; color: #3050A0; border: 1px solid #A0B0E0; }
+
+/* ── QUESTION WALK-THROUGH CARD ── */
+.q-walkthrough {
+  border: 1px solid var(--border); border-radius: 10px; margin-bottom: 1.5rem;
+  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.q-walkthrough-header {
+  background: linear-gradient(90deg, var(--kenyon-dark), var(--kenyon));
+  color: white; padding: 0.75rem 1.25rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.q-num {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.5);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 0.9rem; flex-shrink: 0;
+}
+.q-walkthrough-header h4 { margin: 0; font-size: 1rem; }
+.q-walkthrough-body { padding: 1.25rem 1.5rem; background: white; }
+.q-walkthrough-body p { font-size: 0.9rem; }
+
+/* ── TRACE PANEL ── */
+.trace-panel {
+  background: #1E1E2E; color: #CDD6F4; border-radius: 8px;
+  padding: 1rem; font-family: monospace; font-size: 0.8rem;
+  line-height: 1.7; margin-top: 0.75rem;
+}
+.trace-panel .t-sub { color: #A6E3A1; }
+.trace-panel .t-ai  { color: #CBA6F7; }
+.trace-panel .t-rev { color: #FAB387; }
+.trace-panel .t-ok  { color: #94E2D5; }
+</style>
 </head>
 <body>
 
@@ -34,7 +145,7 @@
 
   <div class="callout callout-purple" style="margin-top:0.5rem">
     <strong>Your role right now: Student</strong>
-    For the next 35 minutes you are a student in a CS1 class working through a structured group activity. The facilitator will assign groups of 3–4 and give each group login credentials. Experience the platform as your students will.
+    For the next 35 minutes you are a student in a CS1 class. The facilitator will assign groups of 3–4 and give each group login credentials. Experience the platform exactly as your own students will — resist the urge to think like the instructor.
   </div>
 
   <!-- SETUP -->
@@ -43,12 +154,11 @@
     <span class="time">~5 min</span>
   </div>
   <h2>Getting Started</h2>
-
-  <ol class="steps">
-    <li>Form groups of 3–4 at the same table. Introduce yourselves.</li>
-    <li>Open <strong><a href="https://colearn-ai.com" target="_blank">colearn-ai.com</a></strong> in your browser. Use the credentials provided by the facilitator.</li>
-    <li>Assign roles <em>before</em> you begin. The Spokesperson sits at the keyboard for the first question; roles rotate from there.</li>
-    <li>Find the activity: <strong>"For Loops in Python"</strong> (Class 174). The facilitator will launch it and share the join code.</li>
+�) <ol class="steps">
+    <li>Form groups of 3–4 at the same table. Introduce yourselves briefly.</li>
+    <li>Open <strong><a href="https://colearn-ai.com" target="_blank">colearn-ai.com</a></strong> in your browser. Use the credentials provided by the facilitator. Everyone in the group logs in with the same group account.</li>
+    <li>Assign roles <em>before</em> you begin — see the role cards below. The Spokesperson sits at the keyboard first; roles rotate after each question.</li>
+    <li>The facilitator will launch the <strong>"Workshop Sampler: Loops Across Languages"</strong> activity and share the join code. Enter it to join your group's session.</li>
   </ol>
 
   <!-- ROLE ASSIGNMENT -->
@@ -57,98 +167,362 @@
     <div class="role-card role-facilitator">
       <div class="role-icon">🟢</div>
       <h4>Facilitator</h4>
-      <p>Keep the group focused. Call the role rotation after each question. Watch the time.</p>
+      <p>Keep the group on task. Call the Spokesperson rotation after each question. Watch the clock. Break ties.</p>
     </div>
     <div class="role-card role-spokesperson">
       <div class="role-icon">🔵</div>
       <h4>Spokesperson</h4>
-      <p>You type the group's agreed response. Wait for group consensus before submitting. Rotate each question.</p>
+      <p>You type the group's agreed response. Wait for group consensus before submitting. Pass the keyboard after each question.</p>
     </div>
     <div class="role-card role-quality">
       <div class="role-icon">🟣</div>
       <h4>Quality Control</h4>
-      <p>Read the group's answer aloud before the Spokesperson submits. Catch anything that doesn't feel right.</p>
+      <p>Read the group's answer aloud before the Spokesperson submits. Is it complete? Does it address the question?</p>
     </div>
     <div class="role-card role-analyst">
       <div class="role-icon">🟡</div>
       <h4>Process Analyst</h4>
-      <p>Note how the group is working together. You'll share a 1-sentence reflection at the end of the activity.</p>
+      <p>Observe how the group works together, not just the answers. You'll share a 1-sentence reflection at the end.</p>
     </div>
   </div>
 
   <hr class="section-divider">
 
-  <!-- ACTIVITY OVERVIEW -->
+  <!-- WHAT YOU'LL SEE -->
   <div class="section-header">
-    <span class="badge">Activity</span>
-    <span class="time">30 min</span>
+    <span class="badge">The Interface</span>
   </div>
-  <h2>For Loops in Python — Activity Preview</h2>
+  <h2>What You'll See in the Platform</h2>
 
-  <p>The activity walks groups through Python <code>for</code> loops with <code>range()</code>, progressing from basic iteration to step arguments and accumulated computation. Each question follows the same structure: predict → respond → receive AI feedback → revise if needed.</p>
+  <p>coLearn-AI presents one question at a time. The group reads it together, discusses, and the Spokesperson types the response. Understanding the interface before you start makes the activity run smoother.</p>
 
-  <div class="card accent-teal" style="margin:1rem 0">
-    <h4>Question sequence (representative)</h4>
-    <ol style="margin-top:0.6rem">
-      <li><strong>Q1 — Basic iteration:</strong> What does <code>for i in range(5): print(i)</code> print? Predict before running.</li>
-      <li><strong>Q2 — Start/stop:</strong> What does <code>for i in range(1, 6): print(i)</code> print? Does the stop value appear?</li>
-      <li><strong>Q3 — Conversion:</strong> Rewrite the literal-list loop below using <code>range()</code>:
-        <div class="code-block">for value in [3, 6, 9, 12, 15, 18]:
-    print(value, end=" ")</div>
-      </li>
-      <li><strong>Q4 — Step argument:</strong> Use <code>range()</code> to print every 4th integer from 4 to 40.</li>
-      <li><strong>Q5 — Accumulation:</strong> Write a loop that sums the integers 1 through <em>n</em> (user-supplied). What value does <code>total</code> hold after the loop for <em>n</em> = 10?</li>
-    </ol>
+  <h3>The Submission Loop</h3>
+  <p>Every question follows the same cycle regardless of question type:</p>
+  <div class="card-grid" style="margin-bottom:0.5rem">
+    <div class="card accent-teal" style="text-align:center; padding:1rem">
+      <div style="font-size:1.6rem; margin-bottom:0.4rem">💬</div>
+      <h4>Discuss</h4>
+      <p style="font-size:0.83rem">Group reads the question, examines any code, and talks it through. No one types yet.</p>
+    </div>
+    <div class="card accent-purple" style="text-align:center; padding:1rem">
+      <div style="font-size:1.6rem; margin-bottom:0.4rem">⌨️</div>
+      <h4>Respond</h4>
+      <p style="font-size:0.83rem">Spokesperson types the agreed answer: text, code, or filled-in table cells. Quality Control reads it aloud.</p>
+    </div>
+    <div class="card accent-gold" style="text-align:center; padding:1rem">
+      <div style="font-size:1.6rem; margin-bottom:0.4rem">🤖</div>
+      <h4>AI Evaluates</h4>
+      <p style="font-size:0.83rem">The AI responds with one of three outcomes: Accept, Nudge, or Flag. No grades — just a prompt to think further.</p>
+    </div>
+    <div class="card accent-green" style="text-align:center; padding:1rem">
+      <div style="font-size:1.6rem; margin-bottom:0.4rem">🔄</div>
+      <h4>Advance or Revise</h4>
+      <p style="font-size:0.83rem">Accepted? Next question. Nudged or flagged? Discuss the AI's question and revise. You have up to 3 retries.</p>
+    </div>
   </div>
 
-  <!-- WHAT TO NOTICE -->
-  <h3>What to Notice As You Work</h3>
+  <h3>The Three AI Responses</h3>
 
-  <div class="card-grid">
-    <div class="card accent-purple">
-      <h4>🔄 Rotation</h4>
-      <p>The Spokesperson role passes after each submission. Notice how having a designated typist changes who speaks up during discussion.</p>
+  <div class="scaffold-grid">
+    <div class="scaffold-box scaffold-accept">
+      <div class="s-label"><span>✅</span> Accept</div>
+      <p>The submission meets the requirement for this question. The group advances to the next question. This success is recorded in the epistemic trace.</p>
     </div>
-    <div class="card accent-gold">
-      <h4>💬 The AI Nudge</h4>
-      <p>When the AI nudges your group, resist the urge to just ask it a follow-up. The nudge is a question — discuss it among yourselves first.</p>
+    <div class="scaffold-box scaffold-nudge">
+      <div class="s-label"><span>💬</span> Nudge</div>
+      <p>The response is on the right track but is missing something or is incomplete. The AI asks one focused question pointing at what to reconsider. Discuss it among yourselves before revising.</p>
     </div>
-    <div class="card accent-teal">
-      <h4>📜 The Trace</h4>
-      <p>Watch the trace panel grow. See how your reasoning path — including predictions and revisions — is recorded separately from final answers.</p>
-    </div>
-    <div class="card accent-green">
-      <h4>👁️ Instructor View</h4>
-      <p>The facilitator can see your trace in real time. We'll look at the instructor dashboard together after the activity.</p>
+    <div class="scaffold-box scaffold-flag">
+      <div class="s-label"><span>⚠️</span> Flag &amp; Re-try</div>
+      <p>The response misses the key requirement for this question. The AI flags it and invites the group to try again. You can retry up to 3 times total.</p>
     </div>
   </div>
 
   <div class="callout callout-gold">
-    <strong>Important rule</strong>
-    Do not ask the AI to explain or solve. The AI in this activity is configured to nudge, not answer. If your group is truly stuck, talk to the Facilitator or raise your hand.
+    <strong>The AI will not give you the answer.</strong>
+    Its job is to ask questions, not to teach. If the AI nudges your group, the goal is to resolve it through group discussion — not by rephrasing the same answer or asking the AI more questions.
+  </div>
+
+  <h3>Question Types in This Activity</h3>
+  <p>The Workshop Sampler uses five different question types. Here is what each one looks like in the platform:</p>
+
+  <!-- Q-TYPE 1: Text Response -->
+  <div class="q-walkthrough">
+    <div class="q-walkthrough-header">
+      <div class="q-num">A</div>
+      <h4>Text Response — Type your explanation</h4>
+    </div>
+    <div class="q-walkthrough-body">
+      <span class="qtype-badge qt-text">Text Input</span>
+      <p>A multi-line text box. The group writes a prose explanation, prediction, or description. There is no code editor — the AI evaluates the reasoning expressed in plain language.</p>
+      <div class="ui-window">
+        <div class="ui-titlebar"><span class="dot"></span><span class="dot"></span> coLearn-AI — Workshop Sampler</div>
+        <div class="ui-body">
+          <div class="ui-question-label">Section 1 · Question 1</div>
+          <div class="ui-question-text">In your own words, explain what it means for code to <em>iterate</em>. What is the purpose of a counter-controlled loop, and how does it know when to stop?</div>
+          <div class="ui-response-box">[ Spokesperson types the group's explanation here… ]</div>
+          <span class="ui-submit-btn">Submit →</span>
+          <div class="ui-ai-response ui-ai-nudge" style="margin-top:1rem">
+            <div class="ui-ai-label ai-nudge-label">💬 Nudge</div>
+            Your explanation captures what iteration means — repeating code. But how does the loop know <em>when</em> to stop? What controls the number of repetitions in a counter-controlled loop?
+          </div>
+        </div>
+      </div>
+      <p style="font-size:0.85rem; color:var(--muted)">The AI's nudge asks one specific question about what's missing. Discuss it as a group and revise.</p>
+    </div>
+  </div>
+
+  <!-- Q-TYPE 2: Python Code -->
+  <div class="q-walkthrough">
+    <div class="q-walkthrough-header">
+      <div class="q-num">B</div>
+      <h4>Python Code Editor — Write or edit Python code</h4>
+    </div>
+    <div class="q-walkthrough-body">
+      <span class="qtype-badge qt-python">Python</span>
+      <p>A live Python code editor. The group can type, run, and iterate on code directly in the browser. The Spokesperson makes edits; the group watches and discusses before submitting.</p>
+      <div class="ui-window">
+        <div class="ui-titlebar"><span class="dot"></span><span class="dot"></span> coLearn-AI — Workshop Sampler</div>
+        <div class="ui-body">
+          <div class="ui-question-label">Section 2 · Question 2</div>
+          <div class="ui-question-text">The list <code>[5, 10, 15, 20, 25, 30]</code> follows a regular pattern. Rewrite the loop below using <code>range()</code> so it prints exactly the same values.</div>
+          <div class="ui-code-display">for value in [5, 10, 15, 20, 25, 30]:
+    print(value, end=" ")</div>
+          <div class="ui-code-display" style="border: 2px solid #6B4BA0; background: #16162A">
+<span style="color:#888"># Edit the code here — run it to check</span>
+for value in range(5, 31, 5):
+    print(value, end=" ")</div>
+          <span class="ui-submit-btn">Submit →</span>
+          <div class="ui-ai-response ui-ai-accept" style="margin-top:1rem">
+            <div class="ui-ai-label ai-accept-label">✅ Accepted</div>
+            Your <code>range(5, 31, 5)</code> generates exactly 5, 10, 15, 20, 25, and 30. Correct — and more maintainable than the original literal list.
+          </div>
+        </div>
+      </div>
+      <p style="font-size:0.85rem; color:var(--muted)">Run the code before submitting. The output appears below the editor so you can check your work.</p>
+    </div>
+  </div>
+
+  <!-- Q-TYPE4: C++ -->
+  <div class="q-walkthrough">
+    <div class="q-walkthrough-header">
+      <div class="q-num">C</div>
+      <h4>Python Turtle — Graphical programming</h4>
+    </div>
+    <div class="q-walkthrough-body">
+      <span class="qtype-badge qt-turtle">Python Turtle</span>
+      <p>A Python code editor with a live Turtle graphics canvas. Code runs immediately and the drawing appears in the canvas on the right. The group writes code and discusses what it draws before submitting.</p>
+      <div class="ui-window">
+        <div class="ui-titlebar"><span class="dot"></span><span class="dot"></span> coLearn-AI — Workshop Sampler</div>
+        <div class="ui-body">
+          <div class="ui-question-label">Section 3 · Question 3</div>
+          <div class="ui-question-text">Use a <code>for</code> loop to draw a filled square with side length 100. Choose any fill color you like.</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; margin:0.5rem 0">
+            <div class="ui-code-display" style="margin:0; border: 2px solid #6B4BA0; background: #16162A; font-size:0.78rem">import turtle
+t = turtle.Turtle()
+t.fillcolor("steelblue")
+t.begin_fill()
+for _ in range(4):
+    t.forward(100)
+    t.left(90)
+t.end_fill()
+t.hideturtle()</div>
+            <div style="background: white; border: 1px solid #ccc; border-radius:4px; display:flex; align-items:center; justify-content:center; min-height:120px; font-size:0.8rem; color:#888">
+              ▢ Canvas: filled blue square appears here
+            </div>
+          </div>
+          <span class="ui-submit-btn">Submit →</span>
+          <div class="ui-ai-response ui-ai-nudge" style="margin-top:1rem">
+            <div class="ui-ai-label ai-nudge-label">💬 Nudge</div>
+            Your loop draws four sides correctly. But where is the fill? Does your code include <code>begin_fill()</code> and <code>end_fill()</code>?
+          </div>
+        </div>
+      </div>
+      <p style="font-size:0.85rem; color:var(--muted)">The drawing appears instantly as you run. Experiment freely — the canvas resets each run.</p>
+    </div>
+  </div>
+
+  <div class="q-walkthrough">
+    <div class="q-walkthrough-header">
+      <div class="q-num">D</div>
+      <h4>C++ Code Editor — Write C++ in the browser</h4>
+    </div>
+    <div class="q-walkthrough-body">
+      <span class="qtype-badge qt-cpp">C++</span>
+      <p>A C++ code editor with a terminal-style output panel. Works the same as the Python editor: write, run, see output, discuss, submit.</p>
+      <div class="ui-window">
+        <div class="ui-titlebar"><span class="dot"></span><span class="dot"></span> coLearn-AI — Workshop Sampler</div>
+        <div class="ui-body">
+          <div class="ui-question-label">Section 4 · Question 4</div>
+          <div class="ui-question-text">Write a C++ <code>for</code> loop that prints the odd numbers from 1 through 19, one per line. Use <code>cout</code> for output. Include the necessary <code>#include</code> and <code>main()</code>.</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; margin:0.5rem 0">
+            <div class="ui-code-display" style="margin:0; border: 2px solid #D08080; background: #16162A; font-size:0.78rem">#include &lt;iostream&gt;
+using namespace std;
+int main() {
+  for (int i = 1; i &lt;= 19; i += 2) {
+    cout &lt;&lt; i &lt;&lt; endl;
+  }
+  return 0;
+}</div>
+            <div class="ui-code-display" style="margin:0; background: #0A0A0A; font-size:0.78rem; color:#90ED90">
+$ run<br>1<br>3<br>5<br>7<br>9<br>11<br>13<br>15<br>17<br>19<br><span style="color:#888">exit 0</span></div>
+          </div>
+          <span class="ui-submit-btn">Submit →</span>
+          <div class="ui-ai-response ui-ai-accept" style="margin-top:1rem">
+            <div class="ui-ai-label ai-accept-label">✅ Accepted</div>
+            Starting at 1 and stepping by 2 correctly generates all odd numbers from 1 to 19. Well done.
+          </div>
+        </div>
+      </div>
+      <p style="font-size:0.85rem; color:var(--muted)">The browser compiles and runs C++ — no IDE needed. Standard library functions all work.</p>
+    </div>
+  </div>
+
+  <!-- Q-TYPE 5: Table -->
+  <div class="q-walkthrough">
+    <div class="q-walkthrough-header">
+      <div class="q-num">E</div>
+      <h4>Trace Table — Fill in cells to trace execution</h4>
+    </div>
+    <div class="q-walkthrough-body">
+      <span class="qtype-badge qt-table">Trace Table</span>
+      <p>A table with some cells pre-filled (headers, row labels) and others left blank (shown in yellow) for the group to complete. Trace tables make loop execution visible step by step before anyone runs the code.</p>
+      <div class="ui-window">
+        <div class="ui-titlebar"><span class="dot"></span><span class="dot"></span> coLearn-AI — Workshop Sampler</div>
+        <div class="ui-body">
+          <div class="ui-question-label">Section 5 · Question 5</div>
+          <div class="ui-question-text">Trace the loop below. Complete the table showing the value of <code>number</code> and <code>total</code> after each iteration. Do not run the code yet.</div>
+          <div class="ui-code-display" style="margin-bottom:0.75rem">total = 0
+for number in range(1, 5):
+    total += number</div>
+          <table class="ui-table-input">
+            <tr><th>Iteration</th><th>number</th><th>total after += number</th></tr>
+            <tr><td>1</td><td class="fillable">[ 1 ]</td><td class="fillable">[ 1 ]</td></tr>
+            <tr><td>2</td><td class="fillable">[ 2 ]</td><td class="fillable">[ 3 ]</td></tr>
+            <tr><td>3</td><td class="fillable"></td><td class="fillable"></td></tr>
+            <tr><td>4</td><td class="fillable"></td><td class="fillable"></td></tr>
+          </table>
+          <span class="ui-submit-btn">Submit →</span>
+        </div>
+      </div>
+      <p style="font-size:0.85rem; color:var(--muted)">Yellow cells are yours to fill. The group should trace by hand first, then run the code to verify.</p>
+    </div>
   </div>
 
   <hr class="section-divider">
 
-  <!-- DEBRIEF -->
+  <!-- THE ACTIVITY -->
   <div class="section-header">
-    <span class="badge">Debrief</span>
-    <span class="time">~5 min at the end</span>
+    <span class="badge">Activity</span>
+    <span class="time">~25 min</span>
   </div>
-  <h2>After the Activity: Group Reflection</h2>
+  <h2>Workshop Sampler: Loops Across Languages</h2>
 
-  <p>Before the break, each group's Process Analyst shares a one-sentence answer to one of these questions with the whole room:</p>
+  <p>This activity is designed to give you a complete tour of the platform's question types in one compact session. It covers the same concept — counted iteration — in five different forms. Work through each question in order as a group.</p>
+  <div class="card" style="margin-bottom:1rem">
+    <h4>Activity overview</h4>
+    <table style="width:100%; border-collapse:collapse; font-size:0.88rem; margin-top:0.5rem">
+      <tr style="background:var(--kenyon); color:white">
+        <th style="padding:0.4rem 0.7rem; text-align:left">Q</th>
+        <th style="padding:0.4rem 0.7rem; text-align:left">Type</th>
+        <th style="padding:0.4rem 0.7rem; text-align:left">Task</th>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border)">
+        <td style="padding:0.5rem 0.7rem">1</td>
+        <td style="padding:0.5rem 0.7rem"><span class="qtype-badge qt-text">Text</span></td>
+        <td style="padding:0.5rem 0.7rem">Explain what a counter-controlled loop is and how it knows when to stop</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border); background:#FAFAFA">
+        <td style="padding:0.5rem 0.7rem">2</td>
+        <td style="padding:0.5rem 0.7rem"><span class="qtype-badge qt-python">Python</span></td>
+        <td style="padding:0.5rem 0.7rem">Rewrite a literal-list loop using <code>range(5, 31, 5)</code></td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border)">
+        <td style="padding:0.5rem 0.7rem">3</td>
+        <td style="padding:0.5rem 0.7rem"><span class="qtype-badge qt-turtle">Turtle</span></td>
+        <td style="padding:0.5rem 0.7rem">Draw a filled square (side 100) using a <code>for</code> loop + fill methods</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border); background:#FAFAFA">
+        <td style="padding:0.5rem 0.7rem">4</td>
+        <td style="padding:0.5rem 0.7rem"><span class="qtype-badge qt-cpp">C++</span></td>
+        <td style="padding:0.5rem 0.7rem">Write a C++ <code>for</code> loop printing odd numbers 1–19 with <code>cout</code></td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border)">
+        <td style="padding:0.5rem 0.7rem">5</td>
+        <td style="padding:0.5rem 0.7rem"><span class="qtype-badge qt-table">Table</span></td>
+        <td style="padding:0.5rem 0.7rem">Complete a trace table for <code>total += number</code> over <code>range(1, 5)</code></td>
+      </tr>
+      <tr style="background:#FAFAFA">
+        <td style="padding:0.5rem 0.7rem">6</td>
+        <td style="padding:0.5rem 0.7rem"><span class="qtype-badge qt-mc">Reflection</span></td>
+        <td style="padding:0.5rem 0.7rem">Multiple-choice reflection: which question type was most valuable to discuss?</td>
+      </tr>
+    </table>
+  </div>
 
-  <ul>
-    <li>Was there a moment where the group disagreed about the answer? What happened?</li>
-    <li>When the AI nudged you, did it help? Did it feel frustrating? Why?</li>
-    <li>How did having assigned roles change how your group worked?</li>
-    <li>What surprised you about the experience — from a <em>student</em> perspective?</li>
-  </ul>
+  <h3>What to Notice As You Work</h3>
+  <div class="card-grid">
+    <div class="card accent-purple">
+      <h4>🔄 The Rotation</h4>
+      <p>A new Spokesperson takes the keyboard each question. Notice how this changes who speaks up and who stays quiet compared to a typical unstructured group task.</p>
+    </div>
+    <div class="card accent-gold">
+      <h4>💬 When You're Nudged</h4>
+      <p>Don't ask the AI a follow-up question. Resist that reflex. The nudge is a question for your group — discuss what it's pointing at, and try to resolve it yourselves.</p>
+    </div>
+    <div class="card accent-teal">
+      <h4>📜 The Epistemic Trace</h4>
+      <p>A trace panel on the side records every submission, every AI response, every revision. Watch it grow. This is what your instructor sees in real time.</p>
+    </div>
+    <div class="card accent-green">
+      <h4>🌐 Multiple Languages</h4>
+      <p>Notice how the platform switches from Python to Turtle to C++ to a table — same platform, same AI, different modes. Consider which type fits which pedagogical goal.</p>
+    </div>
+  </div>
 
   <div class="callout callout-teal">
-    <strong>Instructor view demo (facilitator-led, end of Part 2)</strong>
-    After the group reflection, the facilitator will project the instructor dashboard and walk through what was captured: submission history, AI responses, revision counts, and the epistemic trace for two or three questions side-by-side across groups.
+    <strong>The epistemic trace — a closer look</strong>
+    Here is what a trace looks like for one question. The facilitator will project the full trace dashboard after the activity.
+    <div class="trace-panel">
+      <span class="t-sub">[10:14:02] SUBMITT Submit (Spokesperson: Member 2)</span><br>
+      <span style="color:#888">  "A loop repeats code. A counter loop runs a set number of times."</span><br>
+      <span class="t-ai">[10:14:03] AI → NUDGE</span><br>
+      <span style="color:#888">  "How does the loop know when to stop? What controls the count?"</span><br>
+      <span class="t-rev">[10:14:41] SUBMIT (Spokesperson: Member 2 — revision 1)</span><br>
+      <span style="color:#888">  "A counter variable increments each iteration. The loop stops when</span><br>
+      <span style="color:#888">   the counter reaches the predetermined limit set by range()."</span><br>
+      <span class="t-ok">[10:14:42] AI → ACCEPT</span>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="section-header">
+    <span class="badge">Debrief</span>
+    <span class="time">~5 min</span>
+  </div>
+  <h2>After the Activity: Group Reflection</h2>
+  <p>Before the break, each group's <strong>Process Analyst</strong> shares a one-sentence answer to one of these questions with the whole room:</p>
+
+  <div class="card" style="margin-bottom:1rem">
+    <h4>Questions for the Process Analyst</h4>
+    <ul style="margin-top:0.5rem">
+      <li>Were there a question where the group strongly disagreed on the answer? What happened?</li>
+      <li>When the AI nudged you, did the nudge help? Did it feel frustrating? Why?</li>
+      <li>How did having a designated Spokesperson change how your group worked?</li>
+      <li>Which question type produced the most interesting group discussion? Why?</li>
+      <li>What surprised you about the experience from a <em>student</em> perspective?</li>
+    </ul>
+  </div>
+
+  <div class="callout callout-teal">
+    <strong>Instructor view demo — facilitator-led (end of Part 2)</strong>
+    After the group reflections, the facilitator will project the instructor dashboard and walk through what was captured for two or three groups: submission history, AI responses, revision counts, and the epistemic trace for the same question across different groups. Notice how different groups reached the same final answer by very different reasoning paths.
+  </div>
+
+  <div class="callout callout-purple">
+    <strong>⏸ Break (10 min)</strong>
+    After the instructor dashboard demo, take a 10-minute break. Part 3 starts at 1:10. You'll return as an <em>activity author</em>, not a student.
   </div>
 
   <div class="page-nav">

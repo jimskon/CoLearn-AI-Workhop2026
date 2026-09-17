@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Part 4 — Deployment &amp; Classroom Integration · coLearn-AI Workshop</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="index.html">coLearn-AI Workshop</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="part1.html">Part 1</a>
+    <a href="part2.html">Part 2</a>
+    <a href="part3.html">Part 3</a>
+    <a href="part4.html" class="active">Part 4</a>
+    <a href="part5.html">Part 5</a>
+  </div>
+</nav>
+
+<div class="part-stripe">
+  <div class="part-num">Part 4 of 5</div>
+  <h1>Deployment &amp; Classroom Integration</h1>
+  <div class="part-meta">
+    <span>⏱ 30 minutes</span>
+    <span>2:10 – 2:40</span>
+    <span>Discussion + facilitator demo</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- INTRO -->
+  <p style="margin-top:0.5rem">You've experienced the platform and authored questions. This section covers the practical side: how to set up and run coLearn-AI in a real class, what the instructor sees, and what early classroom use has shown.</p>
+
+  <hr class="section-divider">
+
+  <!-- GROUP FORMATION -->
+  <div class="section-header" style="margin-top:0">
+    <span class="badge">Setup</span>
+  </div>
+  <h2>Group Formation &amp; Role Assignment</h2>
+
+  <div class="card-grid">
+    <div class="card accent-purple">
+      <h4>Group Size</h4>
+      <p>Groups of 3–4 work well. Smaller groups mean roles collapse; larger groups make it harder to ensure every student contributes a submission.</p>
+    </div>
+    <div class="card accent-teal">
+      <h4>Role Assignment</h4>
+      <p>The platform assigns or the instructor assigns — the Spokesperson (typist) rotates each question automatically. You can set the rotation schedule in the activity settings.</p>
+    </div>
+    <div class="card accent-gold">
+      <h4>Forming Groups</h4>
+      <p>Heterogeneous groups (mixed ability) tend to produce more visible reasoning in the trace. Random assignment works for in-class activities; instructor assignment gives more control.</p>
+    </div>
+  </div>
+
+  <div class="callout callout-teal">
+    <strong>A note on slower participants</strong>
+    Rotating submission control can delay the group if one member is slower to type or to reach consensus. This is a known design tension — the friction is partially intentional (it keeps the group talking) but can become frustrating if too extreme. Consider allowing the current Spokesperson to pass control voluntarily if the group is clearly ready.
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- INSTRUCTOR DASHBOARD -->
+  <div class="section-header">
+    <span class="badge">Instructor View</span>
+  </div>
+  <h2>What You See During Class</h2>
+
+  <p>The instructor dashboard updates in real time as groups work. For each group you can see:</p>
+
+  <ul>
+    <li>Current question and submission status (stuck, in progress, accepted)</li>
+    <li>Number of nudges and flags received per question</li>
+    <li>The full epistemic trace — every submission, every AI response, every revision</li>
+    <li>Prediction vs. final answer comparison</li>
+    <li>Which groups finished early and which need support</li>
+  </ul>
+
+  <div class="callout callout-purple">
+    <strong>Using the trace during class discussion</strong>
+    After an activity, projecting 2–3 traces side-by-side for the same question is a powerful discussion starter. Two groups with the same final answer but completely different reasoning paths make visible something that grades alone would hide.
+  </div>
+
+  <h3>Reviewing the Epistemic Trace After Class</h3>
+  <p>The trace is persistent and exportable. After class, you can:</p>
+
+  <ul>
+    <li>Identify questions where most groups needed a nudge — candidate for revision or a short lecture intervention</li>
+    <li>Spot groups where one member dominated submissions (the trace shows who had keyboard control)</li>
+    <li>Review prediction accuracy — did groups know what to expect before running the code?</li>
+    <li>Export traces as JSON or CSV for research or grading</li>
+  </ul>
+
+  <hr class="section-divider">
+
+  <!-- TIMING AND LOGISTICS -->
+  <div class="section-header">
+    <span class="badge">Logistics</span>
+  </div>
+  <h2>Running a coLearn-AI Class Session</h2>
+
+  <ul class="steps">
+    <li>Before class, create or select the activity in the authoring tool and verify the activity guidance and question-level guidance are complete.</li>
+    <li>At the start of class, assign or confirm groups, explain the roles, and give students the activity join code. Allow 3–5 minutes for setup and role selection.</li>
+    <li>Launch the activity. Project the instructor dashboard so you can see group progress without walking to each table.</li>
+    <li>During the activity, intervene at the instructor level — answer procedural questions, unblock groups that are genuinely stuck after 3 retries — but avoid resolving content questions directly. Let the AI do that.</li>
+    <li>After the activity completes, run a 5–10 minute whole-class debrief. Project one or two traces. Ask the Process Analysts to share.</li>
+    <li>After class, review the traces and adjust feedback prompts for questions that were too easy, too hard, or produced unexpected nudge behavior.</li>
+  </ul>
+
+  <hr class="section-divider">
+
+  <!-- HOSTING -->
+  <div class="section-header">
+    <span class="badge">Hosting</span>
+  </div>
+  <h2>Hosting Options</h2>
+
+  <div class="card-grid">
+    <div class="card accent-purple">
+      <h4>colearn-ai.com (Hosted)</h4>
+      <p>Use the platform directly at <a href="https://colearn-ai.com" target="_blank">colearn-ai.com</a>. No installation. Accounts are provided for workshop participants and can be extended for classroom use. Contact the project for access.</p>
+    </div>
+    <div class="card accent-teal">
+      <h4>Self-Hosted</h4>
+      <p>The platform can be deployed on your institution's servers. Suitable for courses with data privacy requirements. Requires a server with Python and a database backend. Contact the project for the installation guide.</p>
+    </div>
+    <div class="card accent-gold">
+      <h4>Pilot / Research Use</h4>
+      <p>If you are interested in running coLearn-AI as part of a research study, the project team can provide IRB-friendly data export formats and support for study design. See Part 5.</p>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ADAPTING EXISTING MATERIALS -->
+  <div class="section-header">
+    <span class="badge">Adapting Materials</span>
+  </div>
+  <h2>Turning Existing Lab Materials into coLearn-AI Activities</h2>
+
+  <p>You don't need to start from scratch. Most CS1 and data structures lab assignments can be converted into coLearn-AI activities by:</p>
+
+  <ol>
+    <li><strong>Identifying the reasoning steps</strong> — break the lab into 3–6 sub-questions that each require a distinct cognitive act (prediction, explanation, debugging, design choice).</li>
+    <li><strong>Adding a prediction question first</strong> — before any code is run, ask the group what they expect. This is the cheapest cognitive engagement move and the most powerful for the trace.</li>
+    <li><strong>Writing a feedback prompt for each sub-question</strong> — one criterion per question. If a lab problem has three grading criteria, make it three questions.</li>
+    <li><strong>Providing sample responses</strong> — use the reference solution your TAs would accept.</li>
+  </ol>
+
+  <div class="callout callout-gold">
+    <strong>Example conversion</strong>
+    A typical CS1 Python lab: "Write a function that takes a list and returns the sum of its elements. Test it with [1, 2, 3, 4, 5]."<br><br>
+    Converted to three coLearn-AI questions:<br>
+    <strong>Q1 (Prediction):</strong> Before writing any code, predict: if we pass <code>[1, 2, 3, 4, 5]</code> to a correct sum function, what should it return? <em>Feedback prompt: Require the correct value (15). Accept any explanation that arrives at 15.</em><br>
+    <strong>Q2 (Accumulator design):</strong> Write a function <code>my_sum(lst)</code> that returns the sum using a <code>for</code> loop and a running total. Show the loop and return statement. <em>Feedback prompt: Require a for loop that accumulates and a return statement. Do not accept a solution that calls Python's built-in sum().</em><br>
+    <strong>Q3 (Explanation):</strong> Explain in one sentence how your running total changes after processing each element of <code>[1, 2, 3]</code>. <em>Feedback prompt: Require an explanation that traces the value of the total variable at each step (0→1→3→6). Push back on answers that describe the result without describing the process.</em>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- WHAT WE'VE SEEN -->
+  <div class="section-header">
+    <span class="badge">Early Results</span>
+  </div>
+  <h2>What Early Classroom Use Has Shown</h2>
+
+  <div class="card-grid">
+    <div class="card accent-green">
+      <h4>✅ Promising</h4>
+      <ul>
+        <li>Participation appeared more evenly distributed. Turn-taking and revisions made each student's contributions visible.</li>
+        <li>Instructors saw the reasoning process, not just final answers — for the first time.</li>
+        <li>Groups that struggled with a nudge often produced the clearest post-activity explanations.</li>
+      </ul>
+    </div>
+    <div class="card accent-red">
+      <h4>⚠️ Open Tensions</h4>
+      <ul>
+        <li>Guidance that is too restrictive can block progress. Guidance that is too permissive can allow cognitive bypass.</li>
+        <li>Rotating control can delay a group if one member is significantly slower.</li>
+        <li>Writing good feedback prompts takes iteration — plan to revise after the first use.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout callout-teal">
+    <strong>These are preliminary observations, not results from a controlled study.</strong> coLearn-AI is research software under active development. If you observe something interesting — positive or negative — please document and share it. See Part 5 for how to get involved in the research.
+  </div>
+
+  <div class="page-nav">
+    <a href="part3.html">← Part 3: Activity Design</a>
+    <a href="part5.html">Part 5: Research Discussion →</a>
+  </div>
+
+</div>
+
+</body>
+</html>

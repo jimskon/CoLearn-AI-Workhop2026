@@ -1,0 +1,112 @@
+%% Activity header
+\title{For Loops — Workshop Sampler}
+\name{workshop_sampler_2026}
+\studentlevel{CS1 Python (or C++), week 5–7; comfortable with variables and conditionals; just introduced to for loops.}
+\activitycontext{Explores counter-controlled iteration using Python for loops with range(), Turtle, C++ for loops, and trace tables. Groups work in POGIL roles. Goal: conceptual understanding of loop mechanics.}
+\aicodeguidance{Require actual loop constructs. Reject hard-coded lists or repeated statements. Accept any valid variable names and equivalent range() arguments.}
+\retries{3}
+
+%% Section 1: Concept check
+\section{Explaining the Loop}{10}
+\text{A \textbf{counter-controlled loop} repeats a fixed number of times. In Python, for loops with range() are the standard tool.}
+
+\question{In your own words, explain what a counter-controlled loop does and how Python's for loop with range() implements it. Give a concrete example with specific numbers.}
+  \responsemode{answer}
+  \textresponse{5}
+  \sampleresponses{A counter-controlled loop runs a set number of times. Python's for loop with range(start, stop, step) handles the counting automatically. For example, range(1, 6) produces 1, 2, 3, 4, 5 — the stop value is excluded. The loop variable takes each value in turn without needing a separate counter variable.}
+  \feedbackprompt{Accept if the response explains: (1) a fixed number of repetitions and (2) how range() generates the sequence. Nudge if they omit that stop is excluded or give no example. Flag if too vague.}
+\endquestion
+
+%% Section 2: Python range
+\section{Python — Rewriting a Loop}{12}
+\text{Below is a loop written with a literal list. Rewrite it using range() to produce identical output.}
+
+\question{Rewrite the loop below using range() so it prints the same values (5, 10, 15, 20, 25, 30).}
+  \responsemode{answer}
+  \python
+for value in [5, 10, 15, 20, 25, 30]:
+    print(value, end=" ")
+
+# Rewrite using range() below:
+  \endpython
+  \sampleresponses{for value in range(5, 31, 5):
+    print(value, end=" ")}
+  \feedbackprompt{Require range() generating 5,10,15,20,25,30. Stop must be ≥31. Step must be 5. Nudge if stop is 30 (misses 30).}
+\endquestion
+
+%% Section 3: Turtle
+\section{Python Turtle — Filled Square}{12}
+
+\question{Use a for loop to draw a filled square with side length 100. Fill it with any color you choose.}
+  \responsemode{answer}
+  \pythonturtle{400x300}
+import turtle
+t = turtle.Turtle()
+t.speed(3)
+# Your code here:
+  \endpythonturtle
+  \sampleresponses{t.fillcolor("blue")
+t.begin_fill()
+for _ in range(4):
+    t.forward(100)
+    t.left(90)
+t.end_fill()}
+  \feedbackprompt{Require: (1) for loop runs 4 times, (2) forward(100) and left(90) inside loop, (3) begin_fill() before and end_fill() after. Accept any fill color. Nudge if fill calls missing or misplaced.}
+\endquestion
+
+%% Section 4: C++
+\section{C++ — Odd Numbers}{12}
+
+\question{Write a C++ for loop that prints the odd numbers from 1 through 19, each on its own line, using cout.}
+  \responsemode{answer}
+  \cpp
+#include <iostream>
+using namespace std;
+int main() {
+    // Write your for loop here:
+    return 0;
+}
+  \endcpp
+  \sampleresponses{for (int i = 1; i <= 19; i += 2) {
+    cout << i << endl;
+}}
+  \feedbackprompt{Require a for loop starting at 1, incrementing by 2, stopping ≤19, printing each value with cout. Accept endl or "\n". Nudge if incrementing by 1 (includes evens) or bounds miss 19.}
+\endquestion
+
+%% Section 5: Trace Table
+\section{Trace Table — Accumulator}{10}
+\text{Trace through the execution step by step. Fill in the value of each variable after each iteration.}
+
+\question{Complete the trace table for:
+total = 0
+for number in range(1, 5):
+    total = total + number}
+  \responsemode{answer}
+  \table{Execution Trace}
+    \row Iteration & number & total (before) & total (after)
+    \row 1 & \tresponse & \tresponse & \tresponse
+    \row 2 & \tresponse & \tresponse & \tresponse
+    \row 3 & \tresponse & \tresponse & \tresponse
+    \row 4 & \tresponse & \tresponse & \tresponse
+  \endtable
+  \sampleresponses{Iteration 1: number=1, total before=0, total after=1
+Iteration 2: number=2, total before=1, total after=3
+Iteration 3: number=3, total before=3, total after=6
+Iteration 4: number=4, total before=6, total after=10}
+  \feedbackprompt{Accept if number takes values 1,2,3,4 and total accumulates correctly as 0→1→3→6→10. Nudge if off-by-one in range (e.g., including 5 or starting at 0).}
+\endquestion
+
+%% Section 6: Reflection
+\section{Reflection}{4}
+
+\question{Which question type gave your group the most productive discussion? Why?}
+  \responsemode{answer}
+  \multiplechoice{}
+    \choice{Text explanation — forced us to articulate the concept}
+    \choice{Python code — debugging range() arguments caused real discussion}
+    \choice{Turtle — visible output made errors immediately obvious}
+    \choice{C++ — syntax differences from Python sparked comparison}
+    \choice{Trace table — stepping through by hand revealed what we didn't know}
+  \endmultiplechoice
+  \feedbackprompt{Accept any choice; ask the group to give one specific reason from their discussion that supports their choice.}
+\endquestion

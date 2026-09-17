@@ -1,0 +1,13 @@
+title: "coLearn-AI Workshop 2026"
+description: "CCSC:MW 2026 Three-Hour Workshop — Designing AI-Constrained Collaborative Activities for Computing Education"
+baseurl: "/CoLearn-AI-Workhop2026"
+url: "https://jimskon.github.io"
+
+# GitHub Pages settings
+theme: null
+
+# Exclude from build
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

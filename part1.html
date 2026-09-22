@@ -211,22 +211,149 @@
   </div>
   <h2>The Epistemic Trace</h2>
 
-  <p>Every submission adds to an append-only record. The AI sees the whole reasoning path, not just the final answer. Instructors can see who predicted correctly, who struggled at step 2, who needed a nudge to see the off-by-one — things that final answers alone would never show.</p>
+  <p>Every interaction — submissions, AI feedback, revisions, code runs, and optional follow-up — is appended to a per-group, per-question record. Nothing is overwritten. The AI sees the full reasoning path when evaluating each new submission. Instructors see the <em>process</em>, not just the product.</p>
 
-  <div class="card">
-    <h4>A trace has five elements per question:</h4>
-    <ol style="margin-top:0.5rem">
-      <li><strong>Prediction</strong> — what does the group expect will happen?</li>
-      <li><strong>Group Response</strong> — their first answer</li>
-      <li><strong>AI Feedback</strong> — accept, nudge, or flag</li>
-      <li><strong>Revision</strong> — the group reconsiders and resubmits</li>
-      <li><strong>Execution</strong> — the code is run or the final answer is confirmed</li>
-    </ol>
+  <p>A trace is not a fixed five-step script. It captures whatever actually happens. The most common patterns are:</p>
+
+  <div class="trace-patterns">
+
+    <div class="trace-pattern">
+      <div class="tp-label tp-label-green">Pattern 1 — Direct Accept</div>
+      <div class="trace-row">
+        <span class="te te-submit">Submit</span>
+        <span class="te-text"><code>range(1, 6)</code></span>
+      </div>
+      <div class="trace-row">
+        <span class="te te-accept">Accept</span>
+        <span class="te-text">"Correct — range(1, 6) produces 1 through 5, stopping before 6."</span>
+      </div>
+      <p class="tp-note">Two events. The group understood the concept, submitted a correct answer, and moved on. The trace is short by design — that is informative too.</p>
+    </div>
+
+    <div class="trace-pattern">
+      <div class="tp-label tp-label-gold">Pattern 2 — Nudge then Revise</div>
+      <div class="trace-row">
+        <span class="te te-submit">Submit</span>
+        <span class="te-text"><code>range(1, 5)</code></span>
+      </div>
+      <div class="trace-row">
+        <span class="te te-nudge">Nudge</span>
+        <span class="te-text">"Does range(1, 5) include 5 in the output? Try it and check."</span>
+      </div>
+      <div class="trace-row">
+        <span class="te te-submit">Revise</span>
+        <span class="te-text"><code>range(1, 6)</code></span>
+      </div>
+      <div class="trace-row">
+        <span class="te te-accept">Accept</span>
+        <span class="te-text">"Yes — the stop value is excluded, so 6 is needed to include 5."</span>
+      </div>
+      <p class="tp-note">The classic off-by-one path. The nudge kept the group thinking; the trace records exactly where the misconception was corrected.</p>
+    </div>
+
+    <div class="trace-pattern">
+      <div class="tp-label tp-label-purple">Pattern 3 — Predict then Submit</div>
+      <div class="trace-row">
+        <span class="te te-predict">Predict</span>
+        <span class="te-text">"We think it prints 1 2 3 4 5 — five numbers."</span>
+      </div>
+      <div class="trace-row">
+        <span class="te te-run">Run</span>
+        <span class="te-text">Output: <code>1 2 3 4</code></span>
+      </div>
+      <div class="trace-row">
+        <span class="te te-submit">Revise</span>
+        <span class="te-text">"range(1, 5) stops before 5. Output is 1 2 3 4."</span>
+      </div>
+      <div class="trace-row">
+        <span class="te te-accept">Accept</span>
+        <span class="te-text">"Correct — and did the output match your prediction?"</span>
+      </div>
+      <p class="tp-note">The prediction was wrong; running the code created Piaget's productive conflict. The trace shows the exact moment the mental model was revised.</p>
+    </div>
+
+    <div class="trace-pattern">
+      <div class="tp-label tp-label-red">Pattern 4 — Flag, Multiple Retries</div>
+      <div class="trace-row">
+        <span class="te te-submit">Submit</span>
+        <span class="te-text"><code>[1, 2, 3, 4, 5]</code> &nbsp;<em>(literal list, not range)</em></span>
+      </div>
+      <div class="trace-row">
+        <span class="te te-flag">Flag</span>
+        <span class="te-text">"The question asks for a range() call — can you rewrite this?"</span>
+      </div>
+      <div class="trace-row">
+        <span class="te te-submit">Revise</span>
+        <span class="te-text"><code>range(5)</code></span>
+      </div>
+      <div class="trace-row">
+        <span class="te te-nudge">Nudge</span>
+        <span class="te-text">"range(5) starts at 0. How do you make it start at 1?"</span>
+      </div>
+      <div class="trace-row">
+        <span class="te te-submit">Revise</span>
+        <span class="te-text"><code>range(1, 6)</code></span>
+      </div>
+      <div class="trace-row">
+        <span class="te te-accept">Accept</span>
+        <span class="te-text">"Yes — range(1, 6) gives 1 through 5."</span>
+      </div>
+      <p class="tp-note">Three separate misconceptions surfaced and resolved. No single final answer would show any of this. The trace is the evidence of learning.</p>
+    </div>
+
   </div>
 
-  <div class="callout callout-gold">
-    <strong>Same final answer — very different reasoning paths.</strong>
-    Group A predicted "1 to 5", submitted <code>range(1,5)</code>, got nudged ("Check if 5 appears"), revised to <code>range(1,6)</code>, executed correctly. Group B predicted "Stops at 4 or 5?", submitted <code>range(1,6)</code> immediately, got accepted. The trace reveals the difference. Final answers would show nothing.
+  <p>Any combination is possible: questions without predictions, questions with code execution before submission, questions with follow-up commentary after acceptance. The trace captures all of it.</p>
+
+  <hr style="border:none; border-top:1px solid #e5e7eb; margin:2rem 0">
+
+  <h3>Same Answer — Very Different Reasoning</h3>
+  <p>The trace's power is clearest when two groups arrive at the same final answer by completely different paths.</p>
+
+  <div class="trace-compare">
+    <div class="tc-group">
+      <div class="tc-label">Group A</div>
+      <div class="trace-row">
+        <span class="te te-predict">Predict</span>
+        <span class="te-text">"Prints 1 to 5."</span>
+      </div>
+      <div class="trace-row">
+        <span class="te te-submit">Submit</span>
+        <span class="te-text"><code>range(1, 5)</code></span>
+      </div>
+      <div class="trace-row">
+        <span class="te te-nudge">Nudge</span>
+        <span class="te-text">"Check if 5 appears in the output."</span>
+      </div>
+      <div class="trace-row">
+        <span class="te te-submit">Revise</span>
+        <span class="te-text"><code>range(1, 6)</code></span>
+      </div>
+      <div class="trace-row">
+        <span class="te te-accept">Accept</span>
+        <span class="te-text">"Correct."</span>
+      </div>
+    </div>
+    <div class="tc-group">
+      <div class="tc-label">Group B</div>
+      <div class="trace-row">
+        <span class="te te-predict">Predict</span>
+        <span class="te-text">"Stops at 4 or 5? Not sure — let's use 6 to be safe."</span>
+      </div>
+      <div class="trace-row">
+        <span class="te te-submit">Submit</span>
+        <span class="te-text"><code>range(1, 6)</code></span>
+      </div>
+      <div class="trace-row">
+        <span class="te te-accept">Accept</span>
+        <span class="te-text">"Correct."</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-gold" style="margin-top:1.25rem">
+    <strong>Final answers: identical. Traces: completely different.</strong>
+    Group A held a confident misconception, had it surfaced by a nudge, and corrected it. Group B guessed correctly without fully resolving the question. Grading the output reveals nothing. The trace reveals everything.
   </div>
 
   <hr class="section-divider">

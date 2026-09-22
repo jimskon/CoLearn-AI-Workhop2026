@@ -167,41 +167,45 @@
   </div>
   <h2>How coLearn-AI Scaffolds a Group</h2>
 
-  <p>When a group submits an answer, the AI responds in one of three ways — never by giving the answer outright.</p>
+  <p>When a group submits an answer, the AI responds in one of three ways — never by giving the answer outright. Here is the same question answered three different ways, producing three different responses.</p>
+
+  <div class="scaffold-scenario">
+    <div class="sc-question-label">The Question</div>
+    <div class="sc-question-text">Write a <code>range()</code> call that produces the values 3, 6, 9, 12, 15, 18.</div>
+    <div class="sc-code-starter">
+      <span class="sc-hint">Starter code given to the group:</span>
+      <code>for value in <span class="sc-blank">___________</span>:<br>&nbsp;&nbsp;&nbsp;&nbsp;print(value)</code>
+    </div>
+  </div>
 
   <div class="scaffold-grid">
     <div class="scaffold-box scaffold-accept">
       <div class="s-label">✅ Accept</div>
-      <p>The response meets the criteria for this question. The group moves on.</p>
-      <div class="s-code">
-        <em>CoLearn-AI says:</em><br>
-        "That works — range(3, 19, 3) starts at 3,<br>
-        steps by 3, and stops before 19, so 18 is<br>
-        the last value printed."
-      </div>
+      <p class="s-sub">Group submits:</p>
+      <div class="s-code s-submitted"><code>range(3, 19, 3)</code></div>
+      <p class="s-sub">CoLearn-AI responds:</p>
+      <div class="s-code s-response">"That works — <code>range(3, 19, 3)</code> starts at 3, steps by 3, and stops before 19, so 18 is the last value printed. Move on to the next question."</div>
+      <p class="s-why">The response is correct. The group advances.</p>
     </div>
     <div class="scaffold-box scaffold-nudge">
       <div class="s-label">💬 One Nudge</div>
-      <p>One focused question — the group must figure out the fix themselves.</p>
-      <div class="s-code">
-        <em>CoLearn-AI says:</em><br>
-        "Your start and step look right. Does<br>
-        range(3, 18, 3) include 18 in the output?"
-      </div>
+      <p class="s-sub">Group submits:</p>
+      <div class="s-code s-submitted"><code>range(3, 18, 3)</code></div>
+      <p class="s-sub">CoLearn-AI responds:</p>
+      <div class="s-code s-response">"Your start and step look right. Does <code>range(3, 18, 3)</code> include 18 in the output? Try it and check."</div>
+      <p class="s-why">Off by one — stop is exclusive. One question, no answer given. The group must figure it out.</p>
     </div>
     <div class="scaffold-box scaffold-flag">
       <div class="s-label">⚠️ Flag &amp; Re-try</div>
-      <p>The response is off-prompt or clearly wrong. The group revises and resubmits. Limited to 3 retries.</p>
-      <div class="s-code">
-        <em>CoLearn-AI says:</em><br>
-        "The question asks for range() — can you<br>
-        rewrite the loop so range() generates<br>
-        those values?"
-      </div>
+      <p class="s-sub">Group submits:</p>
+      <div class="s-code s-submitted"><code>[3, 6, 9, 12, 15, 18]</code></div>
+      <p class="s-sub">CoLearn-AI responds:</p>
+      <div class="s-code s-response">"The question asks for a <code>range()</code> call — can you rewrite this so <code>range()</code> generates those values instead of a literal list?"</div>
+      <p class="s-why">Wrong approach entirely. Flagged and returned. Up to 3 retries before the instructor is notified.</p>
     </div>
   </div>
 
-  <p>The AI's job is not to grade — it is to keep the group thinking. It prefers explanation and critique over giving answers. It never lists multiple failures at once.</p>
+  <p>The AI's job is not to grade — it is to keep the group thinking. It targets one issue at a time and never gives the answer.</p>
 
   <hr class="section-divider">
 

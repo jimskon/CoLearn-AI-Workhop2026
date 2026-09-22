@@ -191,108 +191,108 @@
 
 <span class="ml-cmt">%% Section 1: Concept check</span>
 <span class="ml-kw">\section</span>{<span class="ml-sec">Explaining the Loop</span>}{<span class="ml-arg">10</span>}
-<span class="ml-kw">\text</span>{<span class="ml-arg">A \textbf{counter-controlled loop} repeats a fixed number of times. In Python, for loops with range() are the standard tool.</span>}
+  <span class="ml-kw">\text</span>{<span class="ml-arg">A \textbf{counter-controlled loop} repeats a fixed number of times. In Python, for loops with range() are the standard tool.</span>}
 
-<span class="ml-kw">\question</span>{<span class="ml-arg">In your own words, explain what a counter-controlled loop does and how Python's for loop with range() implements it. Give a concrete example with specific numbers.</span>}
-  <span class="ml-kw">\responsemode</span>{<span class="ml-arg">answer</span>}
-  <span class="ml-kw">\textresponse</span>{<span class="ml-arg">5</span>}
-  <span class="ml-kw">\sampleresponses</span>{<span class="ml-arg">A counter-controlled loop runs a set number of times. Python's for loop with range(start, stop, step) handles the counting automatically. For example, range(1, 6) produces 1, 2, 3, 4, 5 &mdash; the stop value is excluded. The loop variable takes each value in turn without needing a separate counter variable.</span>}
-  <span class="ml-kw">\feedbackprompt</span>{<span class="ml-str">Accept if the response explains: (1) a fixed number of repetitions and (2) how range() generates the sequence. Nudge if they omit that stop is excluded or give no example. Flag if too vague.</span>}
-<span class="ml-kw">\endquestion</span>
+  <span class="ml-kw">\question</span>{<span class="ml-arg">In your own words, explain what a counter-controlled loop does and how Python's for loop with range() implements it. Give a concrete example with specific numbers.</span>}
+    <span class="ml-kw">\responsemode</span>{<span class="ml-arg">answer</span>}
+    <span class="ml-kw">\textresponse</span>{<span class="ml-arg">5</span>}
+    <span class="ml-kw">\sampleresponses</span>{<span class="ml-arg">A counter-controlled loop runs a set number of times. Python's for loop with range(start, stop, step) handles the counting automatically. For example, range(1, 6) produces 1, 2, 3, 4, 5 &mdash; the stop value is excluded. The loop variable takes each value in turn without needing a separate counter variable.</span>}
+    <span class="ml-kw">\feedbackprompt</span>{<span class="ml-str">Accept if the response explains: (1) a fixed number of repetitions and (2) how range() generates the sequence. Nudge if they omit that stop is excluded or give no example. Flag if too vague.</span>}
+  <span class="ml-kw">\endquestion</span>
 
 <span class="ml-cmt">%% Section 2: Python range</span>
 <span class="ml-kw">\section</span>{<span class="ml-sec">Python &mdash; Rewriting a Loop</span>}{<span class="ml-arg">12</span>}
-<span class="ml-kw">\text</span>{<span class="ml-arg">Below is a loop written with a literal list. Rewrite it using range() to produce identical output.</span>}
+  <span class="ml-kw">\text</span>{<span class="ml-arg">Below is a loop written with a literal list. Rewrite it using range() to produce identical output.</span>}
 
-<span class="ml-kw">\question</span>{<span class="ml-arg">Rewrite the loop below using range() so it prints the same values (5, 10, 15, 20, 25, 30).</span>}
-  <span class="ml-kw">\responsemode</span>{<span class="ml-arg">answer</span>}
-  <span class="ml-kw">\python</span>
-<span class="ml-arg">for value in [5, 10, 15, 20, 25, 30]:
+  <span class="ml-kw">\question</span>{<span class="ml-arg">Rewrite the loop below using range() so it prints the same values (5, 10, 15, 20, 25, 30).</span>}
+    <span class="ml-kw">\responsemode</span>{<span class="ml-arg">answer</span>}
+    <span class="ml-kw">\python</span>
+    <span class="ml-arg">for value in [5, 10, 15, 20, 25, 30]:
     print(value, end=" ")
 
-# Rewrite using range() below:</span>
-  <span class="ml-kw">\endpython</span>
-  <span class="ml-kw">\sampleresponses</span>{<span class="ml-arg">for value in range(5, 31, 5):
-    print(value, end=" ")</span>}
-  <span class="ml-kw">\feedbackprompt</span>{<span class="ml-str">Require range() generating 5,10,15,20,25,30. Stop must be &ge;31. Step must be 5. Nudge if stop is 30 (misses 30).</span>}
-<span class="ml-kw">\endquestion</span>
+    # Rewrite using range() below:</span>
+    <span class="ml-kw">\endpython</span>
+    <span class="ml-kw">\sampleresponses</span>{<span class="ml-arg">for value in range(5, 31, 5):
+      print(value, end=" ")</span>}
+    <span class="ml-kw">\feedbackprompt</span>{<span class="ml-str">Require range() generating 5,10,15,20,25,30. Stop must be &ge;31. Step must be 5. Nudge if stop is 30 (misses 30).</span>}
+  <span class="ml-kw">\endquestion</span>
 
 <span class="ml-cmt">%% Section 3: Turtle</span>
 <span class="ml-kw">\section</span>{<span class="ml-sec">Python Turtle &mdash; Filled Square</span>}{<span class="ml-arg">12</span>}
 
-<span class="ml-kw">\question</span>{<span class="ml-arg">Use a for loop to draw a filled square with side length 100. Fill it with any color you choose.</span>}
-  <span class="ml-kw">\responsemode</span>{<span class="ml-arg">answer</span>}
-  <span class="ml-kw">\pythonturtle</span>{<span class="ml-arg">400x300</span>}
-<span class="ml-arg">import turtle
-t = turtle.Turtle()
-t.speed(3)
-# Your code here:</span>
-  <span class="ml-kw">\endpythonturtle</span>
-  <span class="ml-kw">\sampleresponses</span>{<span class="ml-arg">t.fillcolor("blue")
-t.begin_fill()
-for _ in range(4):
-    t.forward(100)
-    t.left(90)
-t.end_fill()</span>}
-  <span class="ml-kw">\feedbackprompt</span>{<span class="ml-str">Require: (1) for loop runs 4 times, (2) forward(100) and left(90) inside loop, (3) begin_fill() before and end_fill() after. Accept any fill color. Nudge if fill calls missing or misplaced.</span>}
-<span class="ml-kw">\endquestion</span>
+  <span class="ml-kw">\question</span>{<span class="ml-arg">Use a for loop to draw a filled square with side length 100. Fill it with any color you choose.</span>}
+    <span class="ml-kw">\responsemode</span>{<span class="ml-arg">answer</span>}
+    <span class="ml-kw">\pythonturtle</span>{<span class="ml-arg">400x300</span>}
+    <span class="ml-arg">import turtle
+    t = turtle.Turtle()
+    t.speed(3)
+    # Your code here:</span>
+    <span class="ml-kw">\endpythonturtle</span>
+    <span class="ml-kw">\sampleresponses</span>{<span class="ml-arg">t.fillcolor("blue")
+      t.begin_fill()
+      for _ in range(4):
+      t.forward(100)
+      t.left(90)
+      t.end_fill()</span>}
+    <span class="ml-kw">\feedbackprompt</span>{<span class="ml-str">Require: (1) for loop runs 4 times, (2) forward(100) and left(90) inside loop, (3) begin_fill() before and end_fill() after. Accept any fill color. Nudge if fill calls missing or misplaced.</span>}
+  <span class="ml-kw">\endquestion</span>
 
 <span class="ml-cmt">%% Section 4: C++</span>
 <span class="ml-kw">\section</span>{<span class="ml-sec">C++ &mdash; Odd Numbers</span>}{<span class="ml-arg">12</span>}
 
-<span class="ml-kw">\question</span>{<span class="ml-arg">Write a C++ for loop that prints the odd numbers from 1 through 19, each on its own line, using cout.</span>}
-  <span class="ml-kw">\responsemode</span>{<span class="ml-arg">answer</span>}
-  <span class="ml-kw">\cpp</span>
-<span class="ml-arg">#include &lt;iostream&gt;
-using namespace std;
-int main() {
-    // Write your for loop here:
-    return 0;
-}</span>
-  <span class="ml-kw">\endcpp</span>
-  <span class="ml-kw">\sampleresponses</span>{<span class="ml-arg">for (int i = 1; i &lt;= 19; i += 2) {
-    cout &lt;&lt; i &lt;&lt; endl;
-}</span>}
-  <span class="ml-kw">\feedbackprompt</span>{<span class="ml-str">Require a for loop starting at 1, incrementing by 2, stopping &le;19, printing each value with cout. Accept endl or "\n". Nudge if incrementing by 1 (includes evens) or bounds miss 19.</span>}
-<span class="ml-kw">\endquestion</span>
+  <span class="ml-kw">\question</span>{<span class="ml-arg">Write a C++ for loop that prints the odd numbers from 1 through 19, each on its own line, using cout.</span>}
+    <span class="ml-kw">\responsemode</span>{<span class="ml-arg">answer</span>}
+    <span class="ml-kw">\cpp</span>
+    <span class="ml-arg">#include &lt;iostream&gt;
+    using namespace std;
+    int main() {
+      // Write your for loop here:
+      return 0;
+      }</span>
+    <span class="ml-kw">\endcpp</span>
+    <span class="ml-kw">\sampleresponses</span>{<span class="ml-arg">for (int i = 1; i &lt;= 19; i += 2) {
+      cout &lt;&lt; i &lt;&lt; endl;
+      }</span>}
+    <span class="ml-kw">\feedbackprompt</span>{<span class="ml-str">Require a for loop starting at 1, incrementing by 2, stopping &le;19, printing each value with cout. Accept endl or "\n". Nudge if incrementing by 1 (includes evens) or bounds miss 19.</span>}
+  <span class="ml-kw">\endquestion</span>
 
 <span class="ml-cmt">%% Section 5: Trace Table</span>
 <span class="ml-kw">\section</span>{<span class="ml-sec">Trace Table &mdash; Accumulator</span>}{<span class="ml-arg">10</span>}
-<span class="ml-kw">\text</span>{<span class="ml-arg">Trace through the execution step by step. Fill in the value of each variable after each iteration.</span>}
+  <span class="ml-kw">\text</span>{<span class="ml-arg">Trace through the execution step by step. Fill in the value of each variable after each iteration.</span>}
 
-<span class="ml-kw">\question</span>{<span class="ml-arg">Complete the trace table for:
-total = 0
-for number in range(1, 5):
+  <span class="ml-kw">\question</span>{<span class="ml-arg">Complete the trace table for:
+    total = 0
+    for number in range(1, 5):
     total = total + number</span>}
-  <span class="ml-kw">\responsemode</span>{<span class="ml-arg">answer</span>}
-  <span class="ml-kw">\table</span>{<span class="ml-arg">Execution Trace</span>}
-    <span class="ml-kw">\row</span> <span class="ml-arg">Iteration &amp; number &amp; total (before) &amp; total (after)</span>
-    <span class="ml-kw">\row</span> <span class="ml-arg">1 &amp; \tresponse &amp; \tresponse &amp; \tresponse</span>
-    <span class="ml-kw">\row</span> <span class="ml-arg">2 &amp; \tresponse &amp; \tresponse &amp; \tresponse</span>
-    <span class="ml-kw">\row</span> <span class="ml-arg">3 &amp; \tresponse &amp; \tresponse &amp; \tresponse</span>
-    <span class="ml-kw">\row</span> <span class="ml-arg">4 &amp; \tresponse &amp; \tresponse &amp; \tresponse</span>
-  <span class="ml-kw">\endtable</span>
-  <span class="ml-kw">\sampleresponses</span>{<span class="ml-arg">Iteration 1: number=1, total before=0, total after=1
-Iteration 2: number=2, total before=1, total after=3
-Iteration 3: number=3, total before=3, total after=6
-Iteration 4: number=4, total before=6, total after=10</span>}
-  <span class="ml-kw">\feedbackprompt</span>{<span class="ml-str">Accept if number takes values 1,2,3,4 and total accumulates correctly as 0&rarr;1&rarr;3&rarr;6&rarr;10. Nudge if off-by-one in range (e.g., including 5 or starting at 0).</span>}
-<span class="ml-kw">\endquestion</span>
+    <span class="ml-kw">\responsemode</span>{<span class="ml-arg">answer</span>}
+    <span class="ml-kw">\table</span>{<span class="ml-arg">Execution Trace</span>}
+      <span class="ml-kw">\row</span> <span class="ml-arg">Iteration &amp; number &amp; total (before) &amp; total (after)</span>
+      <span class="ml-kw">\row</span> <span class="ml-arg">1 &amp; \tresponse &amp; \tresponse &amp; \tresponse</span>
+      <span class="ml-kw">\row</span> <span class="ml-arg">2 &amp; \tresponse &amp; \tresponse &amp; \tresponse</span>
+      <span class="ml-kw">\row</span> <span class="ml-arg">3 &amp; \tresponse &amp; \tresponse &amp; \tresponse</span>
+      <span class="ml-kw">\row</span> <span class="ml-arg">4 &amp; \tresponse &amp; \tresponse &amp; \tresponse</span>
+    <span class="ml-kw">\endtable</span>
+    <span class="ml-kw">\sampleresponses</span>{<span class="ml-arg">Iteration 1: number=1, total before=0, total after=1
+      Iteration 2: number=2, total before=1, total after=3
+      Iteration 3: number=3, total before=3, total after=6
+      Iteration 4: number=4, total before=6, total after=10</span>}
+    <span class="ml-kw">\feedbackprompt</span>{<span class="ml-str">Accept if number takes values 1,2,3,4 and total accumulates correctly as 0&rarr;1&rarr;3&rarr;6&rarr;10. Nudge if off-by-one in range (e.g., including 5 or starting at 0).</span>}
+  <span class="ml-kw">\endquestion</span>
 
 <span class="ml-cmt">%% Section 6: Reflection</span>
 <span class="ml-kw">\section</span>{<span class="ml-sec">Reflection</span>}{<span class="ml-arg">4</span>}
 
-<span class="ml-kw">\question</span>{<span class="ml-arg">Which question type gave your group the most productive discussion? Why?</span>}
-  <span class="ml-kw">\responsemode</span>{<span class="ml-arg">answer</span>}
-  <span class="ml-kw">\multiplechoice</span>{}
+  <span class="ml-kw">\question</span>{<span class="ml-arg">Which question type gave your group the most productive discussion? Why?</span>}
+    <span class="ml-kw">\responsemode</span>{<span class="ml-arg">answer</span>}
+    <span class="ml-kw">\multiplechoice</span>{}
     <span class="ml-kw">\choice</span>{<span class="ml-arg">Text explanation &mdash; forced us to articulate the concept</span>}
     <span class="ml-kw">\choice</span>{<span class="ml-arg">Python code &mdash; debugging range() arguments caused real discussion</span>}
     <span class="ml-kw">\choice</span>{<span class="ml-arg">Turtle &mdash; visible output made errors immediately obvious</span>}
     <span class="ml-kw">\choice</span>{<span class="ml-arg">C++ &mdash; syntax differences from Python sparked comparison</span>}
     <span class="ml-kw">\choice</span>{<span class="ml-arg">Trace table &mdash; stepping through by hand revealed what we didn't know</span>}
-  <span class="ml-kw">\endmultiplechoice</span>
-  <span class="ml-kw">\feedbackprompt</span>{<span class="ml-str">Accept any choice; ask the group to give one specific reason from their discussion that supports their choice.</span>}
-<span class="ml-kw">\endquestion</span>
+    <span class="ml-kw">\endmultiplechoice</span>
+    <span class="ml-kw">\feedbackprompt</span>{<span class="ml-str">Accept any choice; ask the group to give one specific reason from their discussion that supports their choice.</span>}
+  <span class="ml-kw">\endquestion</span>
   </div>
 
   <hr class="section-divider">

@@ -475,6 +475,87 @@ cout &lt;&lt; total / 10 &lt;&lt; endl;</div>
 
   <hr class="section-divider">
 
+
+  <hr class="section-divider">
+
+  <div class="section-header">
+    <span class="badge">Creation &amp; Editing</span>
+  </div>
+  <h2>Six Ways to Create and Edit an Activity</h2>
+
+  <p>coLearn-AI activities are plain-text markup files. That means you can create and edit them through several different workflows &mdash; choose the one that fits your style and how much of the markup you want to write by hand.</p>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1.25rem 0">
+
+    <div class="card accent-purple" style="margin:0">
+      <div style="font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#5b4fcf; margin-bottom:0.4rem">Option 1</div>
+      <h4 style="margin-top:0">Internal AI Creation</h4>
+      <p style="font-size:0.9rem">Use the built-in AI authoring assistant inside the coLearn-AI creator interface. Describe your topic and question goals; the platform generates a draft activity in markup. Best for getting started quickly with a new topic.</p>
+      <div style="font-size:0.82rem; color:#555; margin-top:0.5rem">
+        <strong>When to use:</strong> First draft, unfamiliar with markup syntax.<br>
+        <strong>Limitation:</strong> Generated prompts often need hand-tuning for Layer 3 precision.
+      </div>
+    </div>
+
+    <div class="card accent-teal" style="margin:0">
+      <div style="font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#007a7a; margin-bottom:0.4rem">Option 2</div>
+      <h4 style="margin-top:0">External AI with Example + Syntax</h4>
+      <p style="font-size:0.9rem">Paste the markup language reference and a complete sample activity into ChatGPT or Claude, then ask it to write an activity for your topic. External models have broad domain knowledge and generate coherent question sequences quickly.</p>
+      <div style="font-size:0.82rem; color:#555; margin-top:0.5rem">
+        <strong>When to use:</strong> You know your topic well but want a full first draft fast.<br>
+        <strong>Tip:</strong> Tell the AI your student level, topic constraints, and which question types to use.
+      </div>
+      <div class="callout callout-teal" style="margin-top:0.75rem; padding:0.6rem 0.85rem; font-size:0.83rem">
+        <strong>Prompt template:</strong> &ldquo;Here is the coLearn-AI markup syntax [paste reference]. Here is a complete example activity [paste source]. Write a 3-question activity about [topic] for [student level]. Include feedbackprompt and sampleresponses for each question.&rdquo;
+      </div>
+    </div>
+
+    <div class="card accent-gold" style="margin:0">
+      <div style="font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#b87800; margin-bottom:0.4rem">Option 3</div>
+      <h4 style="margin-top:0">Visual Editor</h4>
+      <p style="font-size:0.9rem">The Visual Editor lets you edit any part of an existing activity through a structured GUI &mdash; no markup required. Click a question to open a form, change the response type, update the feedback prompt, and save. Changes are validated before they are written back to the source.</p>
+      <div style="font-size:0.82rem; color:#555; margin-top:0.5rem">
+        <strong>When to use:</strong> Fixing a specific question, renaming a section, adjusting Layer 3 guidance on an existing activity.<br>
+        <strong>Limitation:</strong> Building a new activity from scratch is faster with Option 1 or 2, then refine here.
+      </div>
+    </div>
+
+    <div class="card accent-green" style="margin:0">
+      <div style="font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#2a7a3b; margin-bottom:0.4rem">Option 4</div>
+      <h4 style="margin-top:0">External AI with the Live Source</h4>
+      <p style="font-size:0.9rem">Copy the activity&rsquo;s current markup source out of the creator interface and paste it into an external AI with specific edit instructions. The AI rewrites or extends sections, then you paste the result back. Powerful for bulk restructuring or adding a new question group.</p>
+      <div style="font-size:0.82rem; color:#555; margin-top:0.5rem">
+        <strong>When to use:</strong> Reorganizing question order, converting question types, or regenerating feedback prompts across multiple questions at once.<br>
+        <strong>Tip:</strong> Always validate the pasted result in the creator before saving.
+      </div>
+    </div>
+
+    <div class="card" style="margin:0; border:2px solid #ddd">
+      <div style="font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#666; margin-bottom:0.4rem">Option 5</div>
+      <h4 style="margin-top:0">Direct Source Editing</h4>
+      <p style="font-size:0.9rem">Open the raw markup in the creator&rsquo;s source view and edit by hand. Full control; every command is available. The parser gives immediate validation feedback with line-level error messages.</p>
+      <div style="font-size:0.82rem; color:#555; margin-top:0.5rem">
+        <strong>When to use:</strong> Experienced authors, fine-tuning edge cases, or when you know exactly which line to change.<br>
+        <strong>Tip:</strong> The markup is intentionally readable &mdash; after a few activities, direct editing is often the fastest approach.
+      </div>
+    </div>
+
+    <div class="card" style="margin:0; border:2px solid #ddd; background:#f8f6ff">
+      <div style="font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#5b4fcf; margin-bottom:0.4rem">Option 6</div>
+      <h4 style="margin-top:0">The Sandbox</h4>
+      <p style="font-size:0.9rem">The Sandbox is a single-question test environment built into the creator. Paste one question (with its feedbackprompt and sampleresponses) and submit test responses to see exactly what the AI returns &mdash; Accept, Nudge, or Flag &mdash; before the question goes into a live activity.</p>
+      <div style="font-size:0.82rem; color:#555; margin-top:0.5rem">
+        <strong>When to use:</strong> Calibrating a new feedbackprompt; checking that edge-case responses are handled correctly; understanding how Layer 3 guidance works.<br>
+        <strong>Tip:</strong> Test three cases: clearly correct, plausible-but-wrong, and completely off-base.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="callout callout-purple">
+    <strong>Recommended workflow for a new activity:</strong> Generate a first draft with Option 1 or 2 &rarr; calibrate feedback prompts with the Sandbox (Option 6) &rarr; polish structure with the Visual Editor (Option 3) &rarr; final tweaks in source view (Option 5) if needed.
+  </div>
+
   <div class="section-header">
     <span class="badge">Your Turn</span>
     <span class="time">40 min</span>

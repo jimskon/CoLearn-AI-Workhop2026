@@ -19,6 +19,7 @@
     <a href="part5.html">Part 5</a>
     <a href="markup.html">Markup</a>
     <a href="research.html">Research</a>
+    <a href="resources.html">Resources</a>
   </div>
 </nav>
 
@@ -26,13 +27,26 @@
   <div class="part-num">Part 1 of 5</div>
   <h1>Introduction &amp; System Overview</h1>
   <div class="part-meta">
-    <span>⏱ 20 minutes</span>
-    <span>0:00 – 0:20</span>
+    <span>⏱ 15 minutes</span>
+    <span>0:00 – 0:15</span>
     <span>Presenter-led</span>
   </div>
 </div>
 
 <div class="container">
+
+  <div class="task-now" style="margin-top:0.5rem">
+    <div class="tn-label">Right now · 15 minutes</div>
+    <div class="tn-goal">Listen. You'll need these ideas in Part 2, when you work as a student.</div>
+    <ol>
+      <li>Cognitive bypass: the problem</li>
+      <li>Piaget and Vygotsky: why the struggle and the talk matter</li>
+      <li>Four design principles, roles, and turn-taking</li>
+      <li>Accept or revise: how the AI responds</li>
+      <li>The epistemic trace: same answer, different reasoning</li>
+    </ol>
+    <div class="tn-out">Not logged in yet? Connect to <strong>eduroam</strong> and log in at csdev.kenyon.edu with the student account on your card now.</div>
+  </div>
 
   <!-- THE PROBLEM -->
   <div class="section-header" style="margin-top:0.5rem">
@@ -135,12 +149,12 @@
     <div class="role-card role-facilitator">
       <div class="role-icon">🟢</div>
       <h4>Facilitator</h4>
-      <p>Keeps the group on task. Controls the turn rotation. Watches the clock.</p>
+      <p>Keeps the group on task. Watches the clock. Makes sure every voice is heard.</p>
     </div>
     <div class="role-card role-spokesperson">
       <div class="role-icon">🔵</div>
       <h4>Spokesperson</h4>
-      <p>Types the group's agreed response. The one with keyboard control at each turn.</p>
+      <p>Speaks for the group: reports its answers and questions to the instructor and the room.</p>
     </div>
     <div class="role-card role-quality">
       <div class="role-icon">🟣</div>
@@ -154,7 +168,9 @@
     </div>
   </div>
 
-  <p>In coLearn-AI, the <strong>Spokesperson</strong> has the input field — other group members must participate through discussion, not by typing. This is enforced by the platform: submission control rotates on a schedule the instructor sets.</p>
+  <p>In coLearn-AI, <strong>only one student at a time can type</strong>. That student holds the turn. After each submission the turn passes to the next member, so everyone takes a turn at the keyboard. The rest of the group takes part by discussing, not by typing. The platform enforces this.</p>
+
+  <p>The platform also assigns roles, in this order: Facilitator, Process Analyst, Quality Control, and then Spokesperson. A group of three therefore has no Spokesperson. Roles are about <em>how</em> each person contributes. They are separate from who holds the typing turn.</p>
 
   <div class="callout callout-teal">
     <strong>Why POGIL + AI?</strong>
@@ -169,7 +185,7 @@
   </div>
   <h2>How coLearn-AI Scaffolds a Group</h2>
 
-  <p>When a group submits an answer, the AI responds in one of three ways — never by giving the answer outright. Here is the same question answered three different ways, producing three different responses.</p>
+  <p>When a group submits an answer, the AI does one of two things: it <strong>accepts</strong> the answer, or it <strong>sends it back for revision</strong> with one focused question. It never gives the answer. Here is the same question answered three different ways.</p>
 
   <div class="scaffold-scenario">
     <div class="sc-question-label">The Question</div>
@@ -190,7 +206,7 @@
       <p class="s-why">The response is correct. The group advances.</p>
     </div>
     <div class="scaffold-box scaffold-nudge">
-      <div class="s-label">💬 One Nudge</div>
+      <div class="s-label">💬 Revise: Almost There</div>
       <p class="s-sub">Group submits:</p>
       <div class="s-code s-submitted"><code>range(3, 18, 3)</code></div>
       <p class="s-sub">CoLearn-AI responds:</p>
@@ -198,12 +214,12 @@
       <p class="s-why">Off by one — stop is exclusive. One question, no answer given. The group must figure it out.</p>
     </div>
     <div class="scaffold-box scaffold-flag">
-      <div class="s-label">⚠️ Flag &amp; Re-try</div>
+      <div class="s-label">⚠️ Revise: Wrong Approach</div>
       <p class="s-sub">Group submits:</p>
       <div class="s-code s-submitted"><code>[3, 6, 9, 12, 15, 18]</code></div>
       <p class="s-sub">CoLearn-AI responds:</p>
       <div class="s-code s-response">"The question asks for a <code>range()</code> call — can you rewrite this so <code>range()</code> generates those values instead of a literal list?"</div>
-      <p class="s-why">Wrong approach entirely. Flagged and returned. Up to 3 retries before the instructor is notified.</p>
+      <p class="s-why">Wrong approach entirely, so the answer is sent back. The author sets how many tries a group gets. After those, the group may press <em>Continue</em>, and the trace records that it moved on without acceptance.</p>
     </div>
   </div>
 
@@ -237,13 +253,13 @@
     </div>
 
     <div class="trace-pattern">
-      <div class="tp-label tp-label-gold">Pattern 2 — Nudge then Revise</div>
+      <div class="tp-label tp-label-gold">Pattern 2 — Sent Back, then Revised</div>
       <div class="trace-row">
         <span class="te te-submit">Submit</span>
         <span class="te-text"><code>range(1, 5)</code></span>
       </div>
       <div class="trace-row">
-        <span class="te te-nudge">Nudge</span>
+        <span class="te te-nudge">Sent back</span>
         <span class="te-text">"Does range(1, 5) include 5 in the output? Try it and check."</span>
       </div>
       <div class="trace-row">
@@ -254,7 +270,7 @@
         <span class="te te-accept">Accept</span>
         <span class="te-text">"Yes — the stop value is excluded, so 6 is needed to include 5."</span>
       </div>
-      <p class="tp-note">The classic off-by-one path. The nudge kept the group thinking; the trace records exactly where the misconception was corrected.</p>
+      <p class="tp-note">The classic off-by-one path. The AI's question kept the group thinking; the trace records exactly where the misconception was corrected.</p>
     </div>
 
     <div class="trace-pattern">
@@ -279,13 +295,13 @@
     </div>
 
     <div class="trace-pattern">
-      <div class="tp-label tp-label-red">Pattern 4 — Flag, Multiple Retries</div>
+      <div class="tp-label tp-label-red">Pattern 4 — Several Rounds of Revision</div>
       <div class="trace-row">
         <span class="te te-submit">Submit</span>
         <span class="te-text"><code>[1, 2, 3, 4, 5]</code> &nbsp;<em>(literal list, not range)</em></span>
       </div>
       <div class="trace-row">
-        <span class="te te-flag">Flag</span>
+        <span class="te te-flag">Sent back</span>
         <span class="te-text">"The question asks for a range() call — can you rewrite this?"</span>
       </div>
       <div class="trace-row">
@@ -293,7 +309,7 @@
         <span class="te-text"><code>range(5)</code></span>
       </div>
       <div class="trace-row">
-        <span class="te te-nudge">Nudge</span>
+        <span class="te te-nudge">Sent back</span>
         <span class="te-text">"range(5) starts at 0. How do you make it start at 1?"</span>
       </div>
       <div class="trace-row">
@@ -328,7 +344,7 @@
         <span class="te-text"><code>range(1, 5)</code></span>
       </div>
       <div class="trace-row">
-        <span class="te te-nudge">Nudge</span>
+        <span class="te te-nudge">Sent back</span>
         <span class="te-text">"Check if 5 appears in the output."</span>
       </div>
       <div class="trace-row">
@@ -359,33 +375,11 @@
 
   <div class="callout callout-gold" style="margin-top:1.25rem">
     <strong>Final answers: identical. Traces: completely different.</strong>
-    Group A held a confident misconception, had it surfaced by a nudge, and corrected it. Group B guessed correctly without fully resolving the question. Grading the output reveals nothing. The trace reveals everything.
+    Group A held a confident misconception, had it surfaced when the AI sent the answer back, and corrected it. Group B guessed correctly without fully resolving the question. Grading the output reveals nothing. The trace reveals everything.
   </div>
 
   <hr class="section-divider">
 
-  <!-- RESEARCH STATUS -->
-  <div class="section-header">
-    <span class="badge">Research Status</span>
-  </div>
-  <h2>Where the Project Stands</h2>
-
-  <p>coLearn-AI is an active research project, not a finished product. It is currently in use at multiple universities, and that real classroom use is shaping its development — but it is still very much a work in progress.</p>
-
-  <div class="card-grid">
-    <div class="card accent-teal">
-      <h4>In Use</h4>
-      <p>The platform is running in live courses across several institutions. Activities have been completed by real student groups, and the epistemic trace data is being collected and analyzed.</p>
-    </div>
-    <div class="card accent-gold">
-      <h4>Biggest Open Challenge</h4>
-      <p>The AI guidance layer — the feedback prompts and sample responses that shape every nudge — is the hardest part to get right. Small wording differences produce very different student experiences. Calibrating this well is an ongoing effort.</p>
-    </div>
-    <div class="card accent-purple">
-      <h4>What We Are Working On</h4>
-      <p>We are exploring ways for the system to improve its own guidance over time — using the epistemic trace data to identify where nudges succeeded or failed and adjusting accordingly. Self-improving scaffolding is the next research frontier.</p>
-    </div>
-  </div>
 
   <div class="callout callout-teal">
     <strong>Feedback from this workshop matters.</strong>
@@ -396,7 +390,7 @@
 
   <div class="page-nav">
     <a href="index.html">← Home</a>
-    <a href="part2.html">Part 2: Hands-on Activity →</a>
+    <a href="part2.html">Part 2: Be a Student →</a>
   </div>
 
 </div>
@@ -405,6 +399,7 @@
   <div class="footer-links">
     <a href="https://jimskon.github.io/coLearn-AI-Information/" target="_blank">coLearn-AI Project Info</a>
     <a href="https://computing.kenyon.edu/skonjp/" target="_blank">James Paul Skon &mdash; Kenyon College</a>
+    <a href="https://ki.se/personer/james-skon" target="_blank">James Paul Skon &mdash; Karolinska Institutet</a>
     <a href="https://colearn-ai.com" target="_blank">colearn-ai.com</a>
   </div>
   <div>CCSC:MW 2026 Workshop &middot; coLearn-AI: AI-Mediated Collaborative Learning</div>

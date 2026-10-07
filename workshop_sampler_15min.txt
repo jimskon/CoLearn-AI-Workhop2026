@@ -1,0 +1,75 @@
+%% coLearn-AI Workshop — 15-minute programming sampler (CCSC:MW 2026)
+%% Sized for the 20-minute Part 2 slot: four short question groups.
+
+\title{For Loops — 15-Minute Sampler}
+\name{workshop_sampler_15min_2026}
+\studentlevel{CS1 Python, around week 5; comfortable with variables and print; just introduced to for loops. Workshop participants are instructors playing students.}
+\activitycontext{A short tour of counter-controlled loops with range(): predict, rewrite, and trace. Groups work in POGIL roles and the typing turn rotates after each submission.}
+\aicodeguidance{Require real loop constructs. Reject hard-coded lists or repeated print statements. Accept any variable names and any equivalent range() arguments. Ask one focused question at a time and never give the answer.}
+\retries{2}
+
+\section{Predict}{4}
+\questiongroup{What does range() produce?}
+\question{Before running it, predict exactly what this prints. Then run it. If your prediction was wrong, explain what surprised you.}
+\python
+for i in range(2, 10, 3):
+    print(i)
+\endpython
+\textresponse{3}
+\sampleresponses{It prints 2, 5, 8 on separate lines. It starts at 2 and adds 3 each time. 11 would be past the stop value, and the stop value 10 itself is never included.}
+\feedbackprompt{Accept if the group gives 2, 5, 8 and says why nothing past 8 is printed (the next value, 11, is not less than the stop value 10). If they include 10 or 11, ask what range() does with its stop value. If they give only numbers with no reason, ask why the loop stops after 8.}
+\questiontype{output_prediction}
+\endquestion
+\endquestiongroup
+
+\section{Rewrite}{4}
+\questiongroup{From a list to range()}
+\question{This loop uses a literal list. Rewrite it with range() so it prints exactly the same values.}
+\python
+for value in [5, 10, 15, 20, 25, 30]:
+    print(value, end=" ")
+
+# Rewrite the loop using range() here:
+\endpython
+\sampleresponses{for value in range(5, 31, 5):
+    print(value, end=" ")}
+\feedbackprompt{Accept any range() call that produces 5, 10, 15, 20, 25, 30, for example range(5, 31, 5) or range(5, 35, 5). If the stop value is 30, ask whether 30 appears in the output. If the step is not 5, ask how far apart the values are. If they keep the list, ask them to let range() generate the values.}
+\questiontype{code_writing}
+\endquestion
+\endquestiongroup
+
+\section{Trace}{5}
+\questiongroup{Tracing an accumulator}
+\question{Trace this loop by hand. Fill in the value of total after each iteration.}
+\python
+total = 0
+for number in range(1, 5):
+    total = total + number
+print(total)
+\endpython
+\table{Execution Trace}
+\row Iteration & number & total (after)
+\row 1 & \tresponse & \tresponse
+\row 2 & \tresponse & \tresponse
+\row 3 & \tresponse & \tresponse
+\row 4 & \tresponse & \tresponse
+\endtable
+\sampleresponses{Iteration 1: number 1, total 1. Iteration 2: number 2, total 3. Iteration 3: number 3, total 6. Iteration 4: number 4, total 10. The program prints 10.}
+\feedbackprompt{Accept if number takes the values 1, 2, 3, 4 and total goes 1, 3, 6, 10. If they add a fifth row or use number 5, ask which values range(1, 5) produces. If a total is wrong, ask what total was just before that iteration.}
+\questiontype{code_reading}
+\endquestion
+\endquestiongroup
+
+\section{Reflect}{2}
+\questiongroup{How did your group work?}
+\question{Which question produced the most real discussion in your group, and why?}
+\multiplechoice{}
+\choice{Predict: we disagreed before running the code}
+\choice{Rewrite: getting the range() arguments right}
+\choice{Trace: stepping through by hand showed what we didn't know}
+\endmultiplechoice
+\textresponse{2}
+\feedbackprompt{Accept any choice that comes with one specific reason from the group's discussion. If they give no reason, ask what was said that made that question productive.}
+\questiontype{reflection}
+\endquestion
+\endquestiongroup

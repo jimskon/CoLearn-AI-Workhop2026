@@ -19,6 +19,7 @@
     <a href="part5.html">Part 5</a>
     <a href="markup.html">Markup</a>
     <a href="research.html">Research</a>
+    <a href="resources.html">Resources</a>
   </div>
 </nav>
 
@@ -27,15 +28,23 @@
   <h1>Deployment &amp; Classroom Integration</h1>
   <div class="part-meta">
     <span>⏱ 15 minutes</span>
-    <span>2:30 – 2:45</span>
-    <span>Discussion + facilitator demo</span>
+    <span>2:25 – 2:40</span>
+    <span>Presenter-led + Q&amp;A</span>
   </div>
 </div>
 
 <div class="container">
 
-  <!-- INTRO -->
-  <p style="margin-top:0.5rem">You've experienced the platform and authored questions. This section covers the practical side: how to set up and run coLearn-AI in a real class, what the instructor sees, and what early classroom use has shown.</p>
+  <div class="task-now" style="margin-top:0.5rem">
+    <div class="tn-label">Right now · 15 minutes</div>
+    <div class="tn-goal">Picture running a coLearn-AI activity in your own class next term.</div>
+    <ol>
+      <li><strong>2:25 · 6 min:</strong> <a href="#session">running a class session</a>: before, during, and after.</li>
+      <li><strong>2:31 · 6 min:</strong> <a href="#adapting">turning a lab you already have</a> into an activity.</li>
+      <li><strong>2:37 · 3 min:</strong> questions.</li>
+    </ol>
+    <div class="tn-out">The other sections on this page are reference for later: group formation, the instructor view, hosting, and early results.</div>
+  </div>
 
   <hr class="section-divider">
 
@@ -45,6 +54,8 @@
   </div>
   <h2>Group Formation &amp; Role Assignment</h2>
 
+  <div class="ref-note">📖 Reference: not covered live.</div>
+
   <div class="card-grid">
     <div class="card accent-purple">
       <h4>Group Size</h4>
@@ -52,7 +63,7 @@
     </div>
     <div class="card accent-teal">
       <h4>Role Assignment</h4>
-      <p>The platform assigns or the instructor assigns — the Spokesperson (typist) rotates each question automatically. You can set the rotation schedule in the activity settings.</p>
+      <p>When the platform forms groups, it assigns roles in this order: Facilitator, Process Analyst, Quality Control, Spokesperson. The typing turn passes to the next member after every submission. Instructors can also rotate the turn by hand from the View Groups page.</p>
     </div>
     <div class="card accent-gold">
       <h4>Forming Groups</h4>
@@ -62,7 +73,7 @@
 
   <div class="callout callout-teal">
     <strong>A note on slower participants</strong>
-    Rotating submission control can delay the group if one member is slower to type or to reach consensus. This is a known design tension — the friction is partially intentional (it keeps the group talking) but can become frustrating if too extreme. Consider allowing the current Spokesperson to pass control voluntarily if the group is clearly ready.
+    Rotating submission control can delay the group if one member is slower to type or to reach consensus. This is a known design tension — the friction is partially intentional (it keeps the group talking) but can become frustrating if too extreme. If a group is held up, rotate the turn by hand from the View Groups page.
   </div>
 
   <hr class="section-divider">
@@ -73,14 +84,15 @@
   </div>
   <h2>What You See During Class</h2>
 
-  <p>The instructor dashboard updates in real time as groups work. For each group you can see:</p>
+  <div class="ref-note">📖 Reference: you saw this live at the end of Part 2.</div>
+
+  <p>The <strong>View Groups</strong> page updates live as groups work. For each group you can see:</p>
 
   <ul>
-    <li>Current question and submission status (stuck, in progress, accepted)</li>
-    <li>Number of nudges and flags received per question</li>
-    <li>The full epistemic trace — every submission, every AI response, every revision</li>
-    <li>Prediction vs. final answer comparison</li>
-    <li>Which groups finished early and which need support</li>
+    <li>Progress (<em>Question Group 3 of 6</em>), the section timer, and who is connected and holding the turn</li>
+    <li>The number of submissions each question group took</li>
+    <li>In <a href="research.html">Observation view</a>: a timeline with accepted and sent-back submissions, an idle timer, and one-tap behavior tags</li>
+    <li><strong>Review Activity</strong>: the group's full work and epistemic trace, with every submission, AI response, and revision</li>
   </ul>
 
   <div class="callout callout-purple">
@@ -92,10 +104,9 @@
   <p>The trace is persistent and exportable. After class, you can:</p>
 
   <ul>
-    <li>Identify questions where most groups needed a nudge — candidate for revision or a short lecture intervention</li>
-    <li>Spot groups where one member dominated submissions (the trace shows who had keyboard control)</li>
-    <li>Review prediction accuracy — did groups know what to expect before running the code?</li>
-    <li>Export traces as JSON or CSV for research or grading</li>
+    <li>Identify questions where most groups were sent back. These are candidates for revising the question or for a short mini-lecture.</li>
+    <li>Spot groups where one member dominated. The trace shows who submitted each answer.</li>
+    <li>Use the <a href="research.html">Research Statistics</a> pages and CSV exports for participation, revision, and outcome measures</li>
   </ul>
 
   <hr class="section-divider">
@@ -104,15 +115,15 @@
   <div class="section-header">
     <span class="badge">Logistics</span>
   </div>
-  <h2>Running a coLearn-AI Class Session</h2>
+  <h2 id="session">Running a coLearn-AI Class Session</h2>
 
   <ul class="steps">
     <li>Before class, create or select the activity in the authoring tool and verify the activity guidance and question-level guidance are complete.</li>
-    <li>At the start of class, assign or confirm groups, explain the roles, and give students the activity join code. Allow 3–5 minutes for setup and role selection.</li>
-    <li>Launch the activity. Project the instructor dashboard so you can see group progress without walking to each table.</li>
-    <li>During the activity, intervene at the instructor level — answer procedural questions, unblock groups that are genuinely stuck after 3 retries — but avoid resolving content questions directly. Let the AI do that.</li>
+    <li>At the start of class, assign or confirm groups, explain the roles, and give students the class join code. Allow 3–5 minutes for setup and role selection.</li>
+    <li>Launch the activity. Keep the View Groups page open (Observation view on a tablet works well) so you can see group progress without walking to each table.</li>
+    <li>During the activity, intervene at the instructor level — answer procedural questions, unblock groups that are genuinely stuck after their allowed retries — but avoid resolving content questions directly. Let the AI do that.</li>
     <li>After the activity completes, run a 5–10 minute whole-class debrief. Project one or two traces. Ask the Process Analysts to share.</li>
-    <li>After class, review the traces and adjust feedback prompts for questions that were too easy, too hard, or produced unexpected nudge behavior.</li>
+    <li>After class, review the traces and adjust feedback prompts for questions that were too easy, too hard, or produced unexpected AI feedback.</li>
   </ul>
 
   <hr class="section-divider">
@@ -123,6 +134,8 @@
   </div>
   <h2>Hosting Options</h2>
 
+  <div class="ref-note">📖 Reference: not covered live.</div>
+
   <div class="card-grid">
     <div class="card accent-purple">
       <h4>colearn-ai.com (Hosted)</h4>
@@ -130,7 +143,7 @@
     </div>
     <div class="card accent-teal">
       <h4>Self-Hosted</h4>
-      <p>The platform can be deployed on your institution's servers. Suitable for courses with data privacy requirements. Requires a server with Python and a database backend. Contact the project for the installation guide.</p>
+      <p>The platform can be deployed on your institution's servers. Suitable for courses with data privacy requirements. Requires a Linux server running Node.js and MySQL. Contact the project for the installation guide.</p>
     </div>
     <div class="card accent-gold">
       <h4>Pilot / Research Use</h4>
@@ -144,7 +157,7 @@
   <div class="section-header">
     <span class="badge">Adapting Materials</span>
   </div>
-  <h2>Turning Existing Lab Materials into coLearn-AI Activities</h2>
+  <h2 id="adapting">Turning Existing Lab Materials into coLearn-AI Activities</h2>
 
   <p>You don't need to start from scratch. Most CS1 and data structures lab assignments can be converted into coLearn-AI activities by:</p>
 
@@ -172,13 +185,15 @@
   </div>
   <h2>What Early Classroom Use Has Shown</h2>
 
+  <div class="ref-note">📖 Reference: not covered live.</div>
+
   <div class="card-grid">
     <div class="card accent-green">
       <h4>✅ Promising</h4>
       <ul>
         <li>Participation appeared more evenly distributed. Turn-taking and revisions made each student's contributions visible.</li>
         <li>Instructors saw the reasoning process, not just final answers — for the first time.</li>
-        <li>Groups that struggled with a nudge often produced the clearest post-activity explanations.</li>
+        <li>Groups that were sent back and revised often produced the clearest post-activity explanations.</li>
       </ul>
     </div>
     <div class="card accent-red">
@@ -196,7 +211,7 @@
   </div>
 
   <div class="page-nav">
-    <a href="part3.html">← Part 3: Activity Design</a>
+    <a href="part3.html">← Part 3: Create an Activity</a>
     <a href="part5.html">Part 5: Research Discussion →</a>
   </div>
 
@@ -206,6 +221,7 @@
   <div class="footer-links">
     <a href="https://jimskon.github.io/coLearn-AI-Information/" target="_blank">coLearn-AI Project Info</a>
     <a href="https://computing.kenyon.edu/skonjp/" target="_blank">James Paul Skon &mdash; Kenyon College</a>
+    <a href="https://ki.se/personer/james-skon" target="_blank">James Paul Skon &mdash; Karolinska Institutet</a>
     <a href="https://colearn-ai.com" target="_blank">colearn-ai.com</a>
   </div>
   <div>CCSC:MW 2026 Workshop &middot; coLearn-AI: AI-Mediated Collaborative Learning</div>

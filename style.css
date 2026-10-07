@@ -480,9 +480,8 @@ li { margin-bottom: 0.35rem; }
 
 .steps li {
   counter-increment: steps;
-  display: flex;
-  gap: 1rem;
-  padding: 0.85rem 0;
+  position: relative;
+  padding: 0.85rem 0 0.85rem 2.75rem;
   border-bottom: 1px solid var(--border);
   margin: 0;
 }
@@ -491,6 +490,9 @@ li { margin-bottom: 0.35rem; }
 
 .steps li::before {
   content: counter(steps);
+  position: absolute;
+  left: 0;
+  top: 0.85rem;
   width: 28px;
   height: 28px;
   border-radius: 50%;
@@ -501,8 +503,7 @@ li { margin-bottom: 0.35rem; }
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-  margin-top: 0.15rem;
+  margin-top: 0.1rem;
 }
 
 /* ── OUTCOMES ── */
@@ -801,3 +802,27 @@ li { margin-bottom: 0.35rem; }
 .login-table { border-collapse:collapse; font-size:0.92rem; margin:0.5rem 0 1rem; }
 .login-table td, .login-table th { padding:0.4rem 0.9rem; border-bottom:1px solid #e8e4f8; text-align:left; }
 .login-table code { font-size:0.9rem; }
+
+/* ── "YOUR TASK NOW" BOX + RUN ORDER ── */
+.task-now {
+  background: var(--kenyon);
+  color: white;
+  border-radius: 10px;
+  padding: 1.1rem 1.4rem;
+  margin: 0.5rem 0 1.75rem;
+}
+.task-now .tn-label {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 0.3rem;
+}
+.task-now .tn-goal { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.6rem; }
+.task-now ol { margin: 0 0 0 1.2rem; }
+.task-now li { margin-bottom: 0.2rem; }
+.task-now .tn-out { margin-top: 0.6rem; font-size: 0.9rem; opacity: 0.9; }
+.task-now a { color: white; }
+
+.ref-note {
+  font-size: 0.85rem; color: var(--muted);
+  border: 1px dashed var(--border); border-radius: 6px;
+  padding: 0.5rem 0.8rem; margin-bottom: 1rem;
+}

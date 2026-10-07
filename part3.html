@@ -28,6 +28,7 @@
     <a href="part5.html">Part 5</a>
     <a href="markup.html">Markup</a>
     <a href="research.html">Research</a>
+    <a href="resources.html">Resources</a>
   </div>
 </nav>
 
@@ -35,27 +36,33 @@
   <div class="part-num">Part 3 of 5</div>
   <h1>Create an Activity</h1>
   <div class="part-meta">
-    <span>&#9201; 80 minutes</span>
-    <span>1:10 &ndash; 2:30</span>
+    <span>&#9201; 75 minutes</span>
+    <span>1:10 &ndash; 2:25</span>
     <span>You are now the author</span>
   </div>
 </div>
 
 <div class="container">
 
-  <div class="callout callout-purple" style="margin-top:0.5rem">
-    <strong>Your role just changed.</strong>
-    You are now designing an activity for <em>your</em> students. You&rsquo;ll watch one being built and revised live, take a tour of the authoring tools, and then &mdash; the main event &mdash; build and test an activity of your own in a small group.
+  <div class="task-now" style="margin-top:0.5rem">
+    <div class="tn-label">Right now · 75 minutes · You are the author</div>
+    <div class="tn-goal">Leave with a small activity for your own course that you have built, tested, and saved.</div>
+    <ol>
+      <li><strong>1:10 · 5 min:</strong> how the AI is guided, and what an activity looks like underneath.</li>
+      <li><strong>1:15 · 15 min:</strong> watch an activity being built and revised with an LLM, with a tour of the tools.</li>
+      <li><strong>1:30 · 45 min:</strong> <a href="#yourturn">your turn</a>. Plan, build, test in the Sandbox, and save.</li>
+      <li><strong>2:15 · 10 min:</strong> three groups share one question each.</li>
+    </ol>
+    <div class="tn-out">Deliverable: a 2–3 question activity whose feedback prompts behave the way you intended, with its source saved somewhere you own.</div>
   </div>
 
   <table class="ml-table" style="margin-top:1rem">
     <thead><tr><th style="width:18%">Time</th><th>What happens</th></tr></thead>
     <tbody>
       <tr><td>5 min</td><td><a href="#layers">How the AI is guided</a> and <a href="#glimpse">a first look at the markup</a></td></tr>
-      <tr><td>15 min</td><td><a href="#demo">Live demo:</a> build an activity, then revise it with an LLM</td></tr>
-      <tr><td>10 min</td><td><a href="#tour">Tour:</a> Visual Editor, Source and Sandbox</td></tr>
-      <tr><td>40 min</td><td><a href="#yourturn">Your turn:</a> create and test an activity in a small group</td></tr>
-      <tr><td>10 min</td><td><a href="#share">Share</a> with the room</td></tr>
+      <tr><td>15 min</td><td><a href="#demo">Live demo:</a> build an activity, revise it with an LLM, and tour the Visual Editor, Source and Sandbox</td></tr>
+      <tr><td>45 min</td><td><a href="#yourturn">Your turn:</a> create, test and save an activity in a small group</td></tr>
+      <tr><td>10 min</td><td><a href="#share">Share</a> with the room (3 groups)</td></tr>
     </tbody>
   </table>
 
@@ -133,11 +140,11 @@ for i in range(2, 10, 3):
 
   <div class="section-header" id="demo">
     <span class="badge">Live Demo</span>
-    <span class="time">~15 min</span>
+    <span class="time">~15 min, with the tour</span>
   </div>
   <h2>Build It, Then Revise It with an LLM</h2>
 
-  <p>Watch the facilitator create an activity from scratch and improve it in a few rounds. You&rsquo;ll do the same thing in your group.</p>
+  <p>Watch the facilitator create an activity from scratch and improve it in a round or two, using the tools described below. You&rsquo;ll do the same thing in your group.</p>
 
   <ol class="steps">
     <li><strong>Describe it to the AI Builder.</strong> Topic, students, how many questions, what reasoning they should show. The platform generates a first draft.</li>
@@ -156,7 +163,7 @@ for i in range(2, 10, 3):
 
   <div class="section-header" id="tour">
     <span class="badge">Tour</span>
-    <span class="time">~10 min</span>
+    <span class="time">shown during the demo</span>
   </div>
   <h2>The Authoring Tools</h2>
 
@@ -181,6 +188,8 @@ for i in range(2, 10, 3):
     <span class="badge">Creation &amp; Editing</span>
   </div>
   <h2>Six Ways to Create and Edit an Activity</h2>
+
+  <div class="ref-note">📖 <strong>Reference: not covered live.</strong> Read this after the workshop, or skim it if you finish early.</div>
 
   <p>coLearn-AI activities are plain-text markup files. That means you can create and edit them through several different workflows &mdash; choose the one that fits your style and how much of the markup you want to write by hand.</p>
 
@@ -259,21 +268,27 @@ for i in range(2, 10, 3):
 
   <div class="section-header" id="yourturn">
     <span class="badge">Your Turn</span>
-    <span class="time">40 min</span>
+    <span class="time">45 min · 1:30 – 2:15</span>
   </div>
-  <h2>Create and Test Your Own Activity</h2>
+  <h2>Create, Test and Save Your Own Activity</h2>
 
-  <p>Work in a small group or on your own. Aim for something small that works: <strong>2&ndash;3 questions</strong> on a topic you teach, tested in the Sandbox.</p>
+  <p>Work with your table, or on your own. Aim for something <strong>small that works</strong>: 2&ndash;3 questions on a topic you teach, tested in the Sandbox. Three good questions beat ten untested ones.</p>
 
-  <h3>Creator Logins</h3>
-  <table class="login-table">
-    <tr><th>Email</th><td><code>c1@school.edu</code> &hellip; <code>c15@school.edu</code> &mdash; one per group; the facilitator will give you your number</td></tr>
-    <tr><th>Password</th><td><code>Kenyon</code></td></tr>
-  </table>
-  <p style="font-size:0.88rem; color:var(--muted)">Log out of your student account first, then log in at <a href="https://csdev.kenyon.edu" target="_blank">csdev.kenyon.edu</a>.</p>
+  <div class="card accent-purple" style="margin-bottom:1.25rem">
+    <h4>Split the work at your table</h4>
+    <ul>
+      <li><strong>Driver:</strong> logged in with the table&rsquo;s creator account. Builds and edits.</li>
+      <li><strong>Planner:</strong> keeps the Step 1 plan, and checks each feedback prompt against it.</li>
+      <li><strong>Tester:</strong> writes the three test answers per question for Step 3, and reads the AI&rsquo;s replies aloud.</li>
+      <li><strong>Timekeeper:</strong> calls each step on time. Saving at 2:10 is not optional.</li>
+    </ul>
+  </div>
 
-  <h3>Step 1 &mdash; Pick a Topic and Plan (10 min)</h3>
-  <p>Choose one idea your students find hard. For each question, decide before you touch the tool:</p>
+  <h3>Step 0 &mdash; Switch Accounts (1:30, 3 min)</h3>
+  <p>The Driver logs out of the student account and logs in at <a href="https://csdev.kenyon.edu" target="_blank">csdev.kenyon.edu</a> with the <strong>creator</strong> login on their card.</p>
+
+  <h3>Step 1 &mdash; Pick a Topic and Plan (1:33, 7 min)</h3>
+  <p>Choose one idea your students find hard. Before you touch the tool, decide for each question:</p>
   <div class="template-box">
     <strong>What should students do?</strong> <span class="placeholder">predict / explain / write code / compare / critique</span><br><br>
     <strong>What does a good answer contain?</strong> <span class="placeholder">this becomes the sample response</span><br><br>
@@ -281,26 +296,29 @@ for i in range(2, 10, 3):
     <strong>What common mistake should the AI ask about?</strong> <span class="placeholder">e.g. &ldquo;includes the stop value&rdquo;</span>
   </div>
 
-  <h3>Step 2 &mdash; Build a Draft (10 min)</h3>
+  <h3>Step 2 &mdash; Build a Draft (1:40, 10 min)</h3>
   <ol class="steps">
     <li>Create a new activity in the <strong>CCSC:MW</strong> class.</li>
-    <li>Describe it to the <strong>AI Builder</strong>, using your plan from Step 1 &mdash; or use <strong>Copy for LLM</strong> with your own LLM.</li>
+    <li>Describe it to the <strong>AI Builder</strong> using your plan from Step 1. Or use <strong>Copy for LLM</strong> with your own LLM.</li>
     <li>Check every question in the Visual Editor. Does each one have a sample response and a feedback prompt you agree with?</li>
   </ol>
 
-  <h3>Step 3 &mdash; Test in the Sandbox and Revise (15 min)</h3>
-  <p>Open the <strong>Sandbox</strong> and submit three answers to each question:</p>
+  <h3>Step 3 &mdash; Test in the Sandbox and Revise (1:50, 20 min)</h3>
+  <p>This is the most important step. Open the <strong>Sandbox</strong> and submit three answers to each question:</p>
   <ol class="steps">
-    <li>A clearly correct answer &mdash; it should be <strong>accepted</strong>.</li>
-    <li>A plausible but wrong answer &mdash; the AI should ask you to <strong>revise</strong>, with a question that points at the mistake without giving it away.</li>
-    <li>An answer that misses the point &mdash; it should also get <strong>revise</strong>.</li>
+    <li>A clearly correct answer. It should be <strong>accepted</strong>.</li>
+    <li>A plausible but wrong answer. It should be <strong>sent back</strong> with a question that points at the mistake without giving it away.</li>
+    <li>An answer that misses the point. It should also be <strong>sent back</strong>.</li>
   </ol>
-  <p>If the AI gets it wrong, tighten the feedback prompt (in the Question Panel, or with another LLM round) and test again.</p>
+  <p>If the AI gets it wrong, tighten the feedback prompt, either in the Question Panel or with another LLM round, and test again. See <a href="#goodprompt">Writing a Good Feedback Prompt</a> below.</p>
 
-  <h3>Step 4 &mdash; Run It as a Group (5 min, optional)</h3>
-  <p>Logged in as students, run your activity together the way you did in Part 2.</p>
+  <h3>Step 4 &mdash; Save Your Work (2:10, 5 min)</h3>
+  <div class="callout callout-gold" style="margin-top:0.5rem">
+    <strong>The workshop accounts are temporary, so take your activity with you.</strong>
+    Open the <strong>Source</strong> view, select all, copy, and paste it into an email to yourself or into a document. That text <em>is</em> the activity. Later, paste it into the Source view of a new activity in any coLearn-AI account.
+  </div>
 
-  <h3>Writing a Good Feedback Prompt</h3>
+  <h3 id="goodprompt">Writing a Good Feedback Prompt</h3>
   <div class="demo-pair">
     <div class="demo-left">
       <div class="demo-label fp">Feedback prompt (hidden from students)</div>
@@ -336,10 +354,10 @@ for i in range(2, 10, 3):
 
   <div class="section-header" id="share">
     <span class="badge">Share Out</span>
-    <span class="time">~10 min</span>
+    <span class="time">10 min · 2:15</span>
   </div>
   <h2>Share with the Room</h2>
-  <p>Each group shows one question: what students see, the feedback prompt behind it, and how the AI actually responded in the Sandbox &mdash; expected or surprising?</p>
+  <p>The facilitator invites <strong>three groups</strong>, about 3 minutes each. Each group shows <em>one</em> question: what students see, the feedback prompt behind it, and how the AI responded in the Sandbox. Was that what you expected, or a surprise?</p>
 
   <div class="page-nav">
     <a href="part2.html">&larr; Part 2: Be a Student</a>
@@ -352,6 +370,7 @@ for i in range(2, 10, 3):
   <div class="footer-links">
     <a href="https://jimskon.github.io/coLearn-AI-Information/" target="_blank">coLearn-AI Project Info</a>
     <a href="https://computing.kenyon.edu/skonjp/" target="_blank">James Paul Skon &mdash; Kenyon College</a>
+    <a href="https://ki.se/personer/james-skon" target="_blank">James Paul Skon &mdash; Karolinska Institutet</a>
     <a href="https://colearn-ai.com" target="_blank">colearn-ai.com</a>
   </div>
   <div>CCSC:MW 2026 Workshop &middot; coLearn-AI: AI-Mediated Collaborative Learning</div>

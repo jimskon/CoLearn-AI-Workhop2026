@@ -14,12 +14,15 @@ James Paul Skon · Kenyon College / Karolinska Institutet
 | File | Content |
 |------|---------|
 | `index.html` | Welcome page — overview, agenda, prerequisites |
-| `part1.html` | Part 1: Introduction & System Overview (25 min) |
-| `part2.html` | Part 2: Hands-on Activity Experience (35 min) |
-| `part3.html` | Part 3: Activity Design & Implementation (60 min) |
-| `part4.html` | Part 4: Deployment & Classroom Integration (30 min) |
-| `part5.html` | Part 5: Research Collaboration & Discussion (20 min) |
+| `part1.html` | Part 1: Introduction (15 min) |
+| `part2.html` | Part 2: Be a Student (45 min) |
+| `part3.html` | Part 3: Create an Activity (75 min) |
+| `part4.html` | Part 4: Deployment & Classroom Integration (15 min) |
+| `part5.html` | Part 5: Survey, Research & Discussion (20 min) |
 | `research.html` | Research statistics overview — RQs, live observation card, metrics, exports, privacy |
+| `resources.html` | Final page — platform, demo, and project links; papers (PDFs in `papers/`); workshop materials |
+| `facilitator.html` | Facilitator run-sheet: setup checklist and minute-by-minute plan (not linked from the nav) |
+| `workshop_sampler_15min.txt` | 15-minute programming activity for the Part 2 slot |
 | `style.css` | Shared stylesheet (Kenyon purple theme) |
 
 ## Enabling GitHub Pages

@@ -1,0 +1,149 @@
+\title{coLearn-AI Workshop Feedback}
+\name{CoLearnWorkshopFeedback2026}
+\mode{assignment}
+
+\studentlevel{Workshop participant: a computing or other faculty member who has just completed a three-hour coLearn-AI workshop.}
+\activitycontext{Thank you for taking part in the coLearn-AI workshop. This short survey takes about 5 minutes, and your feedback directly shapes the platform and future workshops. Your responses are anonymous unless you choose to add your name and email in the last question.}
+\aicodeguidance{This is an ungraded feedback survey. Accept every submitted response as it is. Do not evaluate correctness, completeness, grammar, or style. Do not give hints, corrections, explanations, praise, or follow-up questions.}
+
+\section{Ratings}{2}
+
+\questiongroup{The Workshop}
+
+\question{Overall, how would you rate this workshop?}
+\multiplechoice{}
+\choice{Excellent: exceeded my expectations}
+\choice{Good: met my expectations}
+\choice{Fair: partly met my expectations}
+\choice{Poor: did not meet my expectations}
+\endmultiplechoice
+\sampleresponses{Answers will vary.}
+\feedbackprompt{Ungraded survey question. Accept any response without evaluation.}
+\questiontype{other}
+\endquestion
+
+\question{How clearly were coLearn-AI and the ideas behind it explained?}
+\multiplechoice{}
+\choice{Very clear: I understand how it works and why}
+\choice{Mostly clear: a few things I am still unsure about}
+\choice{Somewhat unclear: I need more explanation}
+\choice{Unclear: I am still confused about how it works}
+\endmultiplechoice
+\sampleresponses{Answers will vary.}
+\feedbackprompt{Ungraded survey question. Accept any response without evaluation.}
+\questiontype{other}
+\endquestion
+
+\question{Working through an activity as a student (Part 2) helped me understand the platform's approach.}
+\multiplechoice{}
+\choice{Strongly agree}
+\choice{Agree}
+\choice{Disagree}
+\choice{Strongly disagree}
+\endmultiplechoice
+\sampleresponses{Answers will vary.}
+\feedbackprompt{Ungraded survey question. Accept any response without evaluation.}
+\questiontype{other}
+\endquestion
+
+\question{After building and testing an activity (Part 3), I could create one for my own course.}
+\multiplechoice{}
+\choice{Strongly agree}
+\choice{Agree}
+\choice{Disagree}
+\choice{Strongly disagree}
+\endmultiplechoice
+\sampleresponses{Answers will vary.}
+\feedbackprompt{Ungraded survey question. Accept any response without evaluation.}
+\questiontype{other}
+\endquestion
+
+\question{How was the pace of the workshop?}
+\multiplechoice{}
+\choice{Too fast}
+\choice{About right}
+\choice{Too slow}
+\endmultiplechoice
+\sampleresponses{Answers will vary.}
+\feedbackprompt{Ungraded survey question. Accept any response without evaluation.}
+\questiontype{other}
+\endquestion
+
+\question{How likely are you to try coLearn-AI, or a similar structured approach to AI, in your own teaching?}
+\multiplechoice{}
+\choice{Very likely: I plan to explore this seriously}
+\choice{Somewhat likely: I want to learn more first}
+\choice{Unlikely: interesting, but not a fit for my context right now}
+\choice{Not likely: this approach is not right for my courses}
+\endmultiplechoice
+\sampleresponses{Answers will vary.}
+\feedbackprompt{Ungraded survey question. Accept any response without evaluation.}
+\questiontype{other}
+\endquestion
+
+\endquestiongroup
+
+\section{Comments}{2}
+
+\questiongroup{Your Comments}
+
+\text{A sentence or two is plenty. Type "none" to skip a question.}
+
+\question{What was the most valuable part of the workshop for you?}
+\textresponse{3}
+\sampleresponses{Answers will vary.}
+\feedbackprompt{Ungraded survey question. Accept any response, including "none", without evaluation.}
+\questiontype{other}
+\endquestion
+
+\question{What would you change, cut, or add?}
+\textresponse{3}
+\sampleresponses{Answers will vary.}
+\feedbackprompt{Ungraded survey question. Accept any response, including "none", without evaluation.}
+\questiontype{other}
+\endquestion
+
+\question{Did you find the framing (cognitive bypass, Piaget, Vygotsky, POGIL) compelling, unconvincing, or worth discussing further? Do you still have questions about coLearn-AI or the research?}
+\textresponse{3}
+\sampleresponses{Answers will vary.}
+\feedbackprompt{Ungraded survey question. Accept any response, including "none", without evaluation.}
+\questiontype{other}
+\endquestion
+
+\endquestiongroup
+
+\section{Getting Involved}{1}
+
+\questiongroup{Next Steps}
+
+\question{Are you interested in piloting coLearn-AI in one of your courses?}
+\multiplechoice{}
+\choice{Yes: please follow up with me}
+\choice{Maybe: I would like more information first}
+\choice{Not now, but possibly in the future}
+\choice{No}
+\endmultiplechoice
+\sampleresponses{Answers will vary.}
+\feedbackprompt{Ungraded survey question. Accept any response without evaluation.}
+\questiontype{other}
+\endquestion
+
+\question{Are you interested in contributing to the research, as a collaborating instructor, a co-investigator, or by sharing data from your institution?}
+\multiplechoice{}
+\choice{Yes: please contact me}
+\choice{Possibly: I want to know more about what is involved}
+\choice{Not at this time}
+\endmultiplechoice
+\sampleresponses{Answers will vary.}
+\feedbackprompt{Ungraded survey question. Accept any response without evaluation.}
+\questiontype{other}
+\endquestion
+
+\question{If you would like us to follow up about piloting or the research, enter your name and email. To stay anonymous, type "none".}
+\textresponse{2}
+\sampleresponses{Answers will vary.}
+\feedbackprompt{Optional, ungraded survey question. Accept any response, including "none", without evaluation.}
+\questiontype{other}
+\endquestion
+
+\endquestiongroup

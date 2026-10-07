@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resources · coLearn-AI Workshop</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .link-card { display: flex; flex-direction: column; }
+  .link-card p { flex: 1; font-size: 0.92rem; }
+  .link-card .btn { align-self: flex-start; margin-top: 0.75rem; }
+  .link-card .url { font-size: 0.8rem; color: var(--muted); word-break: break-all; }
+
+  .paper {
+    background: var(--card); border: 1px solid var(--border);
+    border-left: 4px solid var(--kenyon);
+    border-radius: 10px; padding: 1.3rem 1.5rem; margin-bottom: 1.1rem;
+  }
+  .paper .venue {
+    display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--kenyon);
+    background: #EDE5F8; padding: 0.15rem 0.55rem; border-radius: 4px; margin-bottom: 0.45rem;
+  }
+  .paper h3 { margin: 0 0 0.2rem; }
+  .paper .authors { font-size: 0.9rem; color: var(--muted); margin-bottom: 0.6rem; }
+  .paper p { font-size: 0.92rem; }
+  .paper .btn-group { margin: 0.75rem 0 0; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="index.html">coLearn-AI Workshop</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="part1.html">Part 1</a>
+    <a href="part2.html">Part 2</a>
+    <a href="part3.html">Part 3</a>
+    <a href="part4.html">Part 4</a>
+    <a href="part5.html">Part 5</a>
+    <a href="markup.html">Markup</a>
+    <a href="research.html">Research</a>
+    <a href="resources.html" class="active">Resources</a>
+  </div>
+</nav>
+
+<div class="part-stripe">
+  <div class="part-num">After the Workshop</div>
+  <h1>Resources</h1>
+  <div class="part-meta">
+    <span>Platform &amp; demo</span>
+    <span>Project information</span>
+    <span>Papers</span>
+    <span>Workshop materials</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <p style="margin-top:0.5rem">Everything from this workshop in one place: the platform, a demo you can try on your own, project information, and papers about coLearn-AI.</p>
+
+  <hr class="section-divider">
+
+  <!-- LINKS -->
+  <div class="section-header" style="margin-top:0">
+    <span class="badge">coLearn-AI</span>
+  </div>
+  <h2>Platform &amp; Project Links</h2>
+
+  <div class="card-grid">
+    <div class="card accent-purple link-card">
+      <h4>🌐 coLearn-AI Platform</h4>
+      <p>The live platform. Instructors author activities, manage classes and groups, and monitor groups as they work.</p>
+      <span class="url">colearn-ai.com</span>
+      <a href="https://colearn-ai.com" class="btn btn-primary" target="_blank" rel="noopener">↗ Open coLearn-AI</a>
+    </div>
+    <div class="card accent-teal link-card">
+      <h4>🧪 Try the Demo</h4>
+      <p>A demo instance where you can explore coLearn-AI activities without setting up a class.</p>
+      <span class="url">colearn-ai.com/demo/aied2026</span>
+      <a href="https://colearn-ai.com/demo/aied2026" class="btn btn-primary" target="_blank" rel="noopener">↗ Open the Demo</a>
+    </div>
+    <div class="card accent-gold link-card">
+      <h4>📘 Project Information</h4>
+      <p>An overview of the coLearn-AI project: goals, design, and how the system works.</p>
+      <span class="url">jimskon.github.io/coLearn-AI-Information</span>
+      <a href="https://jimskon.github.io/coLearn-AI-Information/" class="btn btn-primary" target="_blank" rel="noopener">↗ Project Information</a>
+    </div>
+    <div class="card accent-green link-card">
+      <h4>🔬 Research Site</h4>
+      <p>Research on collaborative learning, computing education, and AI-mediated learning environments.</p>
+      <span class="url">computing.kenyon.edu/skonjp</span>
+      <a href="https://computing.kenyon.edu/skonjp/" class="btn btn-primary" target="_blank" rel="noopener">↗ Research Site</a>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- PAPERS -->
+  <div class="section-header">
+    <span class="badge">Papers</span>
+  </div>
+  <h2>Read the Papers</h2>
+
+  <div class="paper">
+    <span class="venue">CCSC:MW 2026 · Kenyon College · Oct 9–10, 2026</span>
+    <h3>AI-Mediated Collaborative Cognition: Designing Systems That Preserve Reasoning in the Age of LLMs</h3>
+    <div class="authors">James Paul Skon</div>
+    <p>When LLMs can produce correct answers with little effort, students risk <em>cognitive bypass</em>: correct results without the reasoning those results are supposed to reflect. The paper argues for system-level design that makes reasoning a condition for progress. It presents coLearn-AI as an example of that approach, with role-based collaboration, turn-taking, AI limited to a scaffolding role, and an append-only interaction trace.</p>
+    <div class="btn-group">
+      <a href="papers/Skon-2026-AI-Mediated-Collaborative-Cognition.pdf" class="btn btn-primary" target="_blank">View PDF</a>
+    </div>
+  </div>
+
+  <div class="paper">
+    <span class="venue">CCSC:NE · April 11, 2026</span>
+    <h3>AI-Enhanced Guided-Inquiry Platform for Collaborative Learning in Introductory Programming</h3>
+    <div class="authors">Bo Kim, James Skon</div>
+    <p>Introduces coLearn-AI, which combines guided-inquiry pedagogy with AI formative feedback for group work in introductory programming. Instructors author structured activities and manage groups, and they embed AI guidance directives in activity files to keep feedback aligned with their teaching goals. The platform includes synchronous workspaces, turn-taking, and analytics dashboards.</p>
+    <div class="btn-group">
+      <a href="papers/Kim-Skon-AI-Enhanced-Guided-Inquiry-Platform.pdf" class="btn btn-primary" target="_blank">View PDF</a>
+    </div>
+  </div>
+
+  <div class="paper">
+    <span class="venue">ASEE Northeast Section · March 26, 2026</span>
+    <h3>Automated Assessment using AI-Enhanced Guided-Inquiry Learning Platform</h3>
+    <div class="authors">Bo Kim, James Skon</div>
+    <p>Describes an assessment mode for the platform. In this mode it delivers work to one learner at a time, turns off formative AI help, and runs submissions through an AI first-pass grade constrained by instructor rubrics, with each score explained by reference to the student's work. Instructors review the AI's grades, adjust them, and publish final scores through an auditable interface.</p>
+    <div class="btn-group">
+      <a href="papers/Kim-Skon-Automated-Assessment.pdf" class="btn btn-primary" target="_blank">View PDF</a>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- WORKSHOP MATERIALS -->
+  <div class="section-header">
+    <span class="badge">This Workshop</span>
+  </div>
+  <h2>Workshop Materials</h2>
+
+  <div class="card-grid">
+    <div class="card accent-purple">
+      <h4>📄 Workshop Sampler Activity</h4>
+      <p>The activity used in the hands-on session, ready to import or adapt.</p>
+      <ul>
+        <li><a href="workshop_sampler_15min.txt" target="_blank">workshop_sampler_15min.txt</a> — the 15-minute version used in Part 2</li>
+        <li><a href="workshop_sampler.txt" target="_blank">workshop_sampler.txt</a> — longer version (older markup format)</li>
+        <li><a href="workshop_sampler.json" target="_blank">workshop_sampler.json</a> — import bundle</li>
+      </ul>
+    </div>
+    <div class="card accent-teal">
+      <h4>✏️ Authoring Reference</h4>
+      <p>The complete activity markup language, with every tag and option.</p>
+      <ul>
+        <li><a href="markup.html">Markup Reference</a></li>
+        <li><a href="part3.html">Part 3: Activity Design</a></li>
+      </ul>
+    </div>
+    <div class="card accent-gold">
+      <h4>📊 Research Statistics</h4>
+      <p>The research questions, the live Observation view, metrics, exports, and privacy.</p>
+      <ul>
+        <li><a href="research.html">Research Statistics Overview</a></li>
+        <li><a href="part5.html#research-underway">Research Underway (Part 5)</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- CONTACT -->
+  <div class="section-header">
+    <span class="badge">Contact</span>
+  </div>
+  <h2>Get in Touch</h2>
+
+  <div class="card accent-purple">
+    <h4><a href="https://computing.kenyon.edu/skonjp/" target="_blank" rel="noopener">James Paul Skon</a></h4>
+    <p>Professor of Mathematics and Computer Science, Kenyon College · <a href="https://ki.se/personer/james-skon" target="_blank" rel="noopener">Karolinska Institutet</a></p>
+    <p><a href="mailto:skonjp@kenyon.edu">skonjp@kenyon.edu</a>. Questions, pilots, co-designed studies, and shared activities are all welcome.</p>
+  </div>
+
+  <div class="page-nav">
+    <a href="part5.html">← Part 5: Research &amp; Discussion</a>
+    <a href="index.html">↑ Back to Home</a>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="https://jimskon.github.io/coLearn-AI-Information/" target="_blank">coLearn-AI Project Info</a>
+    <a href="https://computing.kenyon.edu/skonjp/" target="_blank">James Paul Skon &mdash; Kenyon College</a>
+    <a href="https://ki.se/personer/james-skon" target="_blank">James Paul Skon &mdash; Karolinska Institutet</a>
+    <a href="https://colearn-ai.com" target="_blank">colearn-ai.com</a>
+  </div>
+  <div>CCSC:MW 2026 Workshop &middot; coLearn-AI: AI-Mediated Collaborative Learning</div>
+</footer>
+</body>
+</html>

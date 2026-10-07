@@ -1,0 +1,57 @@
+%% coLearn-AI Workshop — 15-minute non-programming activity (CCSC:MW 2026)
+%% "How Maps Mislead": predict, explain, compare, decide. No code and no outside tools.
+%% Images: two Wikimedia Commons files (CC BY-SA, credited in captions) and two
+%% maps of fictional data made for this workshop, hosted on the workshop site.
+
+\title{How Maps Mislead — 15-Minute Sampler}
+\name{workshop_maps_15min_2026}
+\studentlevel{Faculty from any discipline acting as first-year college students. No background in geography, statistics, or programming is assumed.}
+\activitycontext{Maps feel like plain facts, but every map is a set of choices. In this activity your group predicts, explains, and compares to find out how two common choices, the projection and the color categories, change the story a map tells. The AI cannot see the images, so describe what you see in your answers.}
+\aicodeguidance{Students are faculty from many disciplines acting as first-year students. Judge their reasoning, not their vocabulary: accept everyday words for technical ideas, such as "stretched near the poles" for scale distortion or "how the colors are grouped" for classification. Ask one focused question at a time. Never state the answer, the area ratio, or the technical term the group is missing.}
+\retries{2}
+
+\section{Predict}{3}
+\questiongroup{How big is Greenland?}
+\image{https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Mercator_projection_Square.JPG/960px-Mercator_projection_Square.JPG}{A world map in the Mercator projection. Image: Strebe, CC BY-SA 3.0, via Wikimedia Commons.}{70%}
+\question{On this map, Greenland and Africa look roughly the same size. Before looking anything up, agree on a prediction as a group. In real land area, how many times larger than Greenland is Africa? Give a number, and say why your group chose it.}
+\textresponse{3}
+\sampleresponses{We predict Africa is about 2 times larger than Greenland, because on this map they look nearly the same size and Africa looks only a little bigger.}
+\feedbackprompt{This is a prediction, so any number is acceptable. Accept if the group gives a specific number and at least one reason based on the map or what they know. If they give no number, ask what single number they would commit to. If they give a number with no reason, ask what made them choose it. Do not reveal the true ratio (about 14) or say whether their prediction is close.}
+\questiontype{application_problem_solving}
+\endquestion
+\endquestiongroup
+
+\section{Explain}{4}
+\questiongroup{What happened to Greenland?}
+\image{https://upload.wikimedia.org/wikipedia/commons/e/ee/Worlds_animate.gif}{The same world in several projections. Watch how the size of Greenland and Africa changes. Image: Jakub Nowosad, CC BY-SA 4.0, via Wikimedia Commons.}{60%}
+\text{In real land area, Africa is about 30.4 million km² and Greenland about 2.2 million km². Africa is about 14 times larger.}
+\question{Compare this with your group's prediction. Then explain why the first map made Greenland look so much bigger than it is. Where on the map does this distortion happen, and why would a mapmaker accept it?}
+\textresponse{4}
+\sampleresponses{We predicted 2, but it is about 14. The Mercator map stretches land more and more the farther it is from the equator, so places near the poles, like Greenland, look far too big, while Africa sits on the equator and is barely stretched. Mapmakers accepted this because Mercator keeps directions and local shapes correct, which made it useful for navigation.}
+\feedbackprompt{Accept if the group (1) compares the true ratio of about 14 with their own prediction and (2) explains that the map enlarges areas more the farther they are from the equator, toward the poles. Everyday wording is fine. If they only say "the map is wrong" or "it is distorted", ask where on the map the distortion is largest. If they do not say why anyone would use such a map, ask what the map might be good for despite this. Do not mention navigation or preserving directions yourself.}
+\questiontype{conceptual_explanation}
+\endquestion
+\endquestiongroup
+
+\section{Compare}{5}
+\questiongroup{Same data, two maps}
+\text{Both maps show exactly the same numbers: the percentage of households without home internet in the 12 districts of Harbor County, a fictional county. Only the color categories in the legend are different.}
+\image{https://jimskon.github.io/CoLearn-AI-Workhop2026/images/map-equal-interval.svg}{Map 1}{70%}
+\image{https://jimskon.github.io/CoLearn-AI-Workhop2026/images/map-quantile.svg}{Map 2}{70%}
+\question{Imagine each map on the front page of a local newspaper. What story would a reader take from Map 1, and what story from Map 2? Use the legends to explain why the same data can look so different.}
+\textresponse{4}
+\sampleresponses{Map 1 says there is one problem district, F, and the rest of the county is fine. Map 2 says the problem is spread across much of the county, with I and K as dark as F. The difference is the legend: Map 1 splits 0 to 40 percent into equal steps, so only F's 38 percent reaches the dark color. Map 2 puts about a quarter of the districts in each color, so I and K at 15 to 16 percent get the same dark color as F at 38 percent.}
+\feedbackprompt{The data are: A 9, B 12, C 6, D 14, E 11, F 38, G 13, H 8, I 16, J 10, K 15, L 12 (percent). Map 1 uses equal steps (0-10, 11-20, 21-30, 31-40), so only F is dark and most districts look alike. Map 2 groups districts by rank (6-9, 10-12, 13-14, 15-38), so F, I and K share the darkest color, and D and G get the next darkest. Accept if the group (1) describes a different reader takeaway for each map, for example "one problem district" versus "a widespread problem", and (2) explains the difference by how the legend groups the values into colors. If they describe only one map, ask about the other. If they say the data must differ, ask them to compare the two legends. If they notice that I and K look like F in Map 2, ask whether 15 to 16 percent and 38 percent should look the same.}
+\questiontype{application_problem_solving}
+\endquestion
+\endquestiongroup
+
+\section{Decide}{3}
+\questiongroup{Your choice as the mapmaker}
+\question{The county will publish one of these maps in a report to decide where to spend money on internet access. Which map would you publish, and what one sentence would you add under it so that readers are not misled?}
+\textresponse{4}
+\sampleresponses{We would publish Map 1, because it shows how extreme District F is, and that is where money is most needed. Under it we would write: "District F (38%) is more than twice any other district; all others are between 6% and 16%."}
+\feedbackprompt{There is no single correct map. Accept either map if the group (1) gives a reason tied to the purpose, deciding where to spend money, and (2) writes a caption sentence that tells readers something the colors alone could hide, such as F's actual value, the range of the other districts, or how the colors are grouped. If the caption only restates the title, ask what a reader could still misunderstand. If they give no reason for their choice, ask how their map helps the decision about where to spend.}
+\questiontype{application_problem_solving}
+\endquestion
+\endquestiongroup

@@ -784,3 +784,20 @@ li { margin-bottom: 0.35rem; }
   flex-wrap: wrap;
   margin-bottom: 0.5rem;
 }
+
+/* ---------- Markup reference tables & source listings (markup.html, part3.html) ---------- */
+.ml-table { width:100%; border-collapse:collapse; font-size:0.88rem; margin:0.75rem 0 1.25rem; }
+.ml-table th { background:#5b4fcf; color:#fff; text-align:left; padding:0.5rem 0.8rem; font-weight:600; font-size:0.82rem; letter-spacing:0.04em; }
+.ml-table td { padding:0.45rem 0.8rem; border-bottom:1px solid #e8e4f8; vertical-align:top; }
+.ml-table tr:nth-child(even) td { background:#f7f5ff; }
+.ml-table code { font-family:'Courier New',monospace; font-size:0.82rem; color:#5b4fcf; }
+.table-wrap { overflow-x:auto; }
+.activity-source { background:#1e1e2e; color:#cdd6f4; font-family:'Courier New',monospace; font-size:0.8rem; line-height:1.65; padding:1.25rem 1.5rem; border-radius:10px; border:1px solid #313244; overflow-x:auto; white-space:pre; }
+.ml-kw { color:#cba6f7; }
+.ml-arg { color:#a6e3a1; }
+.ml-str { color:#f38ba8; }
+.toc { display:flex; flex-wrap:wrap; gap:0.4rem 0.6rem; margin:1rem 0 1.5rem; font-size:0.88rem; }
+.toc a { padding:0.25rem 0.6rem; border:1px solid #e0daf8; border-radius:6px; text-decoration:none; }
+.login-table { border-collapse:collapse; font-size:0.92rem; margin:0.5rem 0 1rem; }
+.login-table td, .login-table th { padding:0.4rem 0.9rem; border-bottom:1px solid #e8e4f8; text-align:left; }
+.login-table code { font-size:0.9rem; }

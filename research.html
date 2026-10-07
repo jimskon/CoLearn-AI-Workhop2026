@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Statistics · coLearn-AI Workshop</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  /* Page-local styles for the research overview */
+  .shot {
+    position: relative;
+    max-width: 760px;
+    margin: 1.25rem auto 0.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 18px rgba(45, 21, 80, 0.12);
+    background: white;
+  }
+  .shot img { display: block; width: 100%; height: auto; border-radius: 10px; }
+  .pin {
+    position: absolute;
+    width: 24px; height: 24px;
+    margin: -12px 0 0 -12px;
+    border-radius: 50%;
+    background: var(--kenyon);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: center;
+    box-shadow: 0 0 0 2px white;
+  }
+  .shot-caption { text-align: center; font-size: 0.85rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+  .anno { list-style: none; margin: 0; padding: 0; }
+  .anno li {
+    display: flex; gap: 0.8rem; align-items: flex-start;
+    padding: 0.7rem 0; border-bottom: 1px solid var(--border);
+  }
+  .anno li:last-child { border-bottom: none; }
+  .anno .num {
+    flex: 0 0 24px; height: 24px; border-radius: 50%;
+    background: var(--kenyon); color: white;
+    font-size: 0.75rem; font-weight: 700; line-height: 24px; text-align: center;
+    margin-top: 0.15rem;
+  }
+  .anno .body strong { display: block; margin-bottom: 0.15rem; }
+  .anno .body p { font-size: 0.92rem; margin: 0; }
+
+  .chip {
+    display: inline-block; min-width: 3.2rem;
+    padding: 0.1rem 0.5rem; border-radius: 5px; border: 1px solid;
+    font-size: 0.82rem; font-weight: 700; text-align: center;
+  }
+  .swatch {
+    display: inline-block; width: 1.6rem; height: 0.85rem;
+    border: 1px solid #b8b8c8; border-radius: 2px; vertical-align: middle;
+  }
+  .ring {
+    display: inline-block; width: 0.8rem; height: 0.8rem;
+    border-radius: 50%; border: 3px solid; vertical-align: middle;
+  }
+
+  .rq {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1.4rem 1.5rem; margin-bottom: 1.25rem;
+  }
+  .rq .rq-id {
+    display: inline-block; background: var(--kenyon); color: white;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em;
+    padding: 0.15rem 0.55rem; border-radius: 4px; margin-bottom: 0.5rem;
+  }
+  .rq h3 { margin-top: 0; }
+  .rq .rq-q { font-size: 1.05rem; font-style: italic; margin-bottom: 1rem; }
+  .rq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+  .rq-grid h4 { font-size: 0.9rem; margin-bottom: 0.3rem; color: var(--kenyon); }
+  .rq-grid p, .rq-grid li { font-size: 0.9rem; }
+  .rq-grid code, .ml-table code { word-break: break-word; }
+  .rq .discuss {
+    margin-top: 1rem; padding: 0.7rem 1rem; border-radius: 6px;
+    background: #FFF4E0; border-left: 4px solid var(--gold); font-size: 0.9rem;
+  }
+  .table-wrap { overflow-x: auto; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="index.html">coLearn-AI Workshop</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="part1.html">Part 1</a>
+    <a href="part2.html">Part 2</a>
+    <a href="part3.html">Part 3</a>
+    <a href="part4.html">Part 4</a>
+    <a href="part5.html">Part 5</a>
+    <a href="markup.html">Markup</a>
+    <a href="research.html" class="active">Research</a>
+  </div>
+</nav>
+
+<div class="part-stripe">
+  <div class="part-num">Companion to Part 5</div>
+  <h1>Research Statistics in coLearn-AI</h1>
+  <div class="part-meta">
+    <span>Research questions</span>
+    <span>Live classroom observation</span>
+    <span>Metrics &amp; exports</span>
+    <span>Privacy</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <p style="margin-top:0.5rem">coLearn-AI records every group submission, every AI decision, and every revision as an append-only <strong>interaction trace</strong>. The research statistics features turn that trace into measures that address three research questions about AI-gated collaborative learning. These features also give instructors a live view of how each group is working during class.</p>
+
+  <div class="callout callout-purple">
+    <strong>Design principle: the trace is the source of truth.</strong>
+    The pipeline runs in three stages. The raw trace comes first. Reconstruction is done by pure, unit-tested functions. Derived measures and exports come last. The platform records new data only where the trace cannot reconstruct a fact, such as who held the turn or when an instructor stepped in. Research instrumentation <em>does not change how the platform behaves for students</em>.
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- RESEARCH QUESTIONS -->
+  <div class="section-header" style="margin-top:0">
+    <span class="badge">Research Questions</span>
+  </div>
+  <h2>What We Are Asking</h2>
+
+  <p>coLearn-AI makes two structural interventions. First, the group shares one activity, and turns <strong>rotate</strong> so a single student is responsible for each submission. Second, the AI <strong>gates progression</strong>: when reasoning is insufficient, it sends the answer back instead of letting the group move on. Each research question asks whether one of these mechanisms does what it is designed to do.</p>
+
+  <div class="rq">
+    <span class="rq-id">RQ1 · PARTICIPATION</span>
+    <h3>Does enforced turn-taking produce equitable participation?</h3>
+    <p class="rq-q">In unstructured group work, one confident student often does most of the work while the others watch. Rotating the active role is meant to spread both the work and the responsibility. Does it?</p>
+    <div class="rq-grid">
+      <div>
+        <h4>What is measured</h4>
+        <ul>
+          <li><strong>Submit balance</strong> (0–1): normalized entropy of submits across members. 1 means perfectly even.</li>
+          <li><strong>Turn balance</strong>: the same measure applied to turns held.</li>
+          <li><strong>Dominant member share</strong>, and the share of runs where <em>every</em> member submitted.</li>
+          <li><strong>Longest same-student submit streak</strong>.</li>
+          <li><strong>Skipped turns</strong>, <strong>instructor-reassigned turns</strong>, and turn → first-submit latency.</li>
+        </ul>
+      </div>
+      <div>
+        <h4>How to read it</h4>
+        <p>Balanced <em>submits</em> do not guarantee balanced <em>thinking</em>. A group can rotate the keyboard while one person dictates. That is why the live observation tags exist. <span class="chip" style="background:#fff3cd;border-color:#cc9a06;color:#664d03">Watch</span> (one drives, others watch) and <span class="chip" style="background:#d1e7dd;border-color:#198754;color:#0f5132">Talk</span> (discussing together) give a human check on what the trace counts.</p>
+        <p>The Group Size breakdown asks whether equity holds for groups of 2, 3, and 4.</p>
+      </div>
+    </div>
+    <div class="discuss"><strong>Discuss:</strong> What would convince you that participation was <em>cognitively</em> equitable, and not just equal in clicks?</div>
+  </div>
+
+  <div class="rq">
+    <span class="rq-id">RQ2 · REASONING &amp; REVISION</span>
+    <h3>When the AI blocks progression, how do student responses change?</h3>
+    <p class="rq-q">When the AI sends an answer back, it explains what reasoning is missing. Do students rethink the answer, or do they make the smallest edit that might get through?</p>
+    <div class="rq-grid">
+      <div>
+        <h4>What is measured</h4>
+        <ul>
+          <li><strong>Revised at least once / twice</strong>, and versions per question.</li>
+          <li><strong>Normalized edit distance</strong> and <strong>character delta</strong> between attempts.</li>
+          <li><strong>Code lines changed</strong>, and whether the program <strong>output changed</strong>.</li>
+          <li><strong>Time from rejection to the next attempt</strong>.</li>
+          <li><strong>Who revised</strong>: the same student or the next person in the rotation.</li>
+        </ul>
+      </div>
+      <div>
+        <h4>How to read it</h4>
+        <p>These are measures of revision <em>size</em>, not <em>quality</em>. A one-word fix can be a real insight, and a full rewrite can be noise. For qualitative coding, the <code>feedback_revision_pairs</code> export places each <em>answer before</em>, the <em>AI feedback</em>, and the <em>answer after</em> side by side. This is where human analysis, or LLM-assisted coding, takes over.</p>
+      </div>
+    </div>
+    <div class="discuss"><strong>Discuss:</strong> What coding scheme would you apply to before/feedback/after triples to tell genuine reasoning from strategic compliance?</div>
+  </div>
+
+  <div class="rq">
+    <span class="rq-id">RQ3 · PROGRESSION</span>
+    <h3>Do students satisfy the AI's requirements through revision, or bypass them?</h3>
+    <p class="rq-q">Gating is never absolute. After the allowed retries, a group can press <em>Continue</em>, and an instructor can force-advance a group. How often do groups earn their way forward?</p>
+    <div class="rq-grid">
+      <div>
+        <h4>What is measured</h4>
+        <p>Every question gets exactly one outcome:</p>
+        <ul>
+          <li><code>ai_accepted</code>: the reasoning met the bar.</li>
+          <li><code>continued</code>: the group used Continue after retries.</li>
+          <li><code>instructor_advanced</code>: the instructor force-advanced the group.</li>
+          <li><code>unresolved</code>: the group stopped there.</li>
+        </ul>
+        <p>Supporting measures:</p>
+        <ul>
+          <li>First-attempt acceptance.</li>
+          <li>Attempts to acceptance.</li>
+          <li>Eventual acceptance after an initial rejection.</li>
+          <li>Retry allowance used up.</li>
+          <li>Interventions after two or more consecutive rejections.</li>
+        </ul>
+      </div>
+      <div>
+        <h4>How to read it</h4>
+        <p>A high Continue rate on one question usually says more about the <em>question or its feedback prompt</em> than about the students. The guidance may be too strict, or the expected answer too narrow. Breaking these outcomes down by question and by question type tells activity authors where to revise. This is the "closing the loop" idea from Part 5.</p>
+      </div>
+    </div>
+    <div class="discuss"><strong>Discuss:</strong> Is some bypass healthy? Where should the line sit between productive struggle and a dead end?</div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- LIVE OBSERVATION -->
+  <div class="section-header">
+    <span class="badge">In the Classroom</span>
+  </div>
+  <h2>The Live Group Card (Observation View)</h2>
+
+  <p>On the instructor's <strong>View Groups</strong> page, an <em>Observation</em> view adds a timeline and tag buttons to each group's card. This lets one instructor watch a whole room, see which groups are stuck, and record what they observe with one tap. The card below shows a three-person group that has finished a nine-question-group activity.</p>
+
+  <div class="shot">
+    <img src="images/observation-group-card.png" alt="coLearn-AI View Groups card for Group 6 in Observation view, showing an activity timeline with tags and submit dots, eight observation tag buttons, a member list with roles, and per-question-group submission bars">
+    <span class="pin" style="left:44%; top:9%">1</span>
+    <span class="pin" style="left:61%; top:3%">2</span>
+    <span class="pin" style="left:85%; top:3%">3</span>
+    <span class="pin" style="left:38%; top:23.5%">4</span>
+    <span class="pin" style="left:56.5%; top:34.5%">5</span>
+    <span class="pin" style="left:49%; top:28.5%">6</span>
+    <span class="pin" style="left:49%; top:40.5%">7</span>
+    <span class="pin" style="left:82%; top:47.5%">8</span>
+    <span class="pin" style="left:50%; top:52%">9</span>
+    <span class="pin" style="left:2.5%; top:78%">10</span>
+  </div>
+  <p class="shot-caption">A completed group in Observation view. The numbers match the list below.</p>
+
+  <div class="card">
+    <ol class="anno">
+      <li><span class="num">1</span><div class="body"><strong>Group and progress</strong><p>The group number and where it is: <em>Question Group 4 of 9</em>, <em>Activity complete</em>, <em>Ended – incomplete</em>, and so on.</p></div></li>
+      <li><span class="num">2</span><div class="body"><strong>Section timer badge</strong><p>When the author gives a section a time budget, the badge counts down (<em>12 min left</em>). It turns yellow near the end and red at <em>Time out</em>. <em>Waiting</em> means no timed section is running. Here the group has finished. <em>Paused</em> and <em>Ended</em> are the other states.</p></div></li>
+      <li><span class="num">3</span><div class="body"><strong>Key, review, and instructor actions</strong><p><span class="chip" style="border-color:#888;color:#444">i</span> opens a key that explains every color and symbol on the card. <em>Review Activity</em> opens the group's work. The ⚠️ menu holds the deliberate interventions: clearing answers, force-advancing the group, or deleting the run. Each one asks for confirmation. A force-advance is logged as an intervention for RQ3.</p></div></li>
+      <li><span class="num">4</span><div class="body"><strong>Current section and clock</strong><p>On the left is the section the group is in (<em>Reflection</em>), with elapsed time against the section budget, such as <em>6:10 of 10 min</em>. On the right is the group's state. During a run it shows an <strong>idle timer</strong> that turns red after two minutes without activity. Here it reads <em>finished</em>.</p></div></li>
+      <li><span class="num">5</span><div class="body"><strong>Activity strip</strong><p>A timeline from the start of the run (left) to now (right), scaled to the activity's planned minutes.</p>
+        <p style="margin-top:0.4rem">
+          <span class="swatch" style="background:#a3cfbb"></span> active: typing, running code, submitting, or waiting on the AI &nbsp;·&nbsp;
+          <span class="swatch" style="background:#d1e7dd"></span> only teammates working in their Local Sandbox &nbsp;·&nbsp;
+          <span class="swatch" style="background:#fff"></span> idle &nbsp;·&nbsp;
+          <span class="swatch" style="background:#ffe69c"></span> active but past the section's planned time &nbsp;·&nbsp;
+          <span class="swatch" style="background:repeating-linear-gradient(135deg,#e6e6ee 0 4px,#fff 4px 8px)"></span> paused by the instructor (never counted as time)
+        </p>
+        <p style="margin-top:0.4rem">AI wait time counts as active, so a group waiting on feedback never looks idle.</p></div></li>
+      <li><span class="num">6</span><div class="body"><strong>Instructor tags (squares above)</strong><p>Each tap on a tag button drops a square at that moment, in the tag's color. In this run the instructor recorded several <em>Talk</em>, <em>Code</em>, and <em>Quiet</em> moments and one <em>Frust</em> late in the activity.</p></div></li>
+      <li><span class="num">7</span><div class="body"><strong>Submissions (dots below)</strong><p><span class="ring" style="border-color:#0d6efd"></span> submit accepted, and the group moved on. &nbsp; <span class="ring" style="border-color:#dc3545"></span> submit sent back by the AI. A red ring followed closely by a blue one shows a quick, successful revision. A run of red rings shows a group struggling with the AI's requirements. These are RQ2 and RQ3 as they happen.</p></div></li>
+      <li><span class="num">8</span><div class="body"><strong>Observation tag buttons</strong><p>Eight large buttons in fixed positions, sized for tapping on a tablet while walking the room. Mistaken taps can be undone for 10 seconds. <em>Code</em> is enabled only when the current question involves code. The full legend is below.</p></div></li>
+      <li><span class="num">9</span><div class="body"><strong>Members and roles</strong><p>Each student's assigned collaborative role. The student who currently holds the turn and those who are connected are marked with icons. The rotating turn is the mechanism behind RQ1.</p></div></li>
+      <li><span class="num">10</span><div class="body"><strong>Submissions per question group</strong><p>One bar per question group. The number is how many group submissions that question group took, and the bar height scales with it. A single submit (1) means the AI accepted the first attempt. Here Q6, Q8, and Q9 each took three submissions, so those are the questions to look at when revising the activity.</p></div></li>
+    </ol>
+  </div>
+
+  <h3>Observation Tags</h3>
+  <p>The tags record what the trace cannot see: how the group is behaving <em>in the room</em>. Each tag has a short behavioral cue so different instructors apply the tags consistently.</p>
+
+  <div class="table-wrap">
+  <table class="ml-table">
+    <tr><th>Tag</th><th>Meaning</th><th>What to look for</th></tr>
+    <tr><td><span class="chip" style="background:#d1e7dd;border-color:#198754;color:#0f5132">Talk</span></td><td>Discussing</td><td>Talking about the problem together.</td></tr>
+    <tr><td><span class="chip" style="background:#c3f0e0;border-color:#20a77a;color:#0b5e43">Code</span></td><td>All coding</td><td>Everyone working on the code (code questions only).</td></tr>
+    <tr><td><span class="chip" style="background:#fff3cd;border-color:#cc9a06;color:#664d03">Watch</span></td><td>One drives, others watch</td><td>Focused on screens; one person types, the others watch.</td></tr>
+    <tr><td><span class="chip" style="background:#e9ecef;border-color:#6c757d;color:#41464b">Quiet</span></td><td>Quiet, on task</td><td>Silent but working: reading or thinking.</td></tr>
+    <tr><td><span class="chip" style="background:#ffe5d0;border-color:#fd7e14;color:#984c0c">Help</span></td><td>Asking for help</td><td>Hand up, or asking or waiting for the instructor.</td></tr>
+    <tr><td><span class="chip" style="background:#f7b787;border-color:#ca5010;color:#5c2405">Frust</span></td><td>Frustrated</td><td>Sighs, head in hands, repeated failed runs.</td></tr>
+    <tr><td><span class="chip" style="background:#f8d7da;border-color:#dc3545;color:#842029">Off</span></td><td>Off topic</td><td>Socializing, phones, other work.</td></tr>
+    <tr><td><span class="chip" style="background:#fff;border-color:#adb5bd;color:#495057">?</span></td><td>Can't tell</td><td>Not visible, or unsure what they are doing.</td></tr>
+  </table>
+  </div>
+
+  <div class="callout callout-teal">
+    <strong>Each tap captures its context automatically.</strong>
+    Along with the time and the observer, each tag stores the question the group was on, whether it involved code, which student held the turn, how many seconds had passed since the last activity, whether an AI evaluation or code run was in progress, and the AI's most recent decision. A <em>Frust</em> tag can therefore be linked to the rejection that caused it, and a <em>Watch</em> tag to the student who was driving.
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- STATISTICS & EXPORTS -->
+  <div class="section-header">
+    <span class="badge">Analysis</span>
+  </div>
+  <h2>Research Statistics Pages &amp; Exports</h2>
+
+  <p>A separate <strong>Research Statistics</strong> area aggregates across runs, activities, and courses. Shared filters are kept in the URL, so a filtered view can be bookmarked or shared. The filters cover courses, date range, group size, question type, and the idle threshold used for time on task (10 minutes by default).</p>
+
+  <div class="card-grid">
+    <div class="card accent-purple">
+      <h4>Overview</h4>
+      <p>Scale, headline results, data coverage, and every exclusion, with counts.</p>
+    </div>
+    <div class="card accent-teal">
+      <h4>Participation · AI Gating · Revision</h4>
+      <p>The core measures for RQ1, RQ3, and RQ2.</p>
+    </div>
+    <div class="card accent-gold">
+      <h4>Time · Interventions</h4>
+      <p>Active versus wall-clock time (pauses excluded, idle gaps capped), time between attempts, and instructor force-advances and rotations.</p>
+    </div>
+    <div class="card accent-green">
+      <h4>Group Size · Question Type · Over Time</h4>
+      <p>The same measures broken down by group size, by question type (code writing, code reading, output prediction, debugging, explanation, and others), and by week or position in the course.</p>
+    </div>
+  </div>
+
+  <div class="callout callout-gold">
+    <strong>Honest numbers by construction.</strong>
+    Every percentage shows its numerator, denominator, and N. Test runs, instructor sandbox runs, demo classes, and groups with no student members are excluded. These exclusions are <em>counted and displayed, never silently dropped</em>. Turn, intervention, and observation data are recorded only from the day the feature was deployed. Runs with partial turn data are set aside from turn metrics and reported as such.
+  </div>
+
+  <h3>Row-level CSV Exports</h3>
+  <div class="table-wrap">
+  <table class="ml-table">
+    <tr><th>Export</th><th>One row per…</th><th>Use</th></tr>
+    <tr><td><code>question_attempts</code></td><td>evaluated attempt</td><td>AI decision, submitter pseudonym, time since the previous attempt, and the question's final outcome. Supports RQ3.</td></tr>
+    <tr><td><code>feedback_revision_pairs</code></td><td>AI rejection</td><td>Answer before, AI feedback, answer after, who revised, the next decision, and edit-distance measures. Supports RQ2 and qualitative coding.</td></tr>
+    <tr><td><code>group_participation</code></td><td>group run</td><td>Submit and turn balance, top share, streaks, skipped and reassigned turns, interventions, outcome counts, and time. Supports RQ1.</td></tr>
+    <tr><td><code>student_longitudinal</code></td><td>student per run</td><td>Submits, share of group submits, accepted and rejected attempts, and turns taken. Follows students across a course.</td></tr>
+    <tr><td><code>aggregate_statistics</code></td><td>metric</td><td>The aggregate table from the current filtered view.</td></tr>
+  </table>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- PRIVACY -->
+  <div class="section-header">
+    <span class="badge">Privacy</span>
+  </div>
+  <h2>Privacy &amp; Data Protection</h2>
+
+  <p>The research features are designed so that researchers can study patterns <em>without</em> learning who the students are, and so that live monitoring records behavior, not content.</p>
+
+  <div class="card-grid">
+    <div class="card accent-purple">
+      <h4>🔐 Pseudonymous IDs</h4>
+      <p>Students, groups, and instructors appear in exports only as pseudonyms such as <code>S-3f9a…</code>. Each pseudonym is a keyed hash (HMAC-SHA256) made with a secret that is held only on the server. A pseudonym stays the same across exports, so longitudinal analysis works, but it cannot be reversed without the server secret. If that secret is not configured, exports are refused.</p>
+    </div>
+    <div class="card accent-teal">
+      <h4>🚫 Never Exported</h4>
+      <p>Names and email addresses never leave the platform in research data. Student-level statistics include only accounts with the student role, so instructors and TAs who join a group do not distort the results.</p>
+    </div>
+    <div class="card accent-gold">
+      <h4>👁 Access Control</h4>
+      <p>Only instructors and activity creators can see research statistics, and only for <em>their own</em> courses. Administrators can see everything. The same rules apply to metrics, exports, run reconstruction, the live view, and observations.</p>
+    </div>
+    <div class="card accent-green">
+      <h4>📡 Signals, Not Content</h4>
+      <p>The activity strip is built from on/off activity flags in 10-second slices, with no keystrokes or text. Local Sandbox work sends only a content-free "working locally" signal, at most every 10 seconds. Nothing typed in the sandbox is recorded.</p>
+    </div>
+  </div>
+
+  <div class="callout callout-purple">
+    <strong>One export contains student writing.</strong>
+    <code>feedback_revision_pairs</code> includes answer text and AI feedback, because studying revision (RQ2) requires the words themselves. The interface labels it <em>"Contains answer text."</em> Treat it as identifiable data: students sometimes write their own names or personal details in free-text answers. Course names and activity titles are also exported as plain text. Research use of student data falls under each institution's IRB and consent process. The platform does not collect consent itself.
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- STATUS -->
+  <div class="section-header">
+    <span class="badge">Status</span>
+  </div>
+  <h2>Where the Work Stands</h2>
+
+  <div class="card">
+    <ul>
+      <li><strong>Built and in use:</strong> trace reconstruction, the participation, gating, revision, time, and intervention measures, the Research Statistics pages, the row-level exports, and the live Observation view with tags.</li>
+      <li><strong>In progress:</strong> an analysis page and export for observation tags, so tags can be compared with all idle periods and not only the ones an instructor happened to notice. Also in progress is a published definition of every metric.</li>
+      <li><strong>Optional tagging:</strong> authors can label questions with a question type. Every statistic works without these labels. Only the by-type breakdown needs them.</li>
+    </ul>
+  </div>
+
+  <div class="callout callout-green" style="margin-top:1.25rem">
+    <strong>Want to contribute data or analysis?</strong>
+    Running coLearn-AI activities in your own course produces exactly these traces. See <a href="part5.html#research-underway">Part 5</a> for ways to participate, or contact <a href="mailto:skonjp@kenyon.edu">skonjp@kenyon.edu</a>.
+  </div>
+
+  <div class="page-nav">
+    <a href="part5.html">← Part 5: Research &amp; Discussion</a>
+    <a href="index.html">↑ Back to Home</a>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="https://jimskon.github.io/coLearn-AI-Information/" target="_blank">coLearn-AI Project Info</a>
+    <a href="https://computing.kenyon.edu/skonjp/" target="_blank">James Paul Skon &mdash; Kenyon College</a>
+    <a href="https://colearn-ai.com" target="_blank">colearn-ai.com</a>
+  </div>
+  <div>CCSC:MW 2026 Workshop &middot; coLearn-AI: AI-Mediated Collaborative Learning</div>
+</footer>
+</body>
+</html>

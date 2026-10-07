@@ -19,6 +19,7 @@ James Paul Skon · Kenyon College / Karolinska Institutet
 | `part3.html` | Part 3: Activity Design & Implementation (60 min) |
 | `part4.html` | Part 4: Deployment & Classroom Integration (30 min) |
 | `part5.html` | Part 5: Research Collaboration & Discussion (20 min) |
+| `research.html` | Research statistics overview — RQs, live observation card, metrics, exports, privacy |
 | `style.css` | Shared stylesheet (Kenyon purple theme) |
 
 ## Enabling GitHub Pages

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markup Reference · coLearn-AI Workshop</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="index.html">coLearn-AI Workshop</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="part1.html">Part 1</a>
+    <a href="part2.html">Part 2</a>
+    <a href="part3.html">Part 3</a>
+    <a href="part4.html">Part 4</a>
+    <a href="part5.html">Part 5</a>
+    <a href="markup.html" class="active">Markup</a>
+    <a href="research.html">Research</a>
+  </div>
+</nav>
+
+<div class="part-stripe">
+  <div class="part-num">Reference</div>
+  <h1>The coLearn-AI Markup Language</h1>
+  <div class="part-meta">
+    <span>For when you want the details</span>
+    <span><a href="part3.html" style="color:inherit">&larr; Back to Part 3</a></span>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="callout callout-purple" style="margin-top:0.5rem">
+    <strong>You don&rsquo;t need to memorize this.</strong>
+    Most authors never write markup from scratch. They describe an activity to an LLM, edit in the Visual Editor, and open the Source view only to fine-tune. This page is here for when you want to know exactly what a tag does.
+  </div>
+
+  <p>An activity is a plain-text document. The platform reads it to build the student view, configure the AI feedback, and record the epistemic trace. Tags start with a backslash, take arguments in braces, and blocks are closed with a matching <code>\end&hellip;</code> tag.</p>
+
+  <div class="toc">
+    <a href="#example">Example</a>
+    <a href="#metadata">Activity settings</a>
+    <a href="#groups">Question groups</a>
+    <a href="#questions">Questions</a>
+    <a href="#aimode">Feedback style</a>
+    <a href="#ai">AI help blocks</a>
+    <a href="#info">Info bubbles</a>
+    <a href="#code">Code blocks</a>
+    <a href="#content">Text, lists, tables, images</a>
+    <a href="#score">Scoring</a>
+    <a href="#rules">Ground rules</a>
+  </div>
+
+  <hr class="section-divider">
+
+  <h2 id="example">A Small Complete Activity</h2>
+  <div class="activity-source"><span class="ml-kw">\title</span>{<span class="ml-arg">Counting with range()</span>}
+<span class="ml-kw">\name</span>{<span class="ml-arg">range_intro</span>}
+<span class="ml-kw">\studentlevel</span>{<span class="ml-arg">CS1 Python, week 5</span>}
+<span class="ml-kw">\activitycontext</span>{<span class="ml-arg">Groups explore how range() generates a sequence. Focus on the excluded stop value.</span>}
+<span class="ml-kw">\aicodeguidance</span>{<span class="ml-arg">Require a real loop. Accept any variable names.</span>}
+
+<span class="ml-kw">\section</span>{<span class="ml-arg">Predict, then run</span>}
+
+<span class="ml-kw">\questiongroup</span>{<span class="ml-arg">What does range() produce?</span>}
+<span class="ml-kw">\text</span>{<span class="ml-arg">Read the code with your group before you run it.</span>}
+
+<span class="ml-kw">\question</span>{<span class="ml-arg">Before running it, predict exactly what this prints. Then run it and explain any difference.</span>}
+<span class="ml-kw">\python</span>
+for i in range(2, 10, 3):
+    print(i)
+<span class="ml-kw">\endpython</span>
+<span class="ml-kw">\textresponse</span>{<span class="ml-arg">4</span>}
+<span class="ml-kw">\sampleresponses</span>{<span class="ml-arg">It prints 2, 5, 8. 10 is the stop value and is never included.</span>}
+<span class="ml-kw">\feedbackprompt</span>{<span class="ml-str">Accept if the group gives 2, 5, 8 and says why 10 is not printed. If they include 10 or 11, ask what the stop value means.</span>}
+<span class="ml-kw">\endquestion</span>
+<span class="ml-kw">\endquestiongroup</span></div>
+
+  <hr class="section-divider">
+
+  <h2 id="metadata">1. Activity Settings</h2>
+  <p>These go at the top of the document, before any question group.</p>
+  <div class="table-wrap"><table class="ml-table">
+    <thead><tr><th style="width:32%">Tag</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td><code>\title{...}</code></td><td>Title shown to students.</td></tr>
+      <tr><td><code>\name{...}</code></td><td>Unique internal identifier.</td></tr>
+      <tr><td><code>\studentlevel{...}</code></td><td>Who the students are, e.g. <code>CS1 Python, week 5</code>. Calibrates the AI&rsquo;s language.</td></tr>
+      <tr><td><code>\activitycontext{...}</code></td><td>Topic scope and teaching goals for the AI (activity-level guidance).</td></tr>
+      <tr><td><code>\aicodeguidance{...}</code></td><td>Activity-wide rules for the AI: follow-ups, scope limits, how strict to be with code.</td></tr>
+      <tr><td><code>\aimode{...}</code></td><td>How accepted answers are shown. See <a href="#aimode">Feedback style</a>.</td></tr>
+      <tr><td><code>\language{...}</code></td><td>Language the AI must respond in, e.g. <code>\language{Swedish}</code>. Default English.</td></tr>
+      <tr><td><code>\mode{group}</code></td><td>Normal collaborative activity (the default). Each group of questions must be submitted before the next opens.</td></tr>
+      <tr><td><code>\mode{test}</code></td><td>Graded assessment. <code>\test</code> is an older spelling of the same thing.</td></tr>
+      <tr><td><code>\mode{demo}</code></td><td>Every question group is open at once, there is no submit button, and each student works in their own saved copy.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2 id="groups">2. Question Groups &amp; Sections</h2>
+  <div class="table-wrap"><table class="ml-table">
+    <thead><tr><th style="width:32%">Tag</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td><code>\section{Title}</code></td><td>A heading. Structural only &mdash; nothing to answer.</td></tr>
+      <tr><td><code>\questiongroup{Title}</code> &hellip; <code>\endquestiongroup</code></td><td>A set of related questions the group answers and submits together. <strong>Everything students answer must be inside a question group.</strong></td></tr>
+    </tbody>
+  </table></div>
+
+  <h2 id="questions">3. Questions</h2>
+  <div class="table-wrap"><table class="ml-table">
+    <thead><tr><th style="width:32%">Tag</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td><code>\question{...}</code> &hellip; <code>\endquestion</code></td><td>A question. The closing <code>\endquestion</code> is required.</td></tr>
+      <tr><td><code>\textresponse{n}</code></td><td>An answer box <em>n</em> lines tall.</td></tr>
+      <tr><td><code>\sampleresponses{...}</code></td><td>A model answer. Hidden from students; helps the AI recognise good answers.</td></tr>
+      <tr><td><code>\feedbackprompt{...}</code></td><td>Your instructions to the AI for judging this question. Hidden from students. This is the most important thing you write.</td></tr>
+      <tr><td><code>\followupprompt{...}</code></td><td>Optional follow-up the AI can use, e.g. <code>Why might greedy fail?</code></td></tr>
+      <tr><td><code>\responsemode{questions}</code></td><td>Students write <em>questions</em> rather than answers (e.g. interview questions). The default, <code>answer</code>, never needs to be written.</td></tr>
+      <tr><td><code>\multiplechoice{key}</code> &hellip; <code>\endmultiplechoice</code></td><td>Single-answer multiple choice; the argument is the correct choice. Each option is a <code>\choice{...}</code>.</td></tr>
+      <tr><td><code>\multiplechoice{multiple}</code></td><td>Ungraded &ldquo;select all that apply&rdquo; survey.</td></tr>
+      <tr><td><code>\aimode{...}</code></td><td>Overrides the activity&rsquo;s feedback style for this one question.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 id="aimode">Feedback style: <code>\aimode</code></h3>
+  <p>The AI makes one of two decisions about each submission: <strong>accepted</strong> (the group moves on) or <strong>revise</strong> (yellow guidance asking them to think again). After the allowed number of tries the group can choose to continue anyway. <code>\aimode</code> takes a comma-separated list:</p>
+  <div class="table-wrap"><table class="ml-table">
+    <thead><tr><th style="width:32%">Value</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><code>no-positive</code></td><td>Default. Accepted answers advance without a praise message.</td></tr>
+      <tr><td><code>positive</code></td><td>Accepted answers get a short affirmative message in green.</td></tr>
+      <tr><td><code>brief</code></td><td>With <code>positive</code>, keep that message to one sentence.</td></tr>
+      <tr><td><code>lenient</code></td><td>Accept relevant, on-track work without demanding small refinements. Incorrect work still gets <em>revise</em>.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2 id="ai">4. AI Help Blocks</h2>
+  <p>An <code>\ai</code> block puts a small AI assistant between questions. It is a learning tool, not a question: it creates no answer and is never graded. Your guardrail keeps it from handing over the worksheet answers.</p>
+  <div class="activity-source"><span class="ml-kw">\ai</span>{<span class="ml-arg">explain</span>}
+<span class="ml-kw">\aititle</span>{<span class="ml-arg">AI Coach</span>}
+<span class="ml-kw">\aiprompt</span>{<span class="ml-arg">Ask the AI for help understanding what this code does.</span>}
+<span class="ml-kw">\aiguardrail</span>{<span class="ml-str">Help the student reason about the code. Do not give away the worksheet answers.</span>}
+<span class="ml-kw">\aicontext</span>{<span class="ml-arg">current-question,current-code,student-response</span>}
+<span class="ml-kw">\aiinput</span>{<span class="ml-arg">5</span>}
+<span class="ml-kw">\endai</span></div>
+  <div class="table-wrap"><table class="ml-table">
+    <thead><tr><th style="width:32%">Tag</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td><code>\ai{mode}</code> &hellip; <code>\endai</code></td><td>Mode is <code>explain</code>, <code>critique</code>, <code>testgen</code> or <code>generate</code>. Place directly inside a question group.</td></tr>
+      <tr><td><code>\aititle{...}</code></td><td>Card title students see.</td></tr>
+      <tr><td><code>\aiprompt{...}</code></td><td>Instructions students see.</td></tr>
+      <tr><td><code>\aiguardrail{...}</code></td><td>Hidden limits on what the AI may do.</td></tr>
+      <tr><td><code>\aicontext{...}</code></td><td>What the AI can see: <code>current-question</code>, <code>current-code</code>, <code>student-response</code>, <code>nearby-text</code>.</td></tr>
+      <tr><td><code>\aiinput{n}</code></td><td>Height of the student&rsquo;s input box.</td></tr>
+      <tr><td><code>\aimodel{...}</code></td><td>Optional: <code>gpt-5-mini</code> (default) or <code>gpt-4o-mini</code>.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2 id="info">5. Info Bubbles</h2>
+  <p><code>\info{target,seconds}{message}</code> shows a short coaching tip near part of the page, e.g. <code>\info{textresponse,10}{The active student types here.}</code>. Targets: <code>questiongroup</code>, <code>question</code>, <code>textresponse</code>, <code>coderesponse</code>, <code>submitbutton</code>, <code>aifeedback</code>. Keep the message to a handful of words.</p>
+
+  <h2 id="code">6. Code Blocks</h2>
+  <p>The text between the tags is the starter code students see. Each block can run; an optional argument sets a timeout in milliseconds.</p>
+  <div class="table-wrap"><table class="ml-table">
+    <thead><tr><th style="width:32%">Tag</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td><code>\python</code> &hellip; <code>\endpython</code></td><td>Python that runs in the browser. <code>\python{50000}</code> sets a timeout.</td></tr>
+      <tr><td><code>\pythonremote</code> &hellip; <code>\endpythonremote</code></td><td>Python that runs on the server (for libraries such as pandas).</td></tr>
+      <tr><td><code>\pythonturtle{WxH,timeout}</code> &hellip; <code>\endpythonturtle</code></td><td>Python Turtle with a drawing canvas, e.g. <code>\pythonturtle{900x600,50000}</code>.</td></tr>
+      <tr><td><code>\cpp</code> &hellip; <code>\endcpp</code></td><td>C++, compiled and run on the server.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2 id="content">7. Text, Lists, Tables &amp; Images</h2>
+  <div class="table-wrap"><table class="ml-table">
+    <thead><tr><th style="width:32%">Tag</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td><code>\text{...}</code></td><td>A paragraph.</td></tr>
+      <tr><td><code>\textbf{...}</code>, <code>\textit{...}</code></td><td>Bold and italic.</td></tr>
+      <tr><td><code>\begin{itemize}</code> &hellip; <code>\end{itemize}</code></td><td>Bulleted list; each line starts with <code>\item</code>. Use <code>enumerate</code> for a numbered list.</td></tr>
+      <tr><td><code>\table{caption}</code> &hellip; <code>\endtable</code></td><td>A table. Each row is <code>\row a &amp; b &amp; c</code>; put <code>\tresponse</code> in a cell students fill in.</td></tr>
+      <tr><td><code>\image{URL}{Caption}{Width}</code></td><td>An image; caption and width (e.g. <code>50%</code>) are optional.</td></tr>
+      <tr><td><code>\link{URL}{Text}</code></td><td>A hyperlink.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2 id="score">8. Scoring (Test Mode)</h2>
+  <p>In <code>\mode{test}</code>, a <code>\score{points,type}</code> &hellip; <code>\endscore</code> block inside a question holds the rubric. Type is <code>response</code>, <code>code</code> or <code>output</code>.</p>
+  <div class="activity-source"><span class="ml-kw">\score</span>{<span class="ml-arg">6,response</span>}
+6: Clear, correct explanation with example
+3-5: Mostly correct
+1-2: Partial understanding
+0: Incorrect or missing
+<span class="ml-kw">\endscore</span></div>
+
+  <h2 id="rules">Ground Rules</h2>
+  <ol class="steps">
+    <li>Everything students answer goes inside a <code>\questiongroup</code>.</li>
+    <li>Every <code>\question</code> ends with <code>\endquestion</code>.</li>
+    <li>Only <code>\score</code> blocks grade; feedback prompts guide, they don&rsquo;t score.</li>
+    <li>The AI responds only to what students actually submit.</li>
+  </ol>
+
+  <div class="page-nav">
+    <a href="part3.html">&larr; Part 3: Create an Activity</a>
+    <a href="index.html">Home &rarr;</a>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="https://jimskon.github.io/coLearn-AI-Information/" target="_blank">coLearn-AI Project Info</a>
+    <a href="https://computing.kenyon.edu/skonjp/" target="_blank">James Paul Skon &mdash; Kenyon College</a>
+    <a href="https://colearn-ai.com" target="_blank">colearn-ai.com</a>
+  </div>
+  <div>CCSC:MW 2026 Workshop &middot; coLearn-AI: AI-Mediated Collaborative Learning</div>
+</footer>
+</body>
+</html>

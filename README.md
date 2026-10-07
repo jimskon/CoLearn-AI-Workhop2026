@@ -24,6 +24,7 @@ James Paul Skon · Kenyon College / Karolinska Institutet
 | `facilitator.html` | Facilitator run-sheet: setup checklist and minute-by-minute plan (not linked from the nav) |
 | `workshop_sampler_15min.txt` | 15-minute programming activity for the Part 2 slot |
 | `workshop_maps_15min.txt` | 15-minute non-programming activity (How Maps Mislead); uses `images/map-*.svg` |
+| `feature_gallery_demo.txt` / `feature_gallery_group.txt` | Every markup feature, numbered by type, for reference (demo-mode and group-mode versions) |
 | `style.css` | Shared stylesheet (Kenyon purple theme) |
 
 ## Enabling GitHub Pages

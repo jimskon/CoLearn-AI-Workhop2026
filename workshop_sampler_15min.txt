@@ -1,6 +1,3 @@
-%% coLearn-AI Workshop — 15-minute programming sampler (CCSC:MW 2026)
-%% Sized for the 20-minute Part 2 slot: four short question groups.
-
 \title{For Loops — 15-Minute Sampler}
 \name{workshop_sampler_15min_2026}
 \studentlevel{CS1 Python, around week 5; comfortable with variables and print; just introduced to for loops. Workshop participants are instructors playing students.}

@@ -1,8 +1,3 @@
-%% coLearn-AI Workshop — 15-minute non-programming activity (CCSC:MW 2026)
-%% "How Maps Mislead": predict, explain, compare, decide. No code and no outside tools.
-%% Images: two Wikimedia Commons files (CC BY-SA, credited in captions) and two
-%% maps of fictional data made for this workshop, hosted on the workshop site.
-
 \title{How Maps Mislead — 15-Minute Sampler}
 \name{workshop_maps_15min_2026}
 \studentlevel{Faculty from any discipline acting as first-year college students. No background in geography, statistics, or programming is assumed.}

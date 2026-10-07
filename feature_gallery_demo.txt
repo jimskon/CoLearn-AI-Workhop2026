@@ -1,0 +1,364 @@
+\title{coLearn-AI Feature Gallery (Demo Version)}
+\name{feature_gallery_demo_2026}
+\mode{demo}
+\language{English}
+\studentlevel{Instructors exploring coLearn-AI authoring. Read it as a catalog of examples, not as an assignment.}
+\activitycontext{Demo mode: every question group is open at once, there is no Submit button, and each person edits their own copy. A gallery of every coLearn-AI markup feature, numbered by type. Each numbered section shows one family of features, with a short note saying which tags produce what you see. Open it in the Source view next to the run view to see the markup behind each example.}
+\aicodeguidance{This is a feature gallery for instructors. Accept any reasonable attempt, keep feedback to one short sentence, and never block progress for style. Where a question asks for code, accept any version that runs and does what the question asks.}
+\aimode{positive, brief}
+\retries{1}
+
+\section{1. Text and Formatting}{3}
+\questiongroup{1.1 Paragraphs, emphasis, lists, and links}
+\info{questiongroup,8}{Info bubbles like this one point at parts of the page.}
+\text{This paragraph is a \textbf{text} block. Inside any text you can use \textbf{bold}, \textit{italic}, and monospace for code words such as \mono{range(1, 5)} or \texttt{print()}.}
+\text{A bulleted list (itemize):}
+\begin{itemize}
+\item Each item starts with the item tag.
+\item Lists cannot be nested.
+\end{itemize}
+\text{A numbered list (enumerate):}
+\begin{enumerate}
+\item Read the question.
+\item Discuss it as a group.
+\item Submit an answer.
+\end{enumerate}
+\text{A hyperlink:}
+\link{https://jimskon.github.io/CoLearn-AI-Workhop2026/markup.html}{The workshop's markup reference}
+\question{1.1a Which of these formatting features would you use most in your own activities, and why?}
+\info{question,6}{Every question needs an end tag.}
+\textresponse{2}
+\sampleresponses{Numbered lists, to give students clear steps.}
+\feedbackprompt{Accept any answer that names a formatting feature and gives a reason.}
+\questiontype{other}
+\endquestion
+\endquestiongroup
+
+\section{2. Images and Tables}{3}
+\questiongroup{2.1 Images: three forms}
+\text{An image with no caption:}
+\image{https://jimskon.github.io/CoLearn-AI-Workhop2026/images/observation-group-card.png}
+\text{An image with a caption:}
+\image{https://jimskon.github.io/CoLearn-AI-Workhop2026/images/observation-group-card.png}{A View Groups card in Observation view.}
+\text{An image with a caption and a width:}
+\image{https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Mercator_projection_Square.JPG/960px-Mercator_projection_Square.JPG}{Mercator projection at 40% width. Image: Strebe, CC BY-SA 3.0, via Wikimedia Commons.}{40%}
+\question{2.1a The AI cannot see images. What does that mean for how you write a feedback prompt for a question about an image?}
+\textresponse{2}
+\sampleresponses{The feedback prompt has to state the facts in the image, because the AI only reads the text.}
+\feedbackprompt{Accept if the answer recognizes that the feedback prompt must describe what the image shows, or give the facts the AI needs.}
+\questiontype{conceptual_explanation}
+\endquestion
+\endquestiongroup
+
+\questiongroup{2.2 Tables: display-only and fill-in}
+\table{A display-only table (outside any question)}
+\row Tag & What it does
+\row table & Starts a table with a caption
+\row row & One row; cells are separated by ampersands
+\row tresponse & An editable cell students fill in
+\endtable
+\question{2.2a Complete the trace of total = total + n for n in range(1, 4), starting with total = 0.}
+\table{A fill-in table (inside a question)}
+\row n & total after
+\row 1 & \tresponse
+\row 2 & \tresponse
+\row 3 & \tresponse
+\endtable
+\sampleresponses{n 1: 1. n 2: 3. n 3: 6.}
+\feedbackprompt{Accept if total goes 1, 3, 6. If a value is wrong, ask what total was before that step.}
+\questiontype{code_reading}
+\endquestion
+\endquestiongroup
+
+\section{3. Text Responses and AI Feedback}{5}
+\questiongroup{3.1 A basic text response, and the feedback options}
+\text{Questions 3.1a to 3.1d all use a text box. They differ only in how the AI responds.}
+\question{3.1a (default feedback) In one sentence, what is a variable?}
+\info{textresponse,8}{The student holding the turn types here.}
+\textresponse{2}
+\sampleresponses{A named place in memory that stores a value.}
+\feedbackprompt{Accept any answer that says a variable stores a value under a name. If they only give an example, ask what the name refers to.}
+\info{aifeedback,8}{AI feedback appears here after a submission.}
+\questiontype{conceptual_explanation}
+\endquestion
+
+\question{3.1b (praise shown) Give one example of a Python assignment statement.}
+\aimode{positive}
+\textresponse{1}
+\sampleresponses{x = 5}
+\feedbackprompt{Accept any valid Python assignment.}
+\questiontype{code_writing}
+\endquestion
+
+\question{3.1c (lenient) Why do programmers use meaningful variable names?}
+\aimode{lenient}
+\textresponse{2}
+\sampleresponses{So that people reading the code can tell what each value means.}
+\feedbackprompt{Accept any reasonable reason related to readability or maintenance.}
+\questiontype{conceptual_explanation}
+\endquestion
+
+\question{3.1d (no praise, follow-up after acceptance) What value does x have after x = 3 and then x = x + 2?}
+\aimode{no-positive}
+\textresponse{1}
+\sampleresponses{5}
+\feedbackprompt{Accept 5. If they answer 3, ask what the second line does to x.}
+\followupprompt{Would the answer change if the two lines were swapped?}
+\questiontype{output_prediction}
+\endquestion
+\endquestiongroup
+
+\questiongroup{3.2 Question-writing mode, and per-group retries}
+\retries{3}
+\text{This group allows 3 retries before Continue appears; the activity default is 1. In question-writing mode students submit questions, not answers.}
+\question{3.2a Write two questions you would ask a classmate to check that they understand what a loop does.}
+\responsemode{questions}
+\textresponse{3}
+\sampleresponses{How many times does this loop run? What is the value of i on the last pass?}
+\feedbackprompt{Accept two questions that each test understanding of a loop, such as how many times it runs or what values the loop variable takes. If they write answers instead of questions, ask them to phrase each one as a question.}
+\questiontype{other}
+\endquestion
+\endquestiongroup
+
+\section{4. Multiple Choice}{3}
+\questiongroup{4.1 Three kinds of multiple choice}
+\question{4.1a (answer key) What is the capital of Canada?}
+\multiplechoice{Ottawa}
+\choice{Toronto}
+\choice{Ottawa}
+\choice{Vancouver}
+\choice{Montreal}
+\endmultiplechoice
+\sampleresponses{Ottawa}
+\feedbackprompt{Accept Ottawa. Otherwise ask which city hosts the national parliament.}
+\questiontype{other}
+\endquestion
+
+\question{4.1b (no key, single answer) Which question type do your students find hardest?}
+\multiplechoice{}
+\choice{Predicting output}
+\choice{Explaining code}
+\choice{Writing code}
+\choice{Debugging}
+\endmultiplechoice
+\sampleresponses{Any choice.}
+\feedbackprompt{Accept any choice.}
+\questiontype{reflection}
+\endquestion
+
+\question{4.1c (select all that apply, ungraded) Which languages do you teach?}
+\multiplechoice{multiple}
+\choice{Python}
+\choice{C++}
+\choice{Java}
+\choice{Something else}
+\endmultiplechoice
+\sampleresponses{Any selection.}
+\feedbackprompt{Accept any selection.}
+\questiontype{other}
+\endquestion
+\endquestiongroup
+
+\section{5. Code: Python}{6}
+\questiongroup{5.1 Display-only code and runnable Python}
+\text{The first block is display-only: students can read it but not edit or run it. The second is runnable Python with a 50-second timeout.}
+\pythondisplay
+def area(width, height):
+    return width * height
+\endpython
+\question{5.1a Complete the function so it returns the perimeter of a rectangle, then run it.}
+\python{50000}
+def perimeter(width, height):
+    # Your code here
+    pass
+
+print(perimeter(3, 4))   # should print 14
+\endpython
+\info{coderesponse,8}{Edit and run the code here.}
+\sampleresponses{def perimeter(width, height):
+    return 2 * (width + height)}
+\feedbackprompt{Accept any function that returns 2 * (width + height) or an equivalent. If it returns the area, ask what perimeter measures.}
+\info{submitbutton,6}{Submit once the group agrees.}
+\questiontype{code_writing}
+\endquestion
+\endquestiongroup
+
+\questiongroup{5.2 Python Turtle}
+\question{5.2a Change the loop so the turtle draws a triangle instead of a square.}
+\pythonturtle{500x350,50000}
+import turtle
+t = turtle.Turtle()
+for _ in range(4):
+    t.forward(100)
+    t.left(90)
+\endpythonturtle
+\sampleresponses{for _ in range(3):
+    t.forward(100)
+    t.left(120)}
+\feedbackprompt{Accept a loop that runs 3 times and turns 120 degrees. If they turn 60 degrees, ask what angle the turtle turns at each corner of a triangle.}
+\questiontype{code_writing}
+\endquestion
+\endquestiongroup
+
+\file{numbers.txt, readonly}
+4
+-1
+7
+2
+\endfile
+
+\questiongroup{5.3 Server-side Python with a data file}
+\text{Files are declared outside question groups. This one is read-only, and the server-side Python below reads it when it runs.}
+\question{5.3a Run the code. Then change it to print the largest number instead of the total.}
+\pythonremote{50000}
+with open("numbers.txt") as f:
+    values = [int(line) for line in f if line.strip()]
+print(sum(values))
+\endpythonremote
+\sampleresponses{print(max(values))}
+\feedbackprompt{Accept code that prints the maximum of the values (7). If it still prints the sum, ask which built-in function finds the largest value.}
+\questiontype{code_writing}
+\endquestion
+\endquestiongroup
+
+\section{6. Code: C++ and Files}{6}
+\questiongroup{6.1 C++ with display-only code}
+\cppdisplay
+// Display only: a reminder of the loop syntax.
+for (int i = 0; i < n; i++) { /* ... */ }
+\endcpp
+\question{6.1a Write a loop that prints the even numbers from 2 to 10.}
+\cpp{50000}
+#include <iostream>
+using namespace std;
+int main() {
+    // Your loop here
+    return 0;
+}
+\endcpp
+\sampleresponses{for (int i = 2; i <= 10; i += 2) cout << i << endl;}
+\feedbackprompt{Accept any loop that prints 2, 4, 6, 8, 10. If it prints odd numbers or stops at 8, ask about the start value or the condition.}
+\questiontype{code_writing}
+\endquestion
+\endquestiongroup
+
+\file{greeting.h, shared}
+#pragma once
+#include <string>
+inline std::string greeting() { return "Hello from coLearn-AI"; }
+\endfile
+
+\file{notes.txt}
+Scratch notes. Each browser has its own copy of this file, and edits are not saved.
+\endfile
+
+\questiongroup{6.2 C++ using a shared header file}
+\text{Three kinds of file are declared above this group: numbers.txt (read-only, used in 5.3), notes.txt (editable but not saved), and greeting.h, a shared file: only the student holding the turn can edit it, teammates see edits live, and it is saved when the group submits. The include tag makes it available to this program.}
+\question{6.2a Edit greeting.h so greeting() returns your group's name, then run the program.}
+\include{greeting.h}
+\cpp
+#include <iostream>
+#include "greeting.h"
+int main() {
+    std::cout << greeting() << std::endl;
+    return 0;
+}
+\endcpp
+\sampleresponses{greeting.h now returns a new message, such as "Hello from Group 3", and the program prints it.}
+\feedbackprompt{Accept if greeting.h was changed to return a different string and the program runs. If the header is unchanged, ask where the message comes from.}
+\questiontype{code_writing}
+\endquestion
+\endquestiongroup
+
+\section{7. Inline AI Help}{4}
+\questiongroup{7.1 Four AI help modes}
+\text{An inline AI help block is not a question. It sits between questions, gives students a box to ask an AI for help, and is never graded. Its mode sets the starting style, the guardrail limits what it may say, and the context lists what it can see.}
+\question{7.1a What does this function return for mystery(4)? Explain how you know.}
+\pythondisplay
+def mystery(n):
+    total = 0
+    for i in range(1, n + 1):
+        total += i
+    return total
+\endpython
+\textresponse{3}
+\sampleresponses{10, because it adds 1 + 2 + 3 + 4.}
+\feedbackprompt{Accept 10 with a reason that mentions adding 1 through 4. If they say 6, ask whether range(1, n + 1) includes n.}
+\questiontype{output_prediction}
+\endquestion
+
+\ai{explain}
+\aimodel{gpt-5-mini}
+\aititle{Explain: AI Coach}
+\aiprompt{Not sure what the code does? Ask the coach to explain one line.}
+\aiguardrail{Explain what individual lines do. Do not state the return value of mystery(4).}
+\aicontext{current-question,current-code,student-response}
+\aiinput{3}
+\endai
+
+\ai{critique}
+\aimodel{gpt-4o-mini}
+\aititle{Critique: Check Our Reasoning}
+\aiprompt{Paste your explanation and ask what is missing.}
+\aiguardrail{Point out one gap in the reasoning. Do not supply the corrected answer.}
+\aicontext{current-question,student-response}
+\aiinput{4}
+\endai
+
+\ai{testgen}
+\aititle{Test Generator}
+\aiprompt{Ask for test inputs that would check your prediction.}
+\aiguardrail{Suggest inputs only. Do not give the expected outputs.}
+\aicontext{current-question,current-code}
+\aiinput{2}
+\endai
+
+\ai{generate}
+\aititle{Generate: Another Example}
+\aiprompt{Ask for a similar function to practice on.}
+\aiguardrail{Generate a new practice function of similar difficulty. Do not solve the current question.}
+\aicontext{nearby-text}
+\aiinput{2}
+\endai
+\endquestiongroup
+
+\section{8. Research Tags}
+\questiongroup{8.1 Question types}
+\text{Every question in this gallery carries an optional research tag (questiontype). Tags never change what students see or how answers are judged; they feed the Research Statistics pages. The eight values are code_writing, code_reading, output_prediction, debugging, conceptual_explanation, application_problem_solving, reflection, and other. This section has no time budget, to show that minutes are optional.}
+\question{8.1a This program should print 1 to 5 but prints 1 to 4. Fix it.}
+\python
+for i in range(1, 5):
+    print(i)
+\endpython
+\sampleresponses{for i in range(1, 6):
+    print(i)}
+\feedbackprompt{Accept range(1, 6) or any loop that prints 1 to 5. If they change the start value, ask which number is missing from the output.}
+\questiontype{debugging}
+\endquestion
+
+\question{8.1b A store sells pens at $2 each. Explain how you would use a loop to print the cost of 1 to 5 pens.}
+\textresponse{3}
+\sampleresponses{Loop n from 1 to 5 and print n * 2 each time.}
+\feedbackprompt{Accept any plan that loops over the number of pens and multiplies by 2.}
+\questiontype{application_problem_solving}
+\endquestion
+
+\question{8.1c Which feature in this gallery will you try first, and why?}
+\textresponse{2}
+\sampleresponses{Inline AI help, so students can ask questions without getting answers.}
+\feedbackprompt{Accept any feature with a reason.}
+\questiontype{reflection}
+\endquestion
+\question{8.1d (scored, test mode only) Explain the difference between a for loop and a while loop.}
+\textresponse{3}
+\sampleresponses{A for loop repeats over a known sequence; a while loop repeats as long as a condition stays true.}
+\feedbackprompt{Accept an answer that contrasts a known sequence with a condition.}
+\score{4,response}
+4: Correct contrast with an example of each
+2-3: Correct contrast, no examples
+1: Partial or unclear
+0: Incorrect or missing
+\endscore
+\questiontype{conceptual_explanation}
+\endquestion
+\endquestiongroup

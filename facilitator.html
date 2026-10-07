@@ -52,12 +52,14 @@
     <div class="card accent-purple">
       <h4>Accounts &amp; groups</h4>
       <ul class="check">
-        <li>Reset passwords on the student (s1–s25) and creator (c1–c25) accounts. Write the password on the board on the day.</li>
+        <li>On <strong>colearn-ai.com</strong>, create or reset the student (s1–s25) and creator (c1–c25) accounts. Write the password on the board on the day.</li>
         <li>Print one login card per person: name, table number, student login (sN), and creator login (cN, the same number)</li>
-        <li>Two classes: <strong>CCSC:MW</strong> (ccscmw) for students in Part 2, and <strong>CCSC:MW Create</strong> (ccscmwc) for creators in Part 3. In CCSC:MW, pre-create groups that match the table numbers on the cards.</li>
+        <li>Two classes: <strong>CCSC:MW</strong> (code: ccscmw) for students in Part 2, and <strong>CCSC:MW Create</strong> (code: create) for creators in Part 3. In CCSC:MW, pre-create groups that match the table numbers on the cards.</li>
+        <li>CCSC:MW holds six activities, in this order: Loops with Turtles (group), How Maps Mislead (group), Python While Loops (test), Feature Gallery (demo), Feature Gallery (group), and the Workshop Feedback survey (assignment). CCSC:MW Create starts empty.</li>
+        <li><strong>Backup on csdev.kenyon.edu:</strong> the same accounts, password, classes, groups, and activities, so switching servers changes only the web address</li>
         <li>Put three or four people per table, so every group has a Facilitator, a Process Analyst, and Quality Control</li>
-        <li>Seat the non-CS participants together at one table. That table does the map activity.</li>
-        <li>A few spare cards for walk-ins and anyone off eduroam</li>
+        <li>Seat the non-CS participants together at the map tables (Tables 1 and 2)</li>
+        <li>A few spare cards (s14 and up, c14 and up) for walk-ins</li>
       </ul>
     </div>
     <div class="card accent-teal">
@@ -65,8 +67,8 @@
       <ul class="check">
         <li>The programming activity, sized for 15 minutes (<a href="workshop_sampler_15min.txt">workshop_sampler_15min.txt</a>)</li>
         <li>The map activity (<a href="workshop_maps_15min.txt">workshop_maps_15min.txt</a>); its two Harbor County maps load from this site, so push before the workshop</li>
-        <li>The demo quiz (test mode) for groups that finish early</li>
-        <li>The closing survey activity</li>
+        <li>Python While Loops (test mode) for groups that finish early</li>
+        <li>coLearn-AI Workshop Feedback (assignment mode) for the closing survey</li>
         <li>Run each one end to end in the Sandbox the day before</li>
       </ul>
     </div>
@@ -83,8 +85,9 @@
       <ul class="check">
         <li>Projector showing a visible countdown timer</li>
         <li>A tablet logged in as instructor, on View Groups in Observation view</li>
-        <li>Check eduroam from the room itself</li>
-        <li>An arrival slide: <em>join eduroam → csdev.kenyon.edu → log in with your card</em></li>
+        <li>Open colearn-ai.com on the room's guest Wi-Fi and on eduroam, to confirm both work</li>
+        <li>An arrival slide: <em>any Wi-Fi → colearn-ai.com → log in with your card</em></li>
+        <li>A ready-to-show backup slide: <em>eduroam → csdev.kenyon.edu → same login</em></li>
       </ul>
     </div>
   </div>
@@ -100,14 +103,14 @@
   <table class="run">
     <tr><th>Time</th><th>What happens · what to say · what can go wrong</th></tr>
     <tr class="brk"><td>−0:10</td><td>Arrival slide is up. Hand out cards. People sit at their card's table and log in as students.
-      <span class="risk">Risk: no eduroam. Give them a spare card, or have them share a teammate's screen.</span></td></tr>
+      <span class="risk">Risk: someone can't get online. Have them share a teammate's screen or use a phone hotspot.</span></td></tr>
     <tr><td>0:00</td><td><strong>Part 1 talk (15 min).</strong> Cover bypass → Piaget and Vygotsky → 4 principles → turns and roles → accept/revise → Group A vs B. Skip everything else on the page.
       <span class="say">"In 15 minutes you'll be the students. Keep that in mind."</span></td></tr>
     <tr><td>0:15</td><td><strong>Part 2 setup (7 min).</strong> Everyone opens the CCSC:MW class, and each table picks programming or maps. Roles are read aloud.
       <span class="say">"Facilitators: you're the clock. Call time at 0:42."</span>
       <span class="risk">Walk the room. At 0:20, every table should be on question 1.</span></td></tr>
     <tr><td>0:22</td><td><strong>Activity (20 min).</strong> Watch the Observation view on the tablet. Tap a few tags, so the room has data for later. Go to tables that have been idle for over 2 minutes.
-      <span class="say">At 0:37: "Five minutes. Finished? Try the quiz."</span></td></tr>
+      <span class="say">At 0:37: "Five minutes. Finished? Try Python While Loops."</span></td></tr>
     <tr><td>0:42</td><td><strong>Debrief (10 min).</strong> Call on three Process Analysts, one question each, one sentence each.</td></tr>
     <tr><td>0:52</td><td><strong>Instructor view (8 min).</strong> Project View Groups. Show the timeline, the red and blue dots, and the submissions-per-question bars. Then open the trace for one question in two groups: same answer, different path.</td></tr>
     <tr class="brk"><td>1:00</td><td>☕ <strong>Break.</strong> <span class="say">"Back at 1:10 sharp. Keep your card."</span></td></tr>
@@ -125,6 +128,11 @@
     <tr><td>2:49</td><td><strong>Discussion (11 min).</strong> Pick two prompts that fit the room.</td></tr>
     <tr><td>3:00</td><td>Close. Point to the <a href="resources.html">Resources</a> page: the demo, the papers, and contact details.</td></tr>
   </table>
+  </div>
+
+  <div class="callout callout-purple">
+    <strong>If colearn-ai.com is down or slow</strong>
+    Switch everyone to <strong>csdev.kenyon.edu</strong>. That server is reachable only on eduroam. Show the backup slide: the logins and password are the same. Work done on colearn-ai.com before the switch does not carry over, so switch at a natural break if you can. People without eduroam share a screen with a teammate.
   </div>
 
   <div class="callout callout-gold">

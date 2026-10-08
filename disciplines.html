@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Other Disciplines · coLearn-AI Workshop</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .example {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1.3rem 1.5rem; margin-bottom: 1.4rem;
+  }
+  .example .field {
+    display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--kenyon);
+    background: #EDE5F8; padding: 0.15rem 0.55rem; border-radius: 4px; margin-bottom: 0.45rem;
+  }
+  .example h3 { margin: 0 0 0.5rem; }
+  .example .label {
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--muted); margin: 0.9rem 0 0.25rem;
+  }
+  .example p { font-size: 0.93rem; margin: 0; }
+  .exchange { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin-top: 0.4rem; }
+  .exchange > div { border-radius: 8px; padding: 0.75rem 0.95rem; font-size: 0.9rem; }
+  .exchange .submitted { background: #F4F4F6; border: 1px solid var(--border); }
+  .exchange .response  { background: #EDE5F8; border: 1px solid #C0A0E0; }
+  .exchange .who { display: block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.3rem; }
+  .author { font-size: 0.88rem; color: var(--muted); margin-top: 0.75rem; }
+  .author strong { color: var(--ink, #1a1a2e); }
+  @media (max-width: 700px) { .exchange { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="index.html">coLearn-AI Workshop</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="part1.html">Part 1</a>
+    <a href="part2.html">Part 2</a>
+    <a href="part3.html">Part 3</a>
+    <a href="part4.html">Part 4</a>
+    <a href="part5.html">Part 5</a>
+    <a href="markup.html">Markup</a>
+    <a href="research.html">Research</a>
+    <a href="resources.html">Resources</a>
+  </div>
+</nav>
+
+<div class="part-stripe">
+  <div class="part-num">Beyond Computer Science</div>
+  <h1>Examples from Other Disciplines</h1>
+  <div class="part-meta">
+    <span>Digital humanities</span>
+    <span>Economics</span>
+    <span>Chemistry</span>
+    <span>Biology</span>
+    <span>History</span>
+    <span>Psychology &amp; statistics</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <p style="margin-top:0.5rem">Nothing in coLearn-AI is specific to computing. A group works through a model and a sequence of questions, takes turns in roles, and gets the same <strong>accept or revise</strong> response from the AI, whatever the subject. The author decides what a good answer looks like and how the AI should respond to a weak one, so the expertise is the instructor&rsquo;s, in their own field.</p>
+
+  <div class="callout callout-teal">
+    <strong>What carries over to any field</strong>
+    Written answers, multiple choice, tables to fill in, images and figures, and optional Python for working with data. Roles, turn-taking, the AI&rsquo;s focused questions, and the complete record of how each group got to its answer work the same way everywhere. The map activity in Part 2 is itself a non-CS example.
+  </div>
+
+  <p>Each example below shows one question, one answer a group might submit, and the kind of question the AI sends back. As in Part 1, the AI never gives the answer: it points at one thing to reconsider.</p>
+
+  <hr class="section-divider">
+
+  <div class="example">
+    <span class="field">Digital humanities</span>
+    <h3>What is this passage about? Word frequency with Python</h3>
+    <div class="label">The model</div>
+    <p>A short Python program counts the words in a passage from a novel. A second version removes common &ldquo;stopwords&rdquo; such as <em>the</em> and <em>of</em> before counting.</p>
+    <div class="label">The question</div>
+    <p>Run both versions. Which three words best describe what the passage is about, and why are they more useful than the top three from the first version?</p>
+    <div class="exchange">
+      <div class="submitted"><span class="who">Group submits</span>&ldquo;The top words are <em>and</em>, <em>sea</em>, and <em>ship</em>.&rdquo;</div>
+      <div class="response"><span class="who">coLearn-AI responds</span>&ldquo;<em>Sea</em> and <em>ship</em> look like content words. Does <em>and</em> tell you what the passage is about? Check whether it is in your stopword list.&rdquo;</div>
+    </div>
+    <p class="author"><strong>The author writes</strong> a sample answer with the expected content words, and feedback guidance: accept when all three are content words with a reason; if a function word slips through, ask about the stopword list.</p>
+  </div>
+
+  <div class="example">
+    <span class="field">Economics</span>
+    <h3>Is demand elastic? Price elasticity from data</h3>
+    <div class="label">The model</div>
+    <p>A table: when a caf&eacute; raises the price of coffee from $4.00 to $5.00, daily sales fall from 100 cups to 90.</p>
+    <div class="label">The question</div>
+    <p>Between these two prices, is demand elastic or inelastic? Show the calculation that supports your answer.</p>
+    <div class="exchange">
+      <div class="submitted"><span class="who">Group submits</span>&ldquo;Elastic, because people bought less coffee when the price went up.&rdquo;</div>
+      <div class="response"><span class="who">coLearn-AI responds</span>&ldquo;Sales did fall, but that happens for almost any good. Elasticity compares the <em>size</em> of two changes. By what percent did quantity change, and by what percent did price change?&rdquo;</div>
+    </div>
+    <p class="author"><strong>The author writes:</strong> midpoint method, quantity &minus;10.5%, price +22.2%, elasticity about 0.47 in absolute value, so inelastic. Feedback guidance: if the group only notes that quantity fell, ask them to compare percentage changes; don&rsquo;t give the numbers.</p>
+  </div>
+
+  <div class="example">
+    <span class="field">Chemistry</span>
+    <h3>Which reactant runs out first? Limiting reagents</h3>
+    <div class="label">The model</div>
+    <p>The balanced equation 2&nbsp;H<sub>2</sub> + O<sub>2</sub> &rarr; 2&nbsp;H<sub>2</sub>O, and a flask that starts with 4&nbsp;mol of H<sub>2</sub> and 3&nbsp;mol of O<sub>2</sub>.</p>
+    <div class="label">The question</div>
+    <p>Which reactant is limiting, and how many moles of water can form?</p>
+    <div class="exchange">
+      <div class="submitted"><span class="who">Group submits</span>&ldquo;O<sub>2</sub> is limiting because there is less of it.&rdquo;</div>
+      <div class="response"><span class="who">coLearn-AI responds</span>&ldquo;Having fewer moles isn&rsquo;t the test; the equation&rsquo;s ratio is. How many moles of O<sub>2</sub> would 4&nbsp;mol of H<sub>2</sub> need?&rdquo;</div>
+    </div>
+    <p class="author"><strong>The author writes:</strong> 4&nbsp;mol H<sub>2</sub> needs only 2&nbsp;mol O<sub>2</sub>, so H<sub>2</sub> is limiting, 1&nbsp;mol O<sub>2</sub> is left over, and 4&nbsp;mol of water form. Feedback guidance: if the group compares raw amounts, point them to the mole ratio.</p>
+  </div>
+
+  <div class="example">
+    <span class="field">Biology</span>
+    <h3>Does music help plants grow? Experimental design</h3>
+    <div class="label">The model</div>
+    <p>A student puts one plant next to a speaker playing music and another in a closet, and after three weeks reports that the music plant is taller.</p>
+    <div class="label">The question</div>
+    <p>Name two things other than music that differ between the plants, and redesign the experiment so music is the only difference.</p>
+    <div class="exchange">
+      <div class="submitted"><span class="who">Group submits</span>&ldquo;They should use more plants to be sure.&rdquo;</div>
+      <div class="response"><span class="who">coLearn-AI responds</span>&ldquo;More plants would help with chance differences. But compare the two locations: what else is different between a closet and the spot next to the speaker?&rdquo;</div>
+    </div>
+    <p class="author"><strong>The author writes:</strong> confounds such as light, temperature, and air flow; a design with several plants per group in the same conditions, randomly assigned, with music the only difference. Feedback guidance: accept sample size only alongside at least one confound.</p>
+  </div>
+
+  <div class="example">
+    <span class="field">History</span>
+    <h3>Two accounts of one event: reading primary sources</h3>
+    <div class="label">The model</div>
+    <p>Two newspaper reports of the same labor strike, one from a labor paper and one from a business paper, provided in the activity.</p>
+    <div class="label">The question</div>
+    <p>Find one fact both reports agree on and one detail they report differently. How might each paper&rsquo;s readers explain the difference?</p>
+    <div class="exchange">
+      <div class="submitted"><span class="who">Group submits</span>&ldquo;The business paper is biased against the workers.&rdquo;</div>
+      <div class="response"><span class="who">coLearn-AI responds</span>&ldquo;Both papers have a point of view. Which specific detail do they report differently, and whom would each version persuade?&rdquo;</div>
+    </div>
+    <p class="author"><strong>The author writes</strong> the agreed facts and the key differences in the two sources, and feedback guidance: accept when the answer cites a specific detail from each source; if the group labels one source &ldquo;biased,&rdquo; ask for the evidence.</p>
+  </div>
+
+  <div class="example">
+    <span class="field">Psychology &amp; statistics</span>
+    <h3>Correlation is not causation</h3>
+    <div class="label">The model</div>
+    <p>A scatter plot of monthly ice-cream sales against drowning deaths in a coastal town, with correlation r&nbsp;=&nbsp;0.8.</p>
+    <div class="label">The question</div>
+    <p>Does this data show that eating ice cream increases the risk of drowning? Explain, and describe a study that could test a causal claim.</p>
+    <div class="exchange">
+      <div class="submitted"><span class="who">Group submits</span>&ldquo;Yes. A correlation of 0.8 is very strong.&rdquo;</div>
+      <div class="response"><span class="who">coLearn-AI responds</span>&ldquo;0.8 is a strong correlation. What else rises in the summer months that could drive both numbers?&rdquo;</div>
+    </div>
+    <p class="author"><strong>The author writes:</strong> a third variable (hot weather, more swimming) explains both; correlation alone can&rsquo;t establish cause. Feedback guidance: if the group equates strength with causation, ask about a common cause.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="section-header" style="margin-top:0">
+    <span class="badge">Under the hood</span>
+  </div>
+  <h2>The Same Markup in Any Field</h2>
+  <p>Here is the economics question as an author writes it. The sample answer and the feedback guidance are for the AI; students see only the question and an answer box. (See the <a href="markup.html">Markup</a> page for the full language.)</p>
+
+<div class="code-block">\question{Between $4.00 and $5.00, is demand for coffee elastic or inelastic?
+Show the calculation that supports your answer.}
+\textresponse{4}
+\sampleresponses{Midpoint method: quantity changes 10/95, about 10.5%; price changes
+1/4.50, about 22.2%. Elasticity is about 0.47 in absolute value, less than 1,
+so demand is inelastic.}
+\feedbackprompt{Accept if the group compares percentage changes and concludes
+inelastic. If they only note that quantity fell, ask them to compare the sizes
+of the two changes. Do not give the numbers.}
+\endquestion</div>
+
+  <div class="callout callout-gold">
+    <strong>Try it in Part 3</strong>
+    When you build your own activity, choose a topic from your own course. The AI Builder and the Visual Editor work the same way for any subject.
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="https://jimskon.github.io/coLearn-AI-Information/" target="_blank">coLearn-AI Project Info</a>
+    <a href="https://computing.kenyon.edu/skonjp/" target="_blank">James Paul Skon &mdash; Kenyon College</a>
+    <a href="https://ki.se/personer/james-skon" target="_blank">James Paul Skon &mdash; Karolinska Institutet</a>
+    <a href="https://colearn-ai.com" target="_blank">colearn-ai.com</a>
+  </div>
+  <div>CCSC:MW 2026 Workshop &middot; coLearn-AI: AI-Mediated Collaborative Learning</div>
+</footer>
+</body>
+</html>

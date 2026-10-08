@@ -1,4 +1,4 @@
-# coLearn-AI Workshop 2026 — CCSC:MW
+# coLearn-AI Workshop 2026, CCSC:MW
 
 Workshop site for **"Designing AI-Constrained Collaborative Activities for Computing Education Using coLearn-AI"**
 
@@ -13,14 +13,14 @@ James Paul Skon · Kenyon College / Karolinska Institutet
 
 | File | Content |
 |------|---------|
-| `index.html` | Welcome page — overview, agenda, prerequisites |
+| `index.html` | Welcome page: overview, agenda, prerequisites |
 | `part1.html` | Part 1: Introduction (15 min) |
 | `part2.html` | Part 2: Be a Student (45 min) |
 | `part3.html` | Part 3: Create an Activity (75 min) |
 | `part4.html` | Part 4: Deployment & Classroom Integration (15 min) |
 | `part5.html` | Part 5: Survey, Research & Discussion (20 min) |
-| `research.html` | Research statistics overview — RQs, live observation card, metrics, exports, privacy |
-| `resources.html` | Final page — platform, demo, and project links; papers (PDFs in `papers/`); workshop materials |
+| `research.html` | Research statistics overview: RQs, live observation card, metrics, exports, privacy |
+| `resources.html` | Final page: platform, demo, and project links; papers (PDFs in `papers/`); workshop materials |
 | `facilitator.html` | Facilitator run-sheet: setup checklist and minute-by-minute plan (not linked from the nav) |
 | `workshop_sampler_15min.txt` | 15-minute programming activity for the Part 2 slot |
 | `workshop_maps_15min.txt` | 15-minute non-programming activity (How Maps Mislead); uses `images/map-*.svg` |

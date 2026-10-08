@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Part 1 — Introduction &amp; System Overview · coLearn-AI Workshop</title>
+<title>Part 1: Introduction &amp; System Overview · coLearn-AI Workshop</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -54,14 +54,14 @@
   </div>
   <h2>Cognitive Bypass</h2>
 
-  <p>When a student asks an LLM "what does <code>range(1, 5)</code> print?", the model answers immediately and correctly. The student copies the answer. Their assignment is done — but the confusion that would have driven learning never happened.</p>
+  <p>When a student asks an LLM "what does <code>range(1, 5)</code> print?", the model answers immediately and correctly. The student copies the answer. Their assignment is done, but the confusion that would have driven learning never happened.</p>
 
   <div class="callout callout-purple">
     <strong>Definition: Cognitive Bypass</strong>
     A correct result appears without the learner engaging in the reasoning the result is meant to reflect. The assessment signal weakens, and the learning process may disappear entirely.
   </div>
 
-  <p>Cognitive bypass is not cheating in the traditional sense — it is a structural property of LLMs that removes the need to resolve uncertainty before getting an answer. This is fundamentally different from a textbook or a search engine, both of which still require the student to identify what they need and synthesize it.</p>
+  <p>Cognitive bypass is not cheating in the traditional sense. It is a structural property of LLMs that removes the need to resolve uncertainty before getting an answer. This is fundamentally different from a textbook or a search engine, both of which still require the student to identify what they need and synthesize it.</p>
 
   <p><strong>Why it matters for CS education specifically:</strong> prediction, explanation, debugging, and reflection are the core cognitive acts that build durable programming knowledge. Each of these can now be bypassed.</p>
 
@@ -74,23 +74,23 @@
   <h2>Why the Cognitive Work Matters</h2>
 
   <h3>Piaget: Learning Requires Productive Struggle</h3>
-  <p>Learners build understanding by revising mental models that no longer fit experience. The discrepancy between what was expected and what actually happened is productive — but only when the learner must explain it themselves.</p>
+  <p>Learners build understanding by revising mental models that no longer fit experience. The discrepancy between what was expected and what actually happened is productive, but only when the learner must explain it themselves.</p>
 
   <div class="card accent-teal" style="margin: 1rem 0">
     <h4>A Classic CS1 Example</h4>
-    <p>A student sees <code>for i in range(1, 5):</code> and predicts it will print <strong>1 2 3 4 5</strong>. They run the code. It prints 1 2 3 4. Conflict! The discrepancy is productive — if the student must explain why 5 is missing, they restructure their mental model of how <code>range()</code> works.</p>
-    <p style="margin-top:0.6rem"><em>An instant answer from an LLM removes the need to resolve the uncertainty. The struggle — and the learning — never occurs.</em></p>
+    <p>A student sees <code>for i in range(1, 5):</code> and predicts it will print <strong>1 2 3 4 5</strong>. They run the code. It prints 1 2 3 4. Conflict! The discrepancy is productive: if the student must explain why 5 is missing, they restructure their mental model of how <code>range()</code> works.</p>
+    <p style="margin-top:0.6rem"><em>An instant answer from an LLM removes the need to resolve the uncertainty. The struggle, and the learning, never occurs.</em></p>
   </div>
 
   <h3>Vygotsky: Learning Develops Through Social Interaction</h3>
-  <p>Students can reach understanding through peer dialogue and mutual scaffolding that they may not reach alone. When one student says "I think range runs five times" and another says "I ran it and it stopped at 4 — let's change the numbers and see," the conversation <em>is</em> the learning.</p>
+  <p>Students can reach understanding through peer dialogue and mutual scaffolding that they may not reach alone. When one student says "I think range runs five times" and another says "I ran it and it stopped at 4, so let's change the numbers and see," the conversation <em>is</em> the learning.</p>
 
   <div class="card accent-purple" style="margin: 1rem 0">
     <h4>The Risk</h4>
-    <p>When a single student prompts an LLM and shares the answer, the social construction of meaning collapses. AI becomes the reasoning partner, and peer dialogue — Vygotsky's engine of learning — is reduced or eliminated.</p>
+    <p>When a single student prompts an LLM and shares the answer, the social construction of meaning collapses. AI becomes the reasoning partner, and peer dialogue, Vygotsky's engine of learning, is reduced or eliminated.</p>
   </div>
 
-  <h3>Both Mechanisms — Bypassed by LLMs</h3>
+  <h3>Both Mechanisms Are Bypassed by LLMs</h3>
   <div class="card-grid">
     <div class="card accent-teal">
       <h4>Piaget</h4>
@@ -112,7 +112,7 @@
   </div>
   <h2>System Design Can Make Reasoning Necessary</h2>
 
-  <p>The solution is not to ban AI — it is to design environments where AI <em>cannot remove</em> the cognitive and social processes that make learning happen.</p>
+  <p>The solution is not to ban AI. It is to design environments where AI <em>cannot remove</em> the cognitive and social processes that make learning happen.</p>
 
   <div class="card-grid">
     <div class="card accent-teal">
@@ -121,7 +121,7 @@
     </div>
     <div class="card accent-purple">
       <h4>Preserve Social Reasoning</h4>
-      <p>Structure participation so students construct answers together — roles, turn-taking, shared submissions.</p>
+      <p>Structure participation so students construct answers together: roles, turn-taking, shared submissions.</p>
     </div>
     <div class="card accent-gold">
       <h4>Constrain AI Feedback</h4>
@@ -143,7 +143,7 @@
   </div>
   <h2>POGIL: Roles That Distribute Responsibility</h2>
 
-  <p>coLearn-AI is built around <strong>Process Oriented Guided Inquiry Learning (POGIL)</strong> — students work in small groups with defined, rotating roles on a structured inquiry activity. Roles rotate so every student develops all four skill sets over time.</p>
+  <p>coLearn-AI is built around <strong>Process Oriented Guided Inquiry Learning (POGIL)</strong>: students work in small groups with defined, rotating roles on a structured inquiry activity. Roles rotate so every student develops all four skill sets over time.</p>
 
   <div class="roles">
     <div class="role-card role-facilitator">
@@ -174,7 +174,7 @@
 
   <div class="callout callout-teal">
     <strong>Why POGIL + AI?</strong>
-    POGIL gives structure. Roles distribute accountability. The AI then operates within that structure — nudging the group's reasoning rather than bypassing it. This is what coLearn-AI enforces: fixed group roles, rotating submission control, questions before solutions, constrained AI feedback, and an append-only interaction history.
+    POGIL gives structure. Roles distribute accountability. The AI then operates within that structure, nudging the group's reasoning rather than bypassing it. This is what coLearn-AI enforces: fixed group roles, rotating submission control, questions before solutions, constrained AI feedback, and an append-only interaction history.
   </div>
 
   <hr class="section-divider">
@@ -202,7 +202,7 @@
       <p class="s-sub">Group submits:</p>
       <div class="s-code s-submitted"><code>range(3, 19, 3)</code></div>
       <p class="s-sub">CoLearn-AI responds:</p>
-      <div class="s-code s-response">"That works — <code>range(3, 19, 3)</code> starts at 3, steps by 3, and stops before 19, so 18 is the last value printed. Move on to the next question."</div>
+      <div class="s-code s-response">"That works: <code>range(3, 19, 3)</code> starts at 3, steps by 3, and stops before 19, so 18 is the last value printed. Move on to the next question."</div>
       <p class="s-why">The response is correct. The group advances.</p>
     </div>
     <div class="scaffold-box scaffold-nudge">
@@ -211,19 +211,19 @@
       <div class="s-code s-submitted"><code>range(3, 18, 3)</code></div>
       <p class="s-sub">CoLearn-AI responds:</p>
       <div class="s-code s-response">"Your start and step look right. Does <code>range(3, 18, 3)</code> include 18 in the output? Try it and check."</div>
-      <p class="s-why">Off by one — stop is exclusive. One question, no answer given. The group must figure it out.</p>
+      <p class="s-why">Off by one: stop is exclusive. One question, no answer given. The group must figure it out.</p>
     </div>
     <div class="scaffold-box scaffold-flag">
       <div class="s-label">⚠️ Revise: Wrong Approach</div>
       <p class="s-sub">Group submits:</p>
       <div class="s-code s-submitted"><code>[3, 6, 9, 12, 15, 18]</code></div>
       <p class="s-sub">CoLearn-AI responds:</p>
-      <div class="s-code s-response">"The question asks for a <code>range()</code> call — can you rewrite this so <code>range()</code> generates those values instead of a literal list?"</div>
+      <div class="s-code s-response">"The question asks for a <code>range()</code> call. Can you rewrite this so <code>range()</code> generates those values instead of a literal list?"</div>
       <p class="s-why">Wrong approach entirely, so the answer is sent back. The author sets how many tries a group gets. After those, the group may press <em>Continue</em>, and the trace records that it moved on without acceptance.</p>
     </div>
   </div>
 
-  <p>The AI's job is not to grade — it is to keep the group thinking. It targets one issue at a time and never gives the answer.</p>
+  <p>The AI's job is not to grade. It is to keep the group thinking. It targets one issue at a time and never gives the answer.</p>
 
   <div class="callout callout-teal">
     <strong>Not just for computer science</strong>
@@ -238,27 +238,27 @@
   </div>
   <h2>The Epistemic Trace</h2>
 
-  <p>Every interaction — submissions, AI feedback, revisions, code runs, and optional follow-up — is appended to a per-group, per-question record. Nothing is overwritten. The AI sees the full reasoning path when evaluating each new submission. Instructors see the <em>process</em>, not just the product.</p>
+  <p>Every interaction (submissions, AI feedback, revisions, code runs, and optional follow-up) is appended to a per-group, per-question record. Nothing is overwritten. The AI sees the full reasoning path when evaluating each new submission. Instructors see the <em>process</em>, not just the product.</p>
 
-  <p>Every interaction is recorded in sequence — submissions, AI responses, revisions, code runs, follow-up. The trace grows however the group's work actually unfolds; there is no prescribed structure. Some common patterns:</p>
+  <p>Every interaction is recorded in sequence: submissions, AI responses, revisions, code runs, follow-up. The trace grows however the group's work actually unfolds; there is no prescribed structure. Some common patterns:</p>
 
   <div class="trace-patterns">
 
     <div class="trace-pattern">
-      <div class="tp-label tp-label-green">Pattern 1 — Direct Accept</div>
+      <div class="tp-label tp-label-green">Pattern 1: Direct Accept</div>
       <div class="trace-row">
         <span class="te te-submit">Submit</span>
         <span class="te-text"><code>range(1, 6)</code></span>
       </div>
       <div class="trace-row">
         <span class="te te-accept">Accept</span>
-        <span class="te-text">"Correct — range(1, 6) produces 1 through 5, stopping before 6."</span>
+        <span class="te-text">"Correct: range(1, 6) produces 1 through 5, stopping before 6."</span>
       </div>
-      <p class="tp-note">Two events. The group understood the concept, submitted a correct answer, and moved on. The trace is short by design — that is informative too.</p>
+      <p class="tp-note">Two events. The group understood the concept, submitted a correct answer, and moved on. The trace is short by design, and that is informative too.</p>
     </div>
 
     <div class="trace-pattern">
-      <div class="tp-label tp-label-gold">Pattern 2 — Sent Back, then Revised</div>
+      <div class="tp-label tp-label-gold">Pattern 2: Sent Back, then Revised</div>
       <div class="trace-row">
         <span class="te te-submit">Submit</span>
         <span class="te-text"><code>range(1, 5)</code></span>
@@ -273,16 +273,16 @@
       </div>
       <div class="trace-row">
         <span class="te te-accept">Accept</span>
-        <span class="te-text">"Yes — the stop value is excluded, so 6 is needed to include 5."</span>
+        <span class="te-text">"Yes, the stop value is excluded, so 6 is needed to include 5."</span>
       </div>
       <p class="tp-note">The classic off-by-one path. The AI's question kept the group thinking; the trace records exactly where the misconception was corrected.</p>
     </div>
 
     <div class="trace-pattern">
-      <div class="tp-label tp-label-purple">Pattern 3 — Predict then Submit</div>
+      <div class="tp-label tp-label-purple">Pattern 3: Predict then Submit</div>
       <div class="trace-row">
         <span class="te te-predict">Predict</span>
-        <span class="te-text">"We think it prints 1 2 3 4 5 — five numbers."</span>
+        <span class="te-text">"We think it prints 1 2 3 4 5, five numbers."</span>
       </div>
       <div class="trace-row">
         <span class="te te-run">Run</span>
@@ -294,20 +294,20 @@
       </div>
       <div class="trace-row">
         <span class="te te-accept">Accept</span>
-        <span class="te-text">"Correct — and did the output match your prediction?"</span>
+        <span class="te-text">"Correct. And did the output match your prediction?"</span>
       </div>
       <p class="tp-note">The prediction was wrong; running the code created Piaget's productive conflict. The trace shows the exact moment the mental model was revised.</p>
     </div>
 
     <div class="trace-pattern">
-      <div class="tp-label tp-label-red">Pattern 4 — Several Rounds of Revision</div>
+      <div class="tp-label tp-label-red">Pattern 4: Several Rounds of Revision</div>
       <div class="trace-row">
         <span class="te te-submit">Submit</span>
         <span class="te-text"><code>[1, 2, 3, 4, 5]</code> &nbsp;<em>(literal list, not range)</em></span>
       </div>
       <div class="trace-row">
         <span class="te te-flag">Sent back</span>
-        <span class="te-text">"The question asks for a range() call — can you rewrite this?"</span>
+        <span class="te-text">"The question asks for a range() call. Can you rewrite this?"</span>
       </div>
       <div class="trace-row">
         <span class="te te-submit">Revise</span>
@@ -323,7 +323,7 @@
       </div>
       <div class="trace-row">
         <span class="te te-accept">Accept</span>
-        <span class="te-text">"Yes — range(1, 6) gives 1 through 5."</span>
+        <span class="te-text">"Yes, range(1, 6) gives 1 through 5."</span>
       </div>
       <p class="tp-note">Three separate misconceptions surfaced and resolved. No single final answer would show any of this. The trace is the evidence of learning.</p>
     </div>
@@ -334,7 +334,7 @@
 
   <hr style="border:none; border-top:1px solid #e5e7eb; margin:2rem 0">
 
-  <h3>Same Answer — Very Different Reasoning</h3>
+  <h3>Same Answer, Very Different Reasoning</h3>
   <p>The trace's power is clearest when two groups arrive at the same final answer by completely different paths.</p>
 
   <div class="trace-compare">
@@ -365,7 +365,7 @@
       <div class="tc-label">Group B</div>
       <div class="trace-row">
         <span class="te te-predict">Predict</span>
-        <span class="te-text">"Stops at 4 or 5? Not sure — let's use 6 to be safe."</span>
+        <span class="te-text">"Stops at 4 or 5? Not sure, so let's use 6 to be safe."</span>
       </div>
       <div class="trace-row">
         <span class="te te-submit">Submit</span>
@@ -388,7 +388,7 @@
 
   <div class="callout callout-teal">
     <strong>Feedback from this workshop matters.</strong>
-    Your experience today — what works, what confuses, what feels off — is exactly the kind of signal that shapes the next iteration. Please share it.
+    Your experience today (what works, what confuses, what feels off) is exactly the kind of signal that shapes the next iteration. Please share it.
   </div>
 
   <hr class="section-divider">
@@ -403,8 +403,8 @@
 <footer class="site-footer">
   <div class="footer-links">
     <a href="https://jimskon.github.io/coLearn-AI-Information/" target="_blank">coLearn-AI Project Info</a>
-    <a href="https://computing.kenyon.edu/skonjp/" target="_blank">James Paul Skon &mdash; Kenyon College</a>
-    <a href="https://ki.se/personer/james-skon" target="_blank">James Paul Skon &mdash; Karolinska Institutet</a>
+    <a href="https://computing.kenyon.edu/skonjp/" target="_blank">James Paul Skon, Kenyon College</a>
+    <a href="https://ki.se/personer/james-skon" target="_blank">James Paul Skon, Karolinska Institutet</a>
     <a href="https://colearn-ai.com" target="_blank">colearn-ai.com</a>
   </div>
   <div>CCSC:MW 2026 Workshop &middot; coLearn-AI: AI-Mediated Collaborative Learning</div>

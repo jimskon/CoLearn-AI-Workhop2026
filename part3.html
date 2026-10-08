@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Part 3 — Create an Activity · coLearn-AI Workshop</title>
+<title>Part 3: Create an Activity · coLearn-AI Workshop</title>
 <link rel="stylesheet" href="style.css">
 <style>
 .demo-pair { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:0.75rem 0; }
@@ -116,7 +116,7 @@
   </div>
   <h2>What an Activity Looks Like Underneath</h2>
 
-  <p>Every activity is a plain-text document in a LaTeX-like markup. You rarely need to write it yourself &mdash; the AI Builder, an LLM and the Visual Editor all produce it for you &mdash; but it helps to recognise the shape. Here is one complete question:</p>
+  <p>Every activity is a plain-text document in a LaTeX-like markup. You rarely need to write it yourself, since the AI Builder, an LLM and the Visual Editor all produce it for you, but it helps to recognise the shape. Here is one complete question:</p>
 
   <div class="activity-source"><span class="ml-kw">\questiongroup</span>{<span class="ml-arg">What does range() produce?</span>}
 <span class="ml-kw">\question</span>{<span class="ml-arg">Before running it, predict exactly what this prints. Then run it and explain any difference.</span>}
@@ -130,7 +130,7 @@ for i in range(2, 10, 3):
 <span class="ml-kw">\endquestion</span>
 <span class="ml-kw">\endquestiongroup</span></div>
 
-  <p>Students see the question, the code and an answer box. They never see the <span style="color:#b87800">sample response</span> or the <span style="color:#c0396b">feedback prompt</span> &mdash; those are for the AI.</p>
+  <p>Students see the question, the code and an answer box. They never see the <span style="color:#b87800">sample response</span> or the <span style="color:#c0396b">feedback prompt</span>: those are for the AI.</p>
 
   <div class="btn-group">
     <a href="markup.html" class="btn btn-outline">Full Markup Reference &rarr;</a>
@@ -191,7 +191,7 @@ for i in range(2, 10, 3):
 
   <div class="ref-note">📖 <strong>Reference: not covered live.</strong> Read this after the workshop, or skim it if you finish early.</div>
 
-  <p>coLearn-AI activities are plain-text markup files. That means you can create and edit them through several different workflows &mdash; choose the one that fits your style and how much of the markup you want to write by hand.</p>
+  <p>coLearn-AI activities are plain-text markup files. That means you can create and edit them through several different workflows. Choose the one that fits your style and how much of the markup you want to write by hand.</p>
 
   <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1.25rem 0">
 
@@ -244,14 +244,14 @@ for i in range(2, 10, 3):
       <p style="font-size:0.9rem">Open the <strong>Source</strong> view and edit the markup by hand. Full control over every tag, with line-level error messages. See the <a href="markup.html">Markup Reference</a>.</p>
       <div style="font-size:0.82rem; color:#555; margin-top:0.5rem">
         <strong>When to use:</strong> Experienced authors, fine-tuning edge cases, or when you know exactly which line to change.<br>
-        <strong>Tip:</strong> The markup is intentionally readable &mdash; after a few activities, direct editing is often the fastest approach.
+        <strong>Tip:</strong> The markup is intentionally readable. After a few activities, direct editing is often the fastest approach.
       </div>
     </div>
 
     <div class="card" style="margin:0; border:2px solid #ddd; background:#f8f6ff">
       <div style="font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#5b4fcf; margin-bottom:0.4rem">Option 6</div>
       <h4 style="margin-top:0">The Sandbox</h4>
-      <p style="font-size:0.9rem">The <strong>Sandbox</strong> runs your activity right inside the creator, as a student would see it, with real AI feedback. Submit test answers and see whether the AI accepts them or asks for a revision &mdash; before any student does.</p>
+      <p style="font-size:0.9rem">The <strong>Sandbox</strong> runs your activity right inside the creator, as a student would see it, with real AI feedback. Submit test answers and see whether the AI accepts them or asks for a revision, before any student does.</p>
       <div style="font-size:0.82rem; color:#555; margin-top:0.5rem">
         <strong>When to use:</strong> Calibrating a feedback prompt; checking edge cases; seeing the student experience.<br>
         <strong>Tip:</strong> Test three answers: clearly correct, plausible-but-wrong, and off-base.
@@ -284,10 +284,10 @@ for i in range(2, 10, 3):
     </ul>
   </div>
 
-  <h3>Step 0 &mdash; Switch Accounts (10:30, 3 min)</h3>
+  <h3>Step 0: Switch Accounts (10:30, 3 min)</h3>
   <p>Everyone logs out of the student account and logs in at <a href="https://colearn-ai.com" target="_blank">colearn-ai.com</a> with the <strong>creator</strong> login on their card. Then open the <strong>CCSC:MW Create</strong> class (code: <strong>create</strong>). It starts empty, and it is where you create and test your activity. Each person has their own creator account, so after the workshop anyone can build an activity of their own.</p>
 
-  <h3>Step 1 &mdash; Pick a Topic and Plan (10:33, 7 min)</h3>
+  <h3>Step 1: Pick a Topic and Plan (10:33, 7 min)</h3>
   <p>Choose one idea your students find hard, in any subject you teach (<a href="disciplines.html" target="_blank" rel="noopener">examples from other fields</a>). Before you touch the tool, decide for each question:</p>
   <div class="template-box">
     <strong>What should students do?</strong> <span class="placeholder">predict / explain / write code / compare / critique</span><br><br>
@@ -296,7 +296,7 @@ for i in range(2, 10, 3):
     <strong>What common mistake should the AI ask about?</strong> <span class="placeholder">e.g. &ldquo;includes the stop value&rdquo;</span>
   </div>
 
-  <h3>Step 2 &mdash; Build a Draft (10:40, 10 min)</h3>
+  <h3>Step 2: Build a Draft (10:40, 10 min)</h3>
   <ol class="steps">
     <li>Create a new activity in the <strong>CCSC:MW Create</strong> class.</li>
     <li>Describe it to the <strong>AI Builder</strong> using your plan from Step 1. Or use <strong>Copy for LLM</strong> with your own LLM.</li>
@@ -304,7 +304,7 @@ for i in range(2, 10, 3):
     <li>Check every question in the Visual Editor. Does each one have a sample response and a feedback prompt you agree with?</li>
   </ol>
 
-  <h3>Step 3 &mdash; Test in the Sandbox and Revise (10:50, 20 min)</h3>
+  <h3>Step 3: Test in the Sandbox and Revise (10:50, 20 min)</h3>
   <p>This is the most important step. Open the <strong>Sandbox</strong> and submit three answers to each question:</p>
   <ol class="steps">
     <li>A clearly correct answer. It should be <strong>accepted</strong>.</li>
@@ -313,7 +313,7 @@ for i in range(2, 10, 3):
   </ol>
   <p>If the AI gets it wrong, tighten the feedback prompt, either in the Question Panel or with another LLM round, and test again. See <a href="#goodprompt">Writing a Good Feedback Prompt</a> below.</p>
 
-  <h3>Step 4 &mdash; Save Your Work (11:10, 5 min)</h3>
+  <h3>Step 4: Save Your Work (11:10, 5 min)</h3>
   <div class="callout callout-gold" style="margin-top:0.5rem">
     <strong>The workshop accounts are temporary, so take your activity with you.</strong>
     Open the <strong>Source</strong> view, select all, copy, and paste it into an email to yourself or into a document. That text <em>is</em> the activity. Later, paste it into the Source view of a new activity in any coLearn-AI account.
@@ -347,7 +347,7 @@ for i in range(2, 10, 3):
     </div>
     <div class="card accent-green">
       <h4>Design for the trace</h4>
-      <p>Decide what reasoning you want to see in the epistemic trace &mdash; a prediction before running code, say &mdash; and ask for it.</p>
+      <p>Decide what reasoning you want to see in the epistemic trace (a prediction before running code, say) and ask for it.</p>
     </div>
   </div>
 
@@ -370,8 +370,8 @@ for i in range(2, 10, 3):
 <footer class="site-footer">
   <div class="footer-links">
     <a href="https://jimskon.github.io/coLearn-AI-Information/" target="_blank">coLearn-AI Project Info</a>
-    <a href="https://computing.kenyon.edu/skonjp/" target="_blank">James Paul Skon &mdash; Kenyon College</a>
-    <a href="https://ki.se/personer/james-skon" target="_blank">James Paul Skon &mdash; Karolinska Institutet</a>
+    <a href="https://computing.kenyon.edu/skonjp/" target="_blank">James Paul Skon, Kenyon College</a>
+    <a href="https://ki.se/personer/james-skon" target="_blank">James Paul Skon, Karolinska Institutet</a>
     <a href="https://colearn-ai.com" target="_blank">colearn-ai.com</a>
   </div>
   <div>CCSC:MW 2026 Workshop &middot; coLearn-AI: AI-Mediated Collaborative Learning</div>

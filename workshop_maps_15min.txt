@@ -1,4 +1,4 @@
-\title{How Maps Mislead — 15-Minute Sampler}
+\title{How Maps Mislead: 15-Minute Sampler}
 \name{workshop_maps_15min_2026}
 \studentlevel{Faculty from any discipline acting as first-year college students. No background in geography, statistics, or programming is assumed.}
 \activitycontext{Maps feel like plain facts, but every map is a set of choices. In this activity your group predicts, explains, and compares to find out how two common choices, the projection and the color categories, change the story a map tells. The AI cannot see the images, so describe what you see in your answers.}

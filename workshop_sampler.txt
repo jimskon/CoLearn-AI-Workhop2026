@@ -1,5 +1,5 @@
 %% Activity header
-\title{For Loops — Workshop Sampler}
+\title{For Loops: Workshop Sampler}
 \name{workshop_sampler_2026}
 \studentlevel{CS1 Python (or C++), week 5–7; comfortable with variables and conditionals; just introduced to for loops.}
 \activitycontext{Explores counter-controlled iteration using Python for loops with range(), Turtle, C++ for loops, and trace tables. Groups work in POGIL roles. Goal: conceptual understanding of loop mechanics.}
@@ -13,12 +13,12 @@
 \question{In your own words, explain what a counter-controlled loop does and how Python's for loop with range() implements it. Give a concrete example with specific numbers.}
   \responsemode{answer}
   \textresponse{5}
-  \sampleresponses{A counter-controlled loop runs a set number of times. Python's for loop with range(start, stop, step) handles the counting automatically. For example, range(1, 6) produces 1, 2, 3, 4, 5 — the stop value is excluded. The loop variable takes each value in turn without needing a separate counter variable.}
+  \sampleresponses{A counter-controlled loop runs a set number of times. Python's for loop with range(start, stop, step) handles the counting automatically. For example, range(1, 6) produces 1, 2, 3, 4, 5; the stop value is excluded. The loop variable takes each value in turn without needing a separate counter variable.}
   \feedbackprompt{Accept if the response explains: (1) a fixed number of repetitions and (2) how range() generates the sequence. Nudge if they omit that stop is excluded or give no example. Flag if too vague.}
 \endquestion
 
 %% Section 2: Python range
-\section{Python — Rewriting a Loop}{12}
+\section{Python: Rewriting a Loop}{12}
 \text{Below is a loop written with a literal list. Rewrite it using range() to produce identical output.}
 
 \question{Rewrite the loop below using range() so it prints the same values (5, 10, 15, 20, 25, 30).}
@@ -35,7 +35,7 @@ for value in [5, 10, 15, 20, 25, 30]:
 \endquestion
 
 %% Section 3: Turtle
-\section{Python Turtle — Filled Square}{12}
+\section{Python Turtle: Filled Square}{12}
 
 \question{Use a for loop to draw a filled square with side length 100. Fill it with any color you choose.}
   \responsemode{answer}
@@ -55,7 +55,7 @@ t.end_fill()}
 \endquestion
 
 %% Section 4: C++
-\section{C++ — Odd Numbers}{12}
+\section{C++: Odd Numbers}{12}
 
 \question{Write a C++ for loop that prints the odd numbers from 1 through 19, each on its own line, using cout.}
   \responsemode{answer}
@@ -74,7 +74,7 @@ int main() {
 \endquestion
 
 %% Section 5: Trace Table
-\section{Trace Table — Accumulator}{10}
+\section{Trace Table: Accumulator}{10}
 \text{Trace through the execution step by step. Fill in the value of each variable after each iteration.}
 
 \question{Complete the trace table for:
@@ -102,11 +102,11 @@ Iteration 4: number=4, total before=6, total after=10}
 \question{Which question type gave your group the most productive discussion? Why?}
   \responsemode{answer}
   \multiplechoice{}
-    \choice{Text explanation — forced us to articulate the concept}
-    \choice{Python code — debugging range() arguments caused real discussion}
-    \choice{Turtle — visible output made errors immediately obvious}
-    \choice{C++ — syntax differences from Python sparked comparison}
-    \choice{Trace table — stepping through by hand revealed what we didn't know}
+    \choice{Text explanation: forced us to articulate the concept}
+    \choice{Python code: debugging range() arguments caused real discussion}
+    \choice{Turtle: visible output made errors immediately obvious}
+    \choice{C++: syntax differences from Python sparked comparison}
+    \choice{Trace table: stepping through by hand revealed what we didn't know}
   \endmultiplechoice
   \feedbackprompt{Accept any choice; ask the group to give one specific reason from their discussion that supports their choice.}
 \endquestion

@@ -1,4 +1,4 @@
-\title{Loops with Turtles — 15-Minute Sampler}
+\title{Loops with Turtles: 15-Minute Sampler}
 \name{workshop_turtle_loops_15min_2026}
 \studentlevel{CS1 Python, around week 5; comfortable with variables and function calls; just introduced to for loops. Workshop participants are instructors playing students.}
 \activitycontext{Loops become visible when a turtle draws them. Your group predicts a drawing before running it, replaces repeated code with a loop, and uses the loop variable to make a spiral. Groups work in POGIL roles, and the typing turn rotates after each submission.}

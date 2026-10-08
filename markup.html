@@ -118,6 +118,7 @@ for i in range(2, 10, 3):
       <tr><td><code>\sampleresponses{...}</code></td><td>A model answer. Hidden from students; helps the AI recognise good answers.</td></tr>
       <tr><td><code>\feedbackprompt{...}</code></td><td>Your instructions to the AI for judging this question. Hidden from students. This is the most important thing you write.</td></tr>
       <tr><td><code>\followupprompt{...}</code></td><td>Optional follow-up the AI can use, e.g. <code>Why might greedy fail?</code></td></tr>
+      <tr><td><code>\questiontype{...}</code></td><td>Optional research label: what kind of thinking the question asks for, so the trace can be analyzed by question type. One of <code>code_writing</code>, <code>code_reading</code>, <code>output_prediction</code>, <code>debugging</code>, <code>conceptual_explanation</code>, <code>application_problem_solving</code>, <code>reflection</code>, <code>other</code>. Hidden from students; never changes how the question works.</td></tr>
       <tr><td><code>\responsemode{questions}</code></td><td>Students write <em>questions</em> rather than answers (e.g. interview questions). The default, <code>answer</code>, never needs to be written.</td></tr>
       <tr><td><code>\multiplechoice{key}</code> &hellip; <code>\endmultiplechoice</code></td><td>Single-answer multiple choice; the argument is the correct choice. Each option is a <code>\choice{...}</code>.</td></tr>
       <tr><td><code>\multiplechoice{multiple}</code></td><td>Ungraded &ldquo;select all that apply&rdquo; survey.</td></tr>

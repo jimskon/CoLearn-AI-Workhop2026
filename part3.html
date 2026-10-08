@@ -127,10 +127,11 @@ for i in range(2, 10, 3):
 <span class="ml-kw">\textresponse</span>{<span class="ml-arg">4</span>}
 <span class="ml-kw">\sampleresponses</span>{<span class="ml-arg">It prints 2, 5, 8. 10 is the stop value and is never included.</span>}
 <span class="ml-kw">\feedbackprompt</span>{<span class="ml-str">Accept if the group gives 2, 5, 8 and says why 10 is not printed. If they include 10 or 11, ask what the stop value means.</span>}
+<span class="ml-kw">\questiontype</span>{<span class="ml-arg">output_prediction</span>}
 <span class="ml-kw">\endquestion</span>
 <span class="ml-kw">\endquestiongroup</span></div>
 
-  <p>Students see the question, the code and an answer box. They never see the <span style="color:#b87800">sample response</span> or the <span style="color:#c0396b">feedback prompt</span>: those are for the AI.</p>
+  <p>Students see the question, the code and an answer box. They never see the <span style="color:#b87800">sample response</span> or the <span style="color:#c0396b">feedback prompt</span>: those are for the AI. The optional <code>\questiontype</code> line is for research: it labels what kind of thinking the question asks for (here, predicting output), so the trace can be analyzed by question type. It changes nothing for students or for the AI. See <a href="research.html">Research</a>.</p>
 
   <div class="btn-group">
     <a href="markup.html" class="btn btn-outline">Full Markup Reference &rarr;</a>
@@ -224,7 +225,8 @@ for i in range(2, 10, 3):
       <p style="font-size:0.9rem">The <strong>Visual Editor</strong> shows the activity as students will see it. Click a question or AI block to open it in the Question Panel, edit its fields or ask the AI to revise just that question, then <strong>Try Changes</strong> and <strong>Save</strong>. No markup required.</p>
       <div style="font-size:0.82rem; color:#555; margin-top:0.5rem">
         <strong>When to use:</strong> Fixing a specific question, renaming a section, adjusting Layer 3 guidance on an existing activity.<br>
-        <strong>Limitation:</strong> Building a new activity from scratch is faster with Option 1 or 2, then refine here.
+        <strong>Limitation:</strong> Building a new activity from scratch is faster with Option 1 or 2, then refine here.<br>
+        <strong>Still under development:</strong> an edit can occasionally garble the activity or produce an error. If that happens, press <strong>Undo</strong> (the curved-arrow button) to step back to the last good version.
       </div>
     </div>
 
@@ -286,6 +288,7 @@ for i in range(2, 10, 3):
 
   <h3>Step 0: Switch Accounts (10:30, 3 min)</h3>
   <p>Everyone logs out of the student account and logs in at <a href="https://colearn-ai.com" target="_blank">colearn-ai.com</a> with the <strong>creator</strong> login on their card. Then open the <strong>CCSC:MW Create</strong> class (code: <strong>create</strong>). It starts empty, and it is where you create and test your activity. Each person has their own creator account, so after the workshop anyone can build an activity of their own.</p>
+  <p style="font-size:0.9rem; color:var(--muted)">A browser holds only one login at a time, so logging in as your creator replaces your student login in every tab. To keep both open, use a second browser or a private / incognito window.</p>
 
   <h3>Step 1: Pick a Topic and Plan (10:33, 7 min)</h3>
   <p>Choose one idea your students find hard, in any subject you teach (<a href="disciplines.html" target="_blank" rel="noopener">examples from other fields</a>). Before you touch the tool, decide for each question:</p>
@@ -302,6 +305,7 @@ for i in range(2, 10, 3):
     <li>Describe it to the <strong>AI Builder</strong> using your plan from Step 1. Or use <strong>Copy for LLM</strong> with your own LLM.</li>
     <li>Need an example of a feature? The <strong>coLearn-AI Feature Gallery</strong> in the CCSC:MW class (with your student login) shows every feature, numbered by type. Its source is also on the <a href="resources.html">Resources</a> page.</li>
     <li>Check every question in the Visual Editor. Does each one have a sample response and a feedback prompt you agree with?</li>
+    <li>The Visual Editor is still under development. If an edit messes something up or shows an error, press <strong>Undo</strong> and try again, or make that change with Copy for LLM instead.</li>
   </ol>
 
   <h3>Step 3: Test in the Sandbox and Revise (10:50, 20 min)</h3>

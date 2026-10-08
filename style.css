@@ -54,6 +54,16 @@ nav .brand {
   text-decoration: none;
   color: white;
 }
+nav .brand {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+nav .brand-logo {
+  height: 28px;
+  width: auto;
+  display: block;
+}
 
 nav .nav-links {
   display: flex;
@@ -777,6 +787,19 @@ li { margin-bottom: 0.35rem; }
 }
 .site-footer a:hover {
   text-decoration: underline;
+}
+.site-footer .footer-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 0.9rem;
+}
+.site-footer .footer-logos img {
+  height: 34px;
+  width: auto;
+  display: block;
+  border-radius: 4px;
 }
 .site-footer .footer-links {
   display: flex;
